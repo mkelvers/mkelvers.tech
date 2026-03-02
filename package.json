@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "rsbuild build",
+    "start": "rsbuild preview",
     "dev": "rsbuild dev --open",
     "preview": "rsbuild preview"
   },
