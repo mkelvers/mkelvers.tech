@@ -4,7 +4,7 @@ export const skills = [
   { id: 'node-js', name: 'Node.js' },
   { id: 'express-js', name: 'Express' },
   { id: 'postgresql', name: 'PostgreSQL' },
-  { id: 'better-auth', name: 'BetterAuth' },
+  { id: 'better-auth', name: 'Better Auth' },
   { id: 'convex', name: 'Convex' },
   { id: 'sass', name: 'Sass' },
   { id: 'php', name: 'PHP' },
