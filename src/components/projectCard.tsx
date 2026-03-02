@@ -6,6 +6,8 @@ type ProjectCardProps = {
 }
 
 export function ProjectCard({ project, onOpenImages }: ProjectCardProps): React.JSX.Element {
+  const { images } = project
+
   return (
     <div className="project-card">
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
@@ -16,9 +18,9 @@ export function ProjectCard({ project, onOpenImages }: ProjectCardProps): React.
           </p>
         </div>
         <div className="flex gap-3 shrink-0">
-          {project.images && project.images.length > 0 && (
+          {images && images.length > 0 && (
             <button
-              onClick={() => onOpenImages(project.images!)}
+              onClick={() => onOpenImages(images)}
               className="text-muted-foreground hover:text-accent transition-colors"
               aria-label="View screenshots"
             >

@@ -51,36 +51,48 @@ export function ContactForm(): React.JSX.Element {
     }
   }
 
+  const isSubmitting = formStatus === 'submitting'
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 max-w-md">
       <div>
+        <label htmlFor="email" className="sr-only">Email</label>
         <input
+          id="email"
           type="email"
           placeholder="Email"
+          disabled={isSubmitting}
+          aria-invalid={errors.email ? 'true' : undefined}
+          aria-describedby={errors.email ? 'email-error' : undefined}
           {...register('email')}
-          className="w-full bg-background border border-border rounded px-4 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:border-accent"
+          className="w-full bg-background border border-border rounded px-4 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:border-accent disabled:opacity-50"
         />
         {errors.email && (
-          <p className="text-sm text-red-400 mt-1">{errors.email.message}</p>
+          <p id="email-error" className="text-sm text-red-400 mt-1">{errors.email.message}</p>
         )}
       </div>
       <div>
+        <label htmlFor="message" className="sr-only">Message</label>
         <textarea
+          id="message"
           placeholder="Message"
           rows={4}
+          disabled={isSubmitting}
+          aria-invalid={errors.message ? 'true' : undefined}
+          aria-describedby={errors.message ? 'message-error' : undefined}
           {...register('message')}
-          className="w-full bg-background border border-border rounded px-4 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:border-accent resize-none"
+          className="w-full bg-background border border-border rounded px-4 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:border-accent resize-none disabled:opacity-50"
         />
         {errors.message && (
-          <p className="text-sm text-red-400 mt-1">{errors.message.message}</p>
+          <p id="message-error" className="text-sm text-red-400 mt-1">{errors.message.message}</p>
         )}
       </div>
       <button
         type="submit"
-        disabled={formStatus === 'submitting'}
+        disabled={isSubmitting}
         className="bg-accent text-background font-medium rounded px-4 py-2 text-sm hover:bg-accent/90 transition-colors w-fit disabled:opacity-50"
       >
-        {formStatus === 'submitting' ? 'Sending...' : 'Send message'}
+        {isSubmitting ? 'Sending...' : 'Send message'}
       </button>
     </form>
   )

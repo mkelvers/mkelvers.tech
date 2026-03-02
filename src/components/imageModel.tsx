@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { cn } from '@/lib/utils'
 
 export type ImageModalState = {
@@ -12,21 +12,66 @@ type ImageModalProps = {
 }
 
 export function ImageModal({ state, onClose }: ImageModalProps): React.JSX.Element | null {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const goPrev = useCallback((): void => {
+    if (!state) return
+    setCurrentIndex((i) => (i === 0 ? state.images.length - 1 : i - 1))
+  }, [state])
+
+  const goNext = useCallback((): void => {
+    if (!state) return
+    setCurrentIndex((i) => (i === state.images.length - 1 ? 0 : i + 1))
+  }, [state])
+
+  // sync index when modal opens
+  useEffect(() => {
+    if (state) {
+      setCurrentIndex(state.index)
+    }
+  }, [state])
+
+  // lock body scroll when modal is open
+  useEffect(() => {
+    if (state) {
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = ''
+      }
+    }
+  }, [state])
+
+  // keyboard navigation
+  useEffect(() => {
+    if (!state) return
+
+    const handleKeyDown = (e: KeyboardEvent): void => {
+      switch (e.key) {
+        case 'Escape':
+          onClose()
+          break
+        case 'ArrowLeft':
+          goPrev()
+          break
+        case 'ArrowRight':
+          goNext()
+          break
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [state, onClose, goPrev, goNext])
+
   if (!state) return null
 
-  const { images, index } = state
-  const [currentIndex, setCurrentIndex] = useState(index)
-
-  const goPrev = (): void => {
-    setCurrentIndex((i) => (i === 0 ? images.length - 1 : i - 1))
-  }
-
-  const goNext = (): void => {
-    setCurrentIndex((i) => (i === images.length - 1 ? 0 : i + 1))
-  }
+  const { images } = state
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image gallery"
       className="fixed inset-0 z-50 bg-background/90 flex items-center justify-center p-4"
       onClick={onClose}
     >
@@ -46,7 +91,7 @@ export function ImageModal({ state, onClose }: ImageModalProps): React.JSX.Eleme
 
         <img
           src={images[currentIndex]}
-          alt={`Screenshot ${currentIndex + 1}`}
+          alt={`Screenshot ${currentIndex + 1} of ${images.length}`}
           className="w-full rounded-lg"
         />
 
