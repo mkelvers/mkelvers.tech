@@ -1,11 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { skills, projects } from '@/lib/data'
+import { hasLanguagePreference } from '@/lib/i18n'
 import { ImageModal, type ImageModalState } from '@/components/imageModel'
 import { ProjectCard } from '@/components/projectCard'
 import { ContactForm } from '@/components/contactForm'
+import { LanguageModal } from '@/components/languageModel'
+import { LanguageToggle } from '@/components/languageToggle'
 
 export function App(): React.JSX.Element {
+  const { t } = useTranslation()
   const [imageModal, setImageModal] = useState<ImageModalState>(null)
+  const [showLanguageModal, setShowLanguageModal] = useState(false)
+
+  useEffect(() => {
+    if (!hasLanguagePreference()) {
+      setShowLanguageModal(true)
+    }
+  }, [])
 
   const openImages = (images: readonly string[]): void => {
     setImageModal({ images, index: 0 })
@@ -13,6 +25,8 @@ export function App(): React.JSX.Element {
 
   return (
     <main className="min-h-screen w-full flex flex-col">
+      <LanguageModal open={showLanguageModal} onClose={() => setShowLanguageModal(false)} />
+      <LanguageToggle />
       <ImageModal state={imageModal} onClose={() => setImageModal(null)} />
 
       <section className="px-6 py-16 md:py-24">
@@ -28,28 +42,19 @@ export function App(): React.JSX.Element {
                 <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                Download CV
+                {t('hero.download_cv')}
               </a>
             </div>
             <p className="flex items-center gap-2 text-sm italic text-muted-foreground">
               <span className="size-3 rounded-full border-2 border-accent shrink-0" />
-              Currently studying at Roskilde Tekniske Skole. (Technical School)
+              {t('hero.currently_studying')}
             </p>
             <div className="space-y-4 text-[15px] leading-relaxed text-foreground/90">
-              <p>
-                I'm a web development student focused on TypeScript backends and React
-                frontends, such as Next or the Tanstack ecosystem. I'm always looking
-                for opportunities to collaborate on projects or intern positions where
-                I can grow.
-              </p>
-              <p>
-                My hobbies tie closely to my studies - I code in my free time, and
-                if I'm not, I'm probably watching anime or listening to some music.
-                I'm pretty introverted but easy to talk to once you get me going.
-              </p>
+              <p>{t('hero.bio_1')}</p>
+              <p>{t('hero.bio_2')}</p>
             </div>
             <p className="text-sm text-muted-foreground">
-              Currently learning: <span className="text-accent">TanStack Start</span>
+              {t('hero.currently_learning')} <span className="text-accent">TanStack Start</span>
             </p>
           </div>
         </div>
@@ -57,7 +62,7 @@ export function App(): React.JSX.Element {
 
       <section className="w-full bg-muted-background py-10 px-6">
         <div className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-2xl font-medium">Skills</h2>
+          <h2 className="text-2xl font-medium">{t('skills.title')}</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {skills.map((skill) => (
               <div key={skill.id} className="skill-item">
@@ -76,9 +81,9 @@ export function App(): React.JSX.Element {
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto space-y-8">
           <div>
-            <h2 className="text-2xl font-medium">Recent Projects</h2>
+            <h2 className="text-2xl font-medium">{t('projects.title')}</h2>
             <p className="text-sm text-muted-foreground mt-1">
-              A selection of things I've built.
+              {t('projects.subtitle')}
             </p>
           </div>
           <div className="space-y-4">
@@ -96,7 +101,7 @@ export function App(): React.JSX.Element {
       <footer className="mt-auto w-full bg-muted-background py-12 px-6">
         <div className="max-w-4xl mx-auto space-y-10">
           <div className="space-y-6">
-            <h2 className="text-2xl font-medium">Get in touch</h2>
+            <h2 className="text-2xl font-medium">{t('contact.title')}</h2>
             <ContactForm />
           </div>
 

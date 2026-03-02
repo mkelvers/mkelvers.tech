@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { toast } from 'sonner'
+import { useTranslation } from 'react-i18next'
 
 const ContactSchema = z.object({
   email: z.email('please enter a valid email'),
@@ -14,6 +15,7 @@ type ContactFormData = z.infer<typeof ContactSchema>
 type FormStatus = 'idle' | 'submitting'
 
 export function ContactForm(): React.JSX.Element {
+  const { t } = useTranslation()
   const [formStatus, setFormStatus] = useState<FormStatus>('idle')
 
   const {
@@ -39,13 +41,13 @@ export function ContactForm(): React.JSX.Element {
       })
 
       if (res.ok) {
-        toast.success('thanks! i\'ll get back to you soon.')
+        toast.success(t('contact.success'))
         reset()
       } else {
-        toast.error('something went wrong. try again?')
+        toast.error(t('contact.error'))
       }
     } catch {
-      toast.error('something went wrong. try again?')
+      toast.error(t('contact.error'))
     } finally {
       setFormStatus('idle')
     }
@@ -56,11 +58,11 @@ export function ContactForm(): React.JSX.Element {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 max-w-md">
       <div>
-        <label htmlFor="email" className="sr-only">Email</label>
+        <label htmlFor="email" className="sr-only">{t('contact.email')}</label>
         <input
           id="email"
           type="email"
-          placeholder="Email"
+          placeholder={t('contact.email')}
           disabled={isSubmitting}
           aria-invalid={errors.email ? 'true' : undefined}
           aria-describedby={errors.email ? 'email-error' : undefined}
@@ -72,10 +74,10 @@ export function ContactForm(): React.JSX.Element {
         )}
       </div>
       <div>
-        <label htmlFor="message" className="sr-only">Message</label>
+        <label htmlFor="message" className="sr-only">{t('contact.message')}</label>
         <textarea
           id="message"
-          placeholder="Message"
+          placeholder={t('contact.message')}
           rows={4}
           disabled={isSubmitting}
           aria-invalid={errors.message ? 'true' : undefined}
@@ -92,7 +94,7 @@ export function ContactForm(): React.JSX.Element {
         disabled={isSubmitting}
         className="bg-accent text-background font-medium rounded px-4 py-2 text-sm hover:bg-accent/90 transition-colors w-fit disabled:opacity-50"
       >
-        {isSubmitting ? 'Sending...' : 'Send message'}
+        {isSubmitting ? t('contact.sending') : t('contact.send')}
       </button>
     </form>
   )

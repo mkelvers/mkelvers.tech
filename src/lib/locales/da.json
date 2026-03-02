@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "download_cv": "Download CV",
+    "currently_studying": "Studerer på Roskilde Tekniske Skole.",
+    "bio_1": "Jeg er en webudvikler-studerende med fokus på TypeScript backends og React frontends, såsom Next eller Tanstack økosystemet. Jeg leder altid efter muligheder for at samarbejde på projekter eller praktikpladser, hvor jeg kan udvikle mig.",
+    "bio_2": "Mine hobbyer hænger tæt sammen med mine studier - jeg koder i min fritid, og hvis ikke, ser jeg nok anime eller lytter til musik. Jeg er ret introvert, men nem at snakke med når man først får mig i gang.",
+    "currently_learning": "Lærer lige nu:"
+  },
+  "skills": {
+    "title": "Kompetencer"
+  },
+  "projects": {
+    "title": "Seneste Projekter",
+    "subtitle": "Et udvalg af ting jeg har bygget."
+  },
+  "contact": {
+    "title": "Kontakt mig",
+    "name": "Navn",
+    "email": "Email",
+    "message": "Besked",
+    "send": "Send besked",
+    "sending": "Sender...",
+    "success": "Besked sendt!",
+    "error": "Noget gik galt. Prøv igen."
+  },
+  "language_modal": {
+    "title": "Vælg dit sprog",
+    "subtitle": "Vælg et sprog for at fortsætte"
+  }
+}
