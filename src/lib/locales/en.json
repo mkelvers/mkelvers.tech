@@ -1,30 +1,29 @@
 {
-  "hero": {
-    "download_cv": "Download CV",
-    "currently_studying": "Currently studying at Roskilde Tekniske Skole. (Technical School)",
-    "bio_1": "I'm a web development student focused on TypeScript backends and React frontends, such as Next or the Tanstack ecosystem. I'm always looking for opportunities to collaborate on projects or intern positions where I can grow.",
-    "bio_2": "My hobbies tie closely to my studies - I code in my free time, and if I'm not, I'm probably watching anime or listening to some music. I'm pretty introverted but easy to talk to once you get me going.",
-    "currently_learning": "Currently learning:"
-  },
-  "skills": {
-    "title": "Skills"
-  },
-  "projects": {
-    "title": "Recent Projects",
-    "subtitle": "A selection of things I've built."
-  },
-  "contact": {
-    "title": "Get in touch",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send message",
-    "sending": "Sending...",
-    "success": "Message sent!",
-    "error": "Something went wrong. Please try again."
-  },
-  "language_modal": {
-    "title": "Choose your language",
-    "subtitle": "Select a language to continue"
-  }
+	"hero": {
+		"download_cv": "Download CV",
+		"currently_studying": "Currently studying at Roskilde Tekniske Skole. (Technical School)",
+		"bio_1": "I'm a web development student focused on TypeScript backends and React frontends, such as Next or the Tanstack ecosystem. I'm always looking for opportunities to collaborate on projects or intern positions where I can grow.",
+		"bio_2": "My hobbies tie closely to my studies - I code in my free time, and if I'm not, I'm probably watching anime or listening to some music. I'm pretty introverted but easy to talk to once you get me going.",
+		"currently_learning": "Currently learning:"
+	},
+	"skills": {
+		"title": "Skills"
+	},
+	"projects": {
+		"title": "Recent Projects",
+		"subtitle": "A selection of things I've built."
+	},
+	"contact": {
+		"title": "Get in touch",
+		"email": "Email",
+		"message": "Message",
+		"send": "Send message",
+		"sending": "Sending...",
+		"success": "Message sent!",
+		"error": "Something went wrong. Please try again."
+	},
+	"language_modal": {
+		"title": "Choose your language",
+		"subtitle": "Select a language to continue"
+	}
 }

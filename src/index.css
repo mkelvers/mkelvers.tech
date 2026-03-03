@@ -1,54 +1,56 @@
 @import "tailwindcss";
 
 :root {
-    color-scheme: dark;
-    --bg: #0d0d0d;
-    --muted-bg: #161616;
-    --fg: #e5e5e5;
-    --fg-muted: #737373;
-    --accent: #a78bfa;
-    --accent-muted: #7c3aed;
-    --border: #262626;
+	color-scheme: dark;
+	--bg: #0d0d0d;
+	--muted-bg: #161616;
+	--surface: #1f1f1f;
+	--fg: #e5e5e5;
+	--fg-muted: #737373;
+	--accent: #2196f3;
+	--accent-muted: #1976d2;
+	--border: #262626;
 }
 
 @theme {
-    --color-background: var(--bg);
-    --color-muted-background: var(--muted-bg);
-    --color-foreground: var(--fg);
-    --color-muted-foreground: var(--fg-muted);
-    --color-accent: var(--accent);
-    --color-accent-muted: var(--accent-muted);
-    --color-border: var(--border);
+	--color-background: var(--bg);
+	--color-muted-background: var(--muted-bg);
+	--color-surface: var(--surface);
+	--color-foreground: var(--fg);
+	--color-muted-foreground: var(--fg-muted);
+	--color-accent: var(--accent);
+	--color-accent-muted: var(--accent-muted);
+	--color-border: var(--border);
 }
 
 @layer base {
-    * {
-        box-sizing: border-box;
-        margin: 0;
-    }
+	* {
+		box-sizing: border-box;
+		margin: 0;
+	}
 
-    html,
-    body {
-        @apply bg-background text-foreground antialiased;
-    }
+	html,
+	body {
+		@apply bg-background text-foreground antialiased;
+	}
 
-    ::selection {
-        @apply bg-accent/30;
-    }
+	::selection {
+		@apply bg-accent/30;
+	}
 }
 
 @layer components {
-    .skill-item {
-        @apply flex items-center gap-2 px-3 py-2 rounded-md bg-background;
-        @apply transition-colors duration-200 hover:text-accent;
-    }
+	.skill-item {
+		@apply flex items-center gap-2 px-3 py-2 rounded-md bg-background;
+		@apply transition-colors duration-200 hover:text-accent;
+	}
 
-    .project-card {
-        @apply bg-muted-background rounded-lg p-6;
-        @apply transition-colors duration-200 hover:bg-muted-background/80;
-    }
+	.project-card {
+		@apply bg-muted-background rounded-lg p-6;
+		@apply transition-colors duration-200 hover:bg-muted-background/80;
+	}
 
-    .tech-pill {
-        @apply text-xs px-2 py-0.5 rounded bg-accent/10 text-accent;
-    }
+	.tech-pill {
+		@apply text-xs px-2 py-0.5 rounded bg-accent/10 text-accent;
+	}
 }
