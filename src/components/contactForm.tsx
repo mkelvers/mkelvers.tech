@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 const ContactSchema = z.object({
   email: z.email('please enter a valid email'),
   message: z.string().min(10, 'message must be at least 10 characters'),
+  honeypot: z.string().optional()
 })
 
 type ContactFormData = z.infer<typeof ContactSchema>
@@ -29,6 +30,12 @@ export function ContactForm(): React.JSX.Element {
 
   const onSubmit = async (data: ContactFormData): Promise<void> => {
     setFormStatus('submitting')
+
+    if (data.honeypot) {
+      reset()
+      setFormStatus('idle')
+      return
+    }
 
     try {
       const res = await fetch('https://formspree.io/f/mlgwygew', {
@@ -88,6 +95,16 @@ export function ContactForm(): React.JSX.Element {
         {errors.message && (
           <p id="message-error" className="text-sm text-red-400 mt-1">{errors.message.message}</p>
         )}
+      </div>
+      <div aria-hidden="true" className="absolute -left-2499.75 w-px h-px overflow-hidden">
+        <label htmlFor='honeypot'>leave this field empty</label>
+        <input
+          id='honeypot'
+          type='text'
+          tabIndex={-1}
+          autoComplete='off'
+          {...register('honeypot')}
+        />
       </div>
       <button
         type="submit"
