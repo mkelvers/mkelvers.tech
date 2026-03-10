@@ -46,7 +46,7 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} antialiased min-h-screen font-mono text-lg`}
       >
-        <div className="grid grid-rows-[10vh_auto] place-items-center">
+        <div className="grid grid-rows-[10vh_auto] place-items-center p-6">
           <div className="row-start-2 w-full max-w-4xl px-4">
             {children}
           </div>

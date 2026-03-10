@@ -2,6 +2,7 @@ import { SectionList } from "@/components/section-list";
 import { MapPin } from "lucide-react";
 
 import { projects } from "@/lib/items";
+import { LinksSection } from "@/components/links-section";
 
 export default function Home() {
   return (
@@ -38,6 +39,8 @@ export default function Home() {
           label: "view all projects",
         }}
       />
+
+      <LinksSection />
     </>
   )
 }
