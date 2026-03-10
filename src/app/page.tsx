@@ -1,4 +1,7 @@
+import { SectionList } from "@/components/section-list";
 import { MapPin } from "lucide-react";
+
+import { projects } from "@/lib/items";
 
 export default function Home() {
   return (
@@ -26,6 +29,15 @@ export default function Home() {
           </p>
         </div>
       </header>
+
+      <SectionList
+        title="projects"
+        items={projects}
+        viewAll={{
+          href: "/projects",
+          label: "view all projects",
+        }}
+      />
     </>
   )
 }
