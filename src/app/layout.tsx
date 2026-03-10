@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Geist_Mono } from "next/font/google"
+
 import "./globals.css";
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-mono",
+})
 
 export const metadata: Metadata = {
   title: "Mikkel Elvers",
@@ -32,8 +40,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        {children}
+      <body
+        className={`${geistMono.variable} antialiased min-h-screen font-mono text-lg`}
+      >
+        <div className="grid grid-rows-[10vh_auto] place-items-center">
+          <div className="row-start-2 w-full max-w-4xl px-4">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
