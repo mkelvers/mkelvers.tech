@@ -10,7 +10,11 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Mikkel Elvers",
+  metadataBase: new URL("https://mkelvers.tech"),
+  title: {
+    default: "Mikkel Elvers",
+    template: "%s | Mikkel Elvers",
+  },
   description:
     "Frontend-focused web developer and anime enjoyer",
   keywords: [
@@ -27,7 +31,6 @@ export const metadata: Metadata = {
     url: "https://mkelvers.tech",
     type: "website",
   },
-  metadataBase: new URL("https://mkelvers.tech"),
   alternates: {
     canonical: "/",
   },
