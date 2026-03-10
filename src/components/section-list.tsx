@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ProjectCardProps } from "@/components/project-card";
 
-export type SectionListProps = {
+type SectionListProps = {
     title: string,
     items: ProjectCardProps[],
     viewAll?: {
@@ -36,7 +36,7 @@ export function SectionList(props: SectionListProps) {
                             <p className="text-sm text-gray-400 mb-2">
                                 {item.role} {item.period && `(${item.period})`}
                             </p>
-                            <p className="text-gray-300">{item.description}</p>
+                            <p className="text-gray-300 max-w-2xl">{item.description}</p>
                         </Link>
                     </div>
                 ))}

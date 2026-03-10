@@ -29,7 +29,7 @@ export function ProjectCard(props: ProjectCardProps) {
                 {role} {period && `(${period})`}
             </p>
 
-            <p className="text-gray-300 mb-6">{description}</p>
+            <p className="text-gray-300 mb-6 max-w-2xl">{description}</p>
 
             <div className="space-y-6">
                 <div>

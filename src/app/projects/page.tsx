@@ -20,11 +20,13 @@ export default function ProjectsPage() {
                 projects
             </h1>
 
-            <p className="text-gray-400 mb-12 leading-relaxed">
-                here are some of the projects i&apos;ve worked on. i love building random
-                projects in my free time, and i&apos;m always looking for new ideas to work on. if you have
-                any ideas or want to collaborate on something, feel free to reach out!
-            </p>
+            <div className="max-w-2xl">
+                <p className="text-gray-400 mb-12 leading-relaxed">
+                    here are some of the projects i&apos;ve worked on. i love building random
+                    projects in my free time, and i&apos;m always looking for new ideas to work on. if you have
+                    any ideas or want to collaborate on something, feel free to reach out!
+                </p>
+            </div>
 
             <div className="space-y-12">
                 {projects.map((project) => (
