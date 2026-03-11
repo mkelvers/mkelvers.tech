@@ -8,7 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: #ff66b3;
+  --color-accent: #2667ff;
 }
 
 body {
