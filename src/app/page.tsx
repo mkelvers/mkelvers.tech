@@ -22,6 +22,9 @@ export default function Home() {
             19 y/o web dev student @ roskilde technical college. writing clean typescript, building
             things, and living in the terminal. when not coding, i&apos;m watching anime.
           </p>
+          <p className="text-gray-400">
+            <span className="text-white">stack:</span> typescript, react, next.js, tailwind, node
+          </p>
           <p className="text-gray-300">
             currently looking for an internship.{' '}
             <a
