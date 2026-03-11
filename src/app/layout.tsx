@@ -49,7 +49,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistMono.variable} antialiased min-h-screen font-mono text-lg`}>
+      <body
+        className={`${geistMono.variable} bg-background text-foreground antialiased min-h-screen font-mono text-lg`}
+      >
         <div className="grid grid-rows-[10vh_auto] place-items-center p-6">
           <main className="row-start-2 w-full max-w-4xl">{children}</main>
         </div>
