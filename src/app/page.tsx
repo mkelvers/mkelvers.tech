@@ -29,7 +29,7 @@ export default function Home() {
 
       <SectionList
         title="projects"
-        items={projects}
+        items={projects.slice(0, 2)}
         viewAll={{
           href: '/projects',
           label: 'view all projects',
