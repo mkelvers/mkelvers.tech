@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
+import { Plus_Jakarta_Sans } from 'next/font/google'
 
 import './globals.css'
 
-const satoshi = localFont({
-  src: './fonts/Satoshi-Medium.woff2',
-  variable: '--font-satoshi',
+const font = Plus_Jakarta_Sans({
+  variable: '--font-jakarta-sans',
   display: 'swap',
-  weight: '500',
+  subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
@@ -51,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${satoshi.variable} bg-background text-foreground antialiased min-h-screen font-satoshi text-lg`}
+        className={`${font.variable} font bg-background text-foreground antialiased min-h-screen text-lg`}
       >
         <div className="grid grid-rows-[10vh_auto] place-items-center p-6">
           <main className="row-start-2 w-full max-w-4xl">{children}</main>
