@@ -6,7 +6,7 @@ import { ArrowLeft } from 'lucide-react'
 
 export default function ProjectsPage() {
   return (
-    <main>
+    <>
       <Link
         href="/"
         className="text-gray-400 hover:text-accent transition-colors text-sm flex items-center gap-2 mb-8 group w-fit"
@@ -33,7 +33,7 @@ export default function ProjectsPage() {
           <ProjectCard key={project.title} {...project} />
         ))}
       </div>
-    </main>
+    </>
   )
 }
 
