@@ -1,35 +1,31 @@
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
-import { ProjectCardProps } from "@/components/project-card";
+import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
+import { ProjectCardProps } from '@/components/project-card'
 
 type SectionListProps = {
-  title: string,
-  items: ProjectCardProps[],
+  title: string
+  items: ProjectCardProps[]
   viewAll?: {
-    href: string,
-    label: string,
-  },
-  showTitle?: boolean,
+    href: string
+    label: string
+  }
+  showTitle?: boolean
 }
 
 export function SectionList(props: SectionListProps) {
-  const { title, items, viewAll, showTitle = true } = props;
+  const { title, items, viewAll, showTitle = true } = props
 
   return (
     <section className="mb-16">
-      {showTitle &&
+      {showTitle && (
         <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
           <span className="text-accent mr-2 font-mono">*</span> {title}
         </h2>
-      }
+      )}
       <div className="space-y-8">
         {items.map((item) => (
           <div key={item.title} className="group">
-            <Link
-              href={item.href}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
+            <Link href={item.href} target="_blank" rel="noreferrer noopener">
               <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">
                 {item.title}
               </h3>
@@ -46,7 +42,7 @@ export function SectionList(props: SectionListProps) {
           href={viewAll.href}
           className="inline-flex items-center gap-1 mt-6 text-accent hover:underline group"
         >
-          {viewAll.label}{" "}
+          {viewAll.label}{' '}
           <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
         </Link>
       )}

@@ -1,9 +1,9 @@
-import Link from "next/link"
+import Link from 'next/link'
 
 const links = [
-  { title: "email", href: "mailto:hi.mikkel@outlook.com" },
-  { title: "github", href: "https://github.com/mkelvers" },
-  { title: "linkedin", href: "https://www.linkedin.com/in/mikkelnothlev" },
+  { title: 'email', href: 'mailto:hi.mikkel@outlook.com' },
+  { title: 'github', href: 'https://github.com/mkelvers' },
+  { title: 'linkedin', href: 'https://www.linkedin.com/in/mikkelnothlev' },
 ]
 
 export function LinksSection() {

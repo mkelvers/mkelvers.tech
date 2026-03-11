@@ -1,8 +1,8 @@
-import { ProjectCard } from "@/components/project-card"
-import { projects } from "@/lib/items"
-import { Metadata } from "next"
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { ProjectCard } from '@/components/project-card'
+import { projects } from '@/lib/items'
+import { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
 
 export default function ProjectsPage() {
   return (
@@ -22,9 +22,9 @@ export default function ProjectsPage() {
 
       <div className="max-w-2xl">
         <p className="text-gray-400 mb-12 leading-relaxed">
-          here are some of the projects i&apos;ve worked on. i love building random
-          projects in my free time, and i&apos;m always looking for new ideas to work on. if you have
-          any ideas or want to collaborate on something, feel free to reach out!
+          here are some of the projects i&apos;ve worked on. i love building random projects in my
+          free time, and i&apos;m always looking for new ideas to work on. if you have any ideas or
+          want to collaborate on something, feel free to reach out!
         </p>
       </div>
 
@@ -38,6 +38,6 @@ export default function ProjectsPage() {
 }
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: 'Projects',
   description: "Some of the projects I've worked on.",
 }

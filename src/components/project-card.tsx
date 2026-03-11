@@ -1,5 +1,5 @@
-import { ArrowUpRight } from "lucide-react"
-import Link from "next/link"
+import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
 
 export type ProjectCardProps = {
   title: string
@@ -12,7 +12,7 @@ export type ProjectCardProps = {
 }
 
 export function ProjectCard(props: ProjectCardProps) {
-  const { title, description, role, period, achievements, technologies, href } = props;
+  const { title, description, role, period, achievements, technologies, href } = props
 
   return (
     <div className="group border border-accent/10 p-6 transition-colors hover:border-accent/50">
@@ -45,10 +45,7 @@ export function ProjectCard(props: ProjectCardProps) {
           <h3 className="text-white font-semibold mb-2">technologies</h3>
           <div className="flex flex-wrap gap-2">
             {technologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-2 py-1 text-sm text-gray-300 bg-accent/20 rounded"
-              >
+              <span key={tech} className="px-2 py-1 text-sm text-gray-300 bg-accent/20 rounded">
                 {tech.toLowerCase()}
               </span>
             ))}
