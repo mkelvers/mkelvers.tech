@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
-import { Geist_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 
 import './globals.css'
 
-const geistMono = Geist_Mono({
-  subsets: ['latin'],
+const satoshi = localFont({
+  src: './fonts/Satoshi-Medium.woff2',
+  variable: '--font-satoshi',
   display: 'swap',
-  variable: '--font-geist-mono',
+  weight: '500',
 })
 
 export const metadata: Metadata = {
@@ -50,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistMono.variable} bg-background text-foreground antialiased min-h-screen font-mono text-lg`}
+        className={`${satoshi.variable} bg-background text-foreground antialiased min-h-screen font-satoshi text-lg`}
       >
         <div className="grid grid-rows-[10vh_auto] place-items-center p-6">
           <main className="row-start-2 w-full max-w-4xl">{children}</main>
