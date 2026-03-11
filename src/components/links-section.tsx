@@ -17,6 +17,8 @@ export function LinksSection() {
           <Link
             key={index}
             href={link.href}
+            rel="noreferrer noopener"
+            target="_blank"
             className="text-gray-400 hover:text-accent transition-colors duration-200"
           >
             {link.title}
