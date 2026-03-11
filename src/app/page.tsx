@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <header className="mb-16 space-y-4">
-        <h1 className="text-4xl font-bold mb-4 animate-fade-in text-white">
+        <h1 className="text-4xl font-bold mb-4 text-white">
           <span className="inline-block">mikkel elvers</span>
         </h1>
         <div className="flex flex-col gap-2 text-gray-400">
