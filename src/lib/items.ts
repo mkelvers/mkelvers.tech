@@ -16,6 +16,7 @@ export const projects: SectionItem = [
       'optimized for performance',
     ],
     technologies: ['next.js', 'tailwindcss', 'typescript'],
+    repository: 'https://github.com/mkelvers/portfolio',
   },
   {
     title: 'resting',
@@ -31,5 +32,6 @@ export const projects: SectionItem = [
       'deployed with docker',
     ],
     technologies: ['php', 'mysql', 'docker', 'comet'],
+    repository: 'https://github.com/mkelvers/resting',
   },
 ]

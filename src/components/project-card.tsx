@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export type ProjectCardProps = {
@@ -9,21 +10,48 @@ export type ProjectCardProps = {
   achievements: string[]
   technologies: string[]
   href: string
+  repository?: string
 }
 
 export function ProjectCard(props: ProjectCardProps) {
-  const { title, description, role, period, achievements, technologies, href } = props
+  const { title, description, role, period, achievements, technologies, href, repository } = props
 
   return (
     <div className="group border border-accent/10 p-6 transition-colors hover:border-accent/50">
-      <Link href={href} target="_blank" rel="noopener noreferrer">
-        <div className="flex justify-between items-start mb-4">
-          <h2 className="text-2xl font-bold text-white group-hover:text-accent transition-colors">
-            {title}
-          </h2>
-          <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-accent transition-colors" />
+      <div className="flex justify-between items-start mb-4">
+        <h2 className="text-2xl font-bold text-white group-hover:text-accent transition-colors">
+          {title}
+        </h2>
+
+        <div className="flex items-center gap-3">
+          {repository && (
+            <Link
+              href={repository}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/github"
+              aria-label="GitHub Repository"
+            >
+              <Image
+                src="/icons/github.svg"
+                alt="GitHub Repository"
+                width={20}
+                height={20}
+                className="w-5 h-5 opacity-50 transition-all group-hover/github:opacity-100 group-hover/github:scale-110"
+              />
+            </Link>
+          )}
+          <Link
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/link"
+            aria-label="Live Site"
+          >
+            <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover/link:text-accent transition-all group-hover/link:scale-110 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+          </Link>
         </div>
-      </Link>
+      </div>
 
       <p className="text-sm text-gray-400 mb-4">
         {role} {period && `(${period})`}
