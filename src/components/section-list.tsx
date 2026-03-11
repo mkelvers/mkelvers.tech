@@ -19,13 +19,21 @@ export function SectionList(props: SectionListProps) {
     <section className="mb-16">
       {showTitle && (
         <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
-          <span className="text-accent mr-2 font-mono">*</span> {title}
+          <span className="text-accent mr-2 font-mono" aria-hidden="true">
+            *
+          </span>{' '}
+          {title}
         </h2>
       )}
-      <div className="space-y-8">
+      <ul className="space-y-8 list-none p-0">
         {items.map((item) => (
-          <div key={item.title} className="group">
-            <Link href={item.href} target="_blank" rel="noreferrer noopener">
+          <li key={item.title} className="group">
+            <Link
+              href={item.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={`View project: ${item.title}`}
+            >
               <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">
                 {item.title}
               </h3>
@@ -34,16 +42,20 @@ export function SectionList(props: SectionListProps) {
               </p>
               <p className="text-gray-300 max-w-2xl">{item.description}</p>
             </Link>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       {viewAll && (
         <Link
           href={viewAll.href}
+          aria-label={viewAll.label}
           className="inline-flex items-center gap-1 mt-6 text-accent hover:underline group"
         >
           {viewAll.label}{' '}
-          <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <ArrowUpRight
+            className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1"
+            aria-hidden="true"
+          />
         </Link>
       )}
     </section>

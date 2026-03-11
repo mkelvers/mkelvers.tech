@@ -17,7 +17,7 @@ export function ProjectCard(props: ProjectCardProps) {
   const { title, description, role, period, achievements, technologies, href, repository } = props
 
   return (
-    <div className="group border border-accent/10 p-6 transition-colors hover:border-accent/50">
+    <article className="group border border-accent/10 p-6 transition-colors hover:border-accent/50">
       <div className="flex justify-between items-start mb-4">
         <h2 className="text-2xl font-bold text-white group-hover:text-accent transition-colors">
           {title}
@@ -30,11 +30,12 @@ export function ProjectCard(props: ProjectCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="group/github"
-              aria-label="GitHub Repository"
+              aria-label={`GitHub Repository for ${title}`}
             >
               <Image
                 src="/icons/github.svg"
-                alt="GitHub Repository"
+                alt=""
+                aria-hidden="true"
                 width={20}
                 height={20}
                 className="w-5 h-5 opacity-50 transition-all group-hover/github:opacity-100 group-hover/github:scale-110"
@@ -46,9 +47,12 @@ export function ProjectCard(props: ProjectCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             className="group/link"
-            aria-label="Live Site"
+            aria-label={`Live Site for ${title}`}
           >
-            <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover/link:text-accent transition-all group-hover/link:scale-110 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+            <ArrowUpRight
+              aria-hidden="true"
+              className="w-5 h-5 text-gray-400 group-hover/link:text-accent transition-all group-hover/link:scale-110 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+            />
           </Link>
         </div>
       </div>
@@ -80,6 +84,6 @@ export function ProjectCard(props: ProjectCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   )
 }

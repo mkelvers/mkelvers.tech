@@ -10,13 +10,19 @@ export default function ProjectsPage() {
       <Link
         href="/"
         className="text-gray-400 hover:text-accent transition-colors text-sm flex items-center gap-2 mb-8 group w-fit"
+        aria-label="Back to home"
       >
-        <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
+        <ArrowLeft
+          className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
+          aria-hidden="true"
+        />
         back
       </Link>
 
       <h1 className="text-4xl font-bold mb-8 text-white">
-        <span className="text-accent mr-2 font-mono">*</span>
+        <span className="text-accent mr-2 font-mono" aria-hidden="true">
+          *
+        </span>
         projects
       </h1>
 
