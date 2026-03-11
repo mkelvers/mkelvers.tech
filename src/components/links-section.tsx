@@ -15,20 +15,23 @@ export function LinksSection() {
         </span>{' '}
         links
       </h2>
-      <div className="flex flex-wrap gap-4 text-sm">
+      <ul className="flex flex-wrap gap-4 text-sm list-none p-0">
         {links.map((link, index) => (
-          <Link
-            key={index}
-            href={link.href}
-            rel="noreferrer noopener"
-            target="_blank"
-            aria-label={link.title === 'email' ? 'Send an email' : `Visit my ${link.title} profile`}
-            className="text-gray-400 hover:text-accent transition-colors duration-200"
-          >
-            {link.title}
-          </Link>
+          <li key={index}>
+            <Link
+              href={link.href}
+              rel="noreferrer noopener"
+              target="_blank"
+              aria-label={
+                link.title === 'email' ? 'Send an email' : `Visit my ${link.title} profile`
+              }
+              className="text-gray-400 hover:text-accent transition-colors duration-200"
+            >
+              {link.title}
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   )
 }
