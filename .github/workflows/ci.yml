@@ -54,3 +54,18 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
+
+  deploy:
+    needs: ci
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Dokploy
+        uses: dokploy/deploy-action@v1
+        with:
+          api-token: ${{ secrets.DOKPLOY_API_TOKEN }}
+          application-id: V6Drldwicd4v9eG3jBS0i
+          dokploy-url: https://dokploy.mkelvers.tech
