@@ -1,0 +1,20 @@
+name: Delete merged branches
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  delete-branch:
+    runs-on: ubuntu-latest
+    if: github.repository == 'mkelvers/mkelvers.tech'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Delete merged branch
+        run: |
+          branch=$(echo ${{ github.ref }} | sed 's|refs/heads/||')
+          if [[ "$branch" != "main" && "$branch" != "master" ]]; then
+            gh api repos/${{ github.repository }}/git/refs/heads/$branch -X DELETE
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
