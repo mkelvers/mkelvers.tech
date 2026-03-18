@@ -1,0 +1,26 @@
+name: PR Stats
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  pr-stats:
+    runs-on: ubuntu-latest
+    if: github.repository == 'mkelvers/mkelvers.tech'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get PR stats
+        run: |
+          additions=$(gh pr view ${{ github.event.pull_request.number }} --json additions --jq '.additions')
+          deletions=$(gh pr view ${{ github.event.pull_request.number }} --json deletions --jq '.deletions')
+          changed_files=$(gh pr view ${{ github.event.pull_request.number }} --json changedFiles --jq '.changedFiles')
+
+          echo "## PR Stats" > pr_stats.md
+          echo "- **Files changed:** $changed_files" >> pr_stats.md
+          echo "- **Additions:** +$additions" >> pr_stats.md
+          echo "- **Deletions:** -$deletions" >> pr_stats.md
+
+          gh pr comment ${{ github.event.pull_request.number }} --body-file pr_stats.md || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
