@@ -64,8 +64,15 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Deploy to Dokploy
-        uses: benbristow/dokploy-deploy-action@0.2.2
-        with:
-          api_token: ${{ secrets.DOKPLOY_API_TOKEN }}
-          application_id: V6Drldwicd4v9eG3jBS0i
-          dokploy_url: https://dokploy.mkelvers.tech
+        run: |
+          curl -X 'POST' \
+            'https://dokploy.mkelvers.tech/api/trpc/application.deploy' \
+            -H 'accept: application/json' \
+            -H 'Content-Type: application/json' \
+            -H 'x-api-key: ${{ secrets.DOKPLOY_API_TOKEN }}' \
+            -d '{
+              "json": {
+                "applicationId": "V6Drldwicd4v9eG3jBS0i"
+              }
+            }' \
+            --fail
