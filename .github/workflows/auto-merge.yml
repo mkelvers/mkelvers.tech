@@ -2,7 +2,6 @@ name: Auto-merge
 
 on:
   pull_request:
-  check_suite:
 
 permissions:
   contents: read
@@ -13,10 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'mkelvers/mkelvers.tech'
     steps:
-      - uses: actions/auto-merge@v3
-        with:
-          method: merge
-          required-convenience-factor-minimum: 1
       - uses: actions/auto-merge@v3
         with:
           method: squash
