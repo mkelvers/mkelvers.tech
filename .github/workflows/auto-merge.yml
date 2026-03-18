@@ -15,9 +15,3 @@ jobs:
       - uses: peter-evans/enable-auto-merge@v3
         with:
           method: squash
-          allowed-methods: |
-            dependabot[bot]
-          target: minor
-          required-statuses: |
-            ci
-            CodeQL
