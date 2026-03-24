@@ -26,6 +26,12 @@ export const projects: SectionItem = [
     period: 'march 09-26 2026',
     description:
       'an educational escape room game where players solve coding puzzles to save a compromised bank website before time runs out.',
+    achievements: [
+      'built 10 educational puzzles teaching css and html',
+      'created for rts to recruit web dev students',
+      'features countdown timer and leaderboard',
+      'deployed with github actions',
+    ],
     technologies: ['react', 'javascript', 'gsap'],
   },
 ]
