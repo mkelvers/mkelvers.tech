@@ -19,4 +19,13 @@ export const projects: SectionItem = [
     technologies: ['php', 'mysql', 'docker', 'comet'],
     repository: 'https://github.com/mkelvers/resting',
   },
+  {
+    title: 'escaperoom',
+    href: 'https://escape-room.mkelvers.tech',
+    role: 'project for a customer',
+    period: 'march 09-26 2026',
+    description:
+      'an educational escape room game where players solve coding puzzles to save a compromised bank website before time runs out.',
+    technologies: ['react', 'javascript', 'gsap'],
+  },
 ]
