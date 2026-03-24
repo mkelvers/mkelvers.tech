@@ -36,6 +36,21 @@ export const metadata: Metadata = {
       'Frontend-focused web developer and anime enjoyer. Building clean, efficient web experiences.',
     url: 'https://mkelvers.tech',
     type: 'website',
+    images: [
+      {
+        url: '/icon.png',
+        width: 512,
+        height: 512,
+        alt: 'Mikkel Elvers',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Mikkel Elvers | Frontend Developer',
+    description:
+      'Frontend-focused web developer and anime enjoyer. Building clean, efficient web experiences.',
+    images: ['/icon.png'],
   },
   alternates: {
     canonical: '/',
