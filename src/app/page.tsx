@@ -23,15 +23,12 @@ export default function Home() {
             19 y/o web dev student @ roskilde technical college. writing clean typescript, building
             things, and living in the terminal. when not coding, i&apos;m watching anime.
           </p>
-          <p className="text-gray-300">
-            currently looking for an internship.{' '}
-            <a
-              href="mailto:hi.mikkel@outlook.com"
-              className="text-white hover:text-accent underline decoration-gray-600 hover:decoration-accent underline-offset-4 transition-colors duration-200"
-            >
-              let&apos;s talk.
-            </a>
-          </p>
+          <a
+            href="mailto:hi.mikkel@outlook.com"
+            className="inline-block bg-accent text-background px-4 py-2 font-semibold hover:bg-accent/80 transition-colors duration-200"
+          >
+            hire me
+          </a>
         </div>
       </header>
 
