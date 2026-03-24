@@ -2,18 +2,9 @@ import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export type ProjectCardProps = {
-  title: string
-  description: string
-  role: string
-  period?: string
-  achievements?: string[]
-  technologies: string[]
-  href: string
-  repository?: string
-}
+import type { Project } from '@/lib/types'
 
-export function ProjectCard(props: ProjectCardProps) {
+export function ProjectCard(props: Project) {
   const { title, description, role, period, achievements, technologies, href, repository } = props
 
   return (

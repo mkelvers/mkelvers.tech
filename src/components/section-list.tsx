@@ -1,10 +1,11 @@
 import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
-import { ProjectCardProps } from '@/components/project-card'
+
+import type { Project } from '@/lib/types'
 
 type SectionListProps = {
   title: string
-  items: ProjectCardProps[]
+  items: Project[]
   viewAll?: {
     href: string
     label: string

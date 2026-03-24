@@ -1,6 +1,6 @@
-import { ProjectCardProps } from '@/components/project-card'
+import type { Project } from './types'
 
-export type SectionItem = ProjectCardProps[]
+export type SectionItem = Project[]
 
 export const projects: SectionItem = [
   {
