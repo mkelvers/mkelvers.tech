@@ -7,7 +7,7 @@ export type ProjectCardProps = {
   description: string
   role: string
   period?: string
-  achievements: string[]
+  achievements?: string[]
   technologies: string[]
   href: string
   repository?: string
@@ -64,14 +64,16 @@ export function ProjectCard(props: ProjectCardProps) {
       <p className="text-gray-300 mb-6 max-w-2xl">{description}</p>
 
       <div className="space-y-6">
-        <div>
-          <h3 className="text-white font-semibold mb-2">achievements</h3>
-          <ul className="list-disc list-inside space-y-1 text-gray-400">
-            {achievements.map((achievement) => (
-              <li key={achievement}>{achievement}</li>
-            ))}
-          </ul>
-        </div>
+        {achievements && (
+          <>
+            <h3 className="text-white font-semibold mb-2">achievements</h3>
+            <ul className="list-disc list-inside space-y-1 text-gray-400">
+              {achievements.map((achievement) => (
+                <li key={achievement}>{achievement}</li>
+              ))}
+            </ul>
+          </>
+        )}
 
         <div>
           <h3 className="text-white font-semibold mb-2">technologies</h3>
