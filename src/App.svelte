@@ -2,6 +2,13 @@
 
 <main id="content">
     <header>
+        <img
+            class="avatar"
+            src="https://avatars.githubusercontent.com/u/125761948?v=4"
+            alt="Mikkel Elvers"
+            width="80"
+            height="80"
+        />
         <h1 id="page-title">Mikkel Elvers</h1>
         <p class="intro">
             Web developer based near Holbæk, specializing in React and

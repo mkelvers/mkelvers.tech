@@ -50,6 +50,15 @@ header {
 h1,
 p { margin: 0; }
 
+.avatar {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 h1 {
   font-size: clamp(1.3125rem, 3.7vw, 1.4375rem);
   font-weight: 500;
