@@ -69,6 +69,47 @@ a:focus-visible {
     outline-offset: 0.25rem;
 }
 
+.language-switcher {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.25rem;
+    z-index: 1;
+}
+
+.language-switcher button {
+    display: grid;
+    width: 3rem;
+    height: 2.25rem;
+    padding: 0;
+    place-items: center;
+    border: 0;
+    border-radius: 0.35rem;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0.72;
+    transition: background-color 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+
+.language-switcher button:hover,
+.language-switcher button:focus-visible {
+    opacity: 1;
+    transform: scale(1.06);
+}
+
+.language-switcher button:focus-visible {
+    outline: 0.125rem solid currentColor;
+    outline-offset: 0.125rem;
+}
+
+.language-switcher img {
+    display: block;
+    width: 2.5rem;
+    height: 1.875rem;
+    object-fit: cover;
+    border-radius: 0.2rem;
+}
+
 main {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;

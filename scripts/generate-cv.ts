@@ -1,8 +1,10 @@
 import { mkdir, writeFile } from 'node:fs/promises'
-import { createResumePdf } from '../src/resume'
+import { createResumePdf, type ResumeLanguage } from '../src/resume'
 
 await mkdir('public', { recursive: true })
 
-const blob = await createResumePdf('da')
-const bytes = Buffer.from(await blob.arrayBuffer())
-await writeFile('public/cv.pdf', bytes)
+for (const language of ['da', 'en'] as ResumeLanguage[]) {
+    const blob = await createResumePdf(language)
+    const bytes = Buffer.from(await blob.arrayBuffer())
+    await writeFile(`public/${language === 'da' ? 'cv' : 'cv-en'}.pdf`, bytes)
+}
