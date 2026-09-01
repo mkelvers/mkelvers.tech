@@ -1,11 +1,3 @@
-<svelte:head>
-    <title>Mikkel Elvers</title>
-    <meta
-        name="description"
-        content="Mikkel Elvers is a web developer based near Holbæk, specializing in React and TypeScript while expanding into full-stack development."
-    />
-</svelte:head>
-
 <a class="skip-link" href="#content">Skip to content</a>
 
 <main id="content">
