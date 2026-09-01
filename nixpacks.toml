@@ -1,2 +1,2 @@
-[scripts]
-start = "bun run preview"
+[start]
+cmd = "bun run start"
