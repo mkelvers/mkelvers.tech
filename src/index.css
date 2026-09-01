@@ -1,11 +1,29 @@
 @import "tailwindcss";
 
 :root {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #111;
-    background: #fff;
+    color-scheme: light dark;
+    --background: #fff;
+    --foreground: #111;
+    --muted-foreground: #555;
+    --focus-background: #111;
+    --focus-foreground: #fff;
+    font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    color: var(--foreground);
+    background: var(--background);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #111;
+        --foreground: #fff;
+        --muted-foreground: #aaa;
+        --focus-background: #fff;
+        --focus-foreground: #111;
+    }
 }
 
 * {
@@ -37,8 +55,8 @@ a:hover {
     left: 1rem;
     z-index: 1;
     padding: 0.625rem 0.75rem;
-    color: #fff;
-    background: #111;
+    color: var(--focus-foreground);
+    background: var(--focus-background);
     transform: translateY(-200%);
 }
 
@@ -73,9 +91,9 @@ p {
 
 .avatar {
     display: block;
-    width: 5rem;
-    height: 5rem;
-    margin-bottom: 1.5rem;
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: 1.75rem;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -90,7 +108,7 @@ h1 {
 .intro {
     max-width: 38.75rem;
     margin-top: 1.375rem;
-    color: #555;
+    color: var(--muted-foreground);
     font-size: clamp(1.3125rem, 3.7vw, 1.4375rem);
     font-weight: 400;
     line-height: 1.38;

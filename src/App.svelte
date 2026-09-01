@@ -6,8 +6,8 @@
             class="avatar"
             src="https://avatars.githubusercontent.com/u/125761948?v=4"
             alt="Mikkel Elvers"
-            width="80"
-            height="80"
+            width="96"
+            height="96"
         />
         <h1 id="page-title">Mikkel Elvers</h1>
         <p class="intro">
