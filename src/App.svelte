@@ -61,14 +61,6 @@
                     <span>TypeScript</span>
                 </li>
                 <li>
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="" />
-                    <span>Node.js</span>
-                </li>
-                <li>
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="" />
-                    <span>PostgreSQL</span>
-                </li>
-                <li>
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="" />
                     <span>Tailwind CSS</span>
                 </li>
