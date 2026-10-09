@@ -1,0 +1,8 @@
+flowchart TD
+  web["{{webApp}}"] -->|SDK| api["API (Hono, /v1)"]
+  other["{{otherClients}}"] -->|{{sdkOrHttp}}| api
+  api --> core["Core"]
+  scheduler["Scheduler"] --> core
+  core --> db[("PostgreSQL")]
+  core --> public["{{publicDatabases}}"]
+  core --> playback["{{playbackSources}}"]
