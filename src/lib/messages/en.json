@@ -1,0 +1,164 @@
+{
+  "layout": {
+    "skip": "Skip to content",
+    "loading": "Loading page",
+    "backToProjects": "Back to projects",
+    "backToHome": "Back to home",
+    "projects": "Projects",
+    "cv": "CV",
+    "footer": "Footer",
+    "language": "Language"
+  },
+  "home": {
+    "title": "{{name}} · Portfolio",
+    "description": "{{name}} is a junior front-end and full-stack developer based in the {{location}}. Builds whole products, from the database to the interface.",
+    "jobTitle": "Junior front-end and full-stack developer",
+    "headline1": "I'm {{name}}, a junior front‑end",
+    "headline2": "and full-stack developer.",
+    "introBefore": "I build whole products, from the database to the interface. My latest is",
+    "introAfter": ", a self-hosted app with its own typed API, job scheduler and SDK.",
+    "looking": "Looking for a full-time role in web development, in front-end or full-stack, including AI-driven workflows. Based in the {{location}}.",
+    "location": "Holbæk area, Denmark",
+    "technologies": "Technologies",
+    "viewProjects": "View projects",
+    "contact": "Contact and links",
+    "links": {
+      "email": "Email",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Web projects by {{name}}: Sora, a self-hosted anime library with its own typed API, plus HiFi Horizon, Newsify, Escape Room and Vinyl Shop.",
+    "readMore": "Read more",
+    "source": "Source"
+  },
+  "seo": {
+    "imageAlt": "Watercolour illustration of isometric beams with a branch"
+  },
+  "error": {
+    "unexpected": "An unexpected error occurred. Please try again.",
+    "offline": "You appear to be offline. Check your connection.",
+    "retry": "Try again",
+    "home": "Back to home",
+    "projects": "See projects",
+    "generic": {
+      "title": "Something went wrong",
+      "message": "This page couldn't be shown."
+    },
+    "400": {
+      "title": "Bad request",
+      "message": "That request didn't make sense to the server."
+    },
+    "401": {
+      "title": "Sign in required",
+      "message": "You need to sign in to see this."
+    },
+    "403": {
+      "title": "Not allowed",
+      "message": "You don't have access to this page."
+    },
+    "404": {
+      "title": "Page not found",
+      "message": "This page doesn't exist, or it has moved."
+    },
+    "405": {
+      "title": "Method not allowed",
+      "message": "This page doesn't accept that kind of request."
+    },
+    "408": {
+      "title": "Request timed out",
+      "message": "The request took too long. Try again."
+    },
+    "429": {
+      "title": "Too many requests",
+      "message": "Slow down a little and try again in a moment."
+    },
+    "500": {
+      "title": "Something went wrong",
+      "message": "An unexpected error happened on my end. Try again in a moment."
+    },
+    "502": {
+      "title": "Bad gateway",
+      "message": "The server got a bad response. Try again shortly."
+    },
+    "503": {
+      "title": "Temporarily unavailable",
+      "message": "The site is down for a moment. Try again shortly."
+    },
+    "504": {
+      "title": "Gateway timeout",
+      "message": "The server took too long to answer."
+    }
+  },
+  "diagram": {
+    "webApp": "Web app (SvelteKit)",
+    "otherClients": "Other clients",
+    "sdkOrHttp": "SDK or HTTP",
+    "publicDatabases": "Public databases",
+    "playbackSources": "Playback sources"
+  },
+  "cv": {
+    "title": "CV",
+    "description": "CV for Mikkel Nothlev Elvers, a junior web developer based in the {{location}}, who builds whole products, from the database to the interface.",
+    "role": "Web developer",
+    "labels": {
+      "profile": "Profile",
+      "projects": "Projects",
+      "education": "Education",
+      "skills": "Skills",
+      "languages": "Languages",
+      "contact": "Contact",
+      "save": "Save as PDF"
+    },
+    "profile": "Junior web developer who builds whole products, from the database to the interface. I work in TypeScript across React, Next.js and SvelteKit on the front end, and Express, Hono and PostgreSQL on the back end. I care about readable code, clear abstractions and understanding the technology behind what I ship.",
+    "projects": [
+      {
+        "name": "Sora",
+        "meta": "TypeScript · Hono · SvelteKit · PostgreSQL · Docker",
+        "bullets": [
+          "Designed and built a self-hosted anime library as a versioned HTTP API with a typed SDK, a SvelteKit web client and a PostgreSQL-backed job scheduler.",
+          "Wrote an authenticated stream proxy using encrypted, expiring, account-bound tokens, with segment read-ahead and subtitle retiming between encodes.",
+          "Deployed the web app, API and scheduler as separate containers, with over 400 tests and a type-checked client."
+        ]
+      },
+      {
+        "name": "HiFi Horizon",
+        "meta": "React · TypeScript · Express · PostgreSQL",
+        "bullets": [
+          "Full-stack webshop for browsing and comparing hi-fi products before adding them to a cart and checking out.",
+          "Implemented search, filtering, comparison, user profiles, order history and authentication.",
+          "Built the Express API connecting the React front end to PostgreSQL data for users, products and orders."
+        ]
+      },
+      {
+        "name": "Newsify",
+        "meta": "React · TypeScript · React Query · Sass",
+        "bullets": [
+          "Mobile news reader on The New York Times' Top Stories and Most Popular APIs, grouped by category.",
+          "Implemented search with Fuse.js, data fetching with React Query and a swipe-based archive.",
+          "Persisted theme, selected categories and archive state between sessions."
+        ]
+      },
+      {
+        "name": "Escape Room",
+        "meta": "React · Vite · Bun · SQLite",
+        "bullets": [
+          "Team project built to a school brief: a browser game in which a \"compromised\" bank website must be fixed within five minutes by solving 10 short CSS puzzles, each revealing part of a lock code.",
+          "Front end in React with Vite, GSAP animation, background music and a countdown timer.",
+          "Leaderboard server on Bun and Express with SQLite, with Zod-validated names, a banned-word filter and rate limiting."
+        ]
+      }
+    ],
+    "education": {
+      "name": "Web Developer",
+      "school": "Roskilde Technical School",
+      "period": "August 2024 – October 2026"
+    },
+    "languages": [
+      "Danish",
+      "English"
+    ]
+  }
+}
