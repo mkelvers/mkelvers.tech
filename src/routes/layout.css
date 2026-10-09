@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter/wght.css";
+
+@theme {
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --color-leaf: #66902b;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+.progress {
+  animation: progress 8s cubic-bezier(0.1, 0.6, 0.2, 1) 150ms both;
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  1% {
+    opacity: 1;
+  }
+
+  to {
+    transform: scaleX(0.9);
+    opacity: 1;
+  }
+}
