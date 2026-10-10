@@ -7,6 +7,10 @@
     "projects": "Projekter",
     "cv": "CV",
     "footer": "Sidefod",
+    "theme": {
+      "light": "Lyst tema",
+      "dark": "Mørkt tema"
+    },
     "language": "Sprog"
   },
   "home": {

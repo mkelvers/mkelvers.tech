@@ -6,9 +6,14 @@
   import { languages, t } from "#lib/i18n.ts";
   import { setLang } from "#lib/lang.remote.ts";
   import { profile } from "#lib/profile.ts";
+  import { setTheme } from "#lib/theme.remote.ts";
   import type { LayoutProps } from "./$types";
 
   let { children, data }: LayoutProps = $props();
+
+  $effect(() => {
+    document.documentElement.dataset.theme = data.theme ?? "";
+  });
 </script>
 
 <svelte:head>
@@ -63,9 +68,7 @@
 
   <div
     class="
-      fixed inset-y-0 right-0 hidden w-1/2 lg:block print:hidden
-      before:absolute before:inset-y-0 before:left-0 before:z-10 before:w-40
-      before:bg-linear-to-r before:from-white before:to-transparent
+      hero fixed inset-y-0 right-0 hidden w-1/2 lg:block print:hidden
     "
   >
     <enhanced:img
@@ -120,26 +123,46 @@
       >
         <span>© 2026 {profile.name}</span>
 
-        <nav class="flex gap-4" aria-label={t("layout.footer")}>
-          <a
-            href="/projects"
-            aria-current={page.url.pathname.startsWith("/projects")
-              ? "page"
-              : undefined}
-            class="transition-colors duration-300 hover:text-black"
-          >
-            {t("layout.projects")}
-          </a>
-          <a
-            href="/cv"
-            aria-current={page.url.pathname.startsWith("/cv")
-              ? "page"
-              : undefined}
-            class="transition-colors duration-300 hover:text-black"
-          >
-            {t("layout.cv")}
-          </a>
-        </nav>
+        <div class="flex items-center gap-4">
+          <nav class="flex gap-4" aria-label={t("layout.footer")}>
+            <a
+              href="/projects"
+              aria-current={page.url.pathname.startsWith("/projects")
+                ? "page"
+                : undefined}
+              class="transition-colors duration-300 hover:text-black"
+            >
+              {t("layout.projects")}
+            </a>
+            <a
+              href="/cv"
+              aria-current={page.url.pathname.startsWith("/cv")
+                ? "page"
+                : undefined}
+              class="transition-colors duration-300 hover:text-black"
+            >
+              {t("layout.cv")}
+            </a>
+          </nav>
+
+          <form {...setTheme} class="-my-2 -mr-1.5 grid">
+            {#each [["light", "sun"], ["dark", "moon"]] as const as [code, icon] (code)}
+              {@const label = t(`layout.theme.${code}`)}
+              <button
+                {...setTheme.fields.theme.as("submit", code)}
+                aria-label={label}
+                title={label}
+                class="
+                  theme-{code} size-8 cursor-pointer place-items-center
+                  rounded-full transition-colors duration-300
+                  hover:bg-black/10 hover:text-black
+                "
+              >
+                <Icon name={icon} class="size-5" />
+              </button>
+            {/each}
+          </form>
+        </div>
       </footer>
     </div>
   </div>

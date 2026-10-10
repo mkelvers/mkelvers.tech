@@ -7,6 +7,10 @@
     "projects": "Projects",
     "cv": "CV",
     "footer": "Footer",
+    "theme": {
+      "light": "Light mode",
+      "dark": "Dark mode"
+    },
     "language": "Language"
   },
   "home": {
