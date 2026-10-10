@@ -1,7 +1,0 @@
-[variables]
-NIXPACKS_NODE_VERSION = "22"
-PROTOCOL_HEADER = "x-forwarded-proto"
-HOST_HEADER = "x-forwarded-host"
-
-[start]
-cmd = "bun run start"
