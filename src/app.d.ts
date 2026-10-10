@@ -9,9 +9,11 @@ declare global {
     }
     interface Locals {
       lang: Lang;
+      theme?: "light" | "dark";
     }
     interface PageData {
       lang: Lang;
+      theme?: "light" | "dark";
     }
     // interface PageState {}
     // interface Platform {}

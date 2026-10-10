@@ -26,7 +26,10 @@ export const handle: Handle = ({ event, resolve }) => {
     }) ??
     "en";
 
+  const theme = cookies.get("theme");
+
   event.locals.lang = lang;
+  event.locals.theme = theme === "light" || theme === "dark" ? theme : undefined;
   event.setHeaders({
     vary: "Accept-Language, Cookie",
     "x-content-type-options": "nosniff",
@@ -35,7 +38,8 @@ export const handle: Handle = ({ event, resolve }) => {
   });
 
   return resolve(event, {
-    transformPageChunk: ({ html }) => html.replace("%lang%", lang),
+    transformPageChunk: ({ html }) =>
+      html.replace("%lang%", lang).replace("%theme%", event.locals.theme ?? ""),
   });
 };
 
