@@ -8,6 +8,10 @@
 
   const contact = [
     {
+      text: t("home.location"),
+      printOnly: false,
+    },
+    {
       text: profile.email,
       href: `mailto:${profile.email}`,
       printOnly: false,
@@ -17,15 +21,20 @@
       href: `tel:${profile.phone.replaceAll(" ", "")}`,
       printOnly: true,
     },
+  ] as const;
+
+  const links = [
     {
       text: "github.com/mkelvers",
       href: profile.github,
-      printOnly: false,
     },
     {
       text: "linkedin.com/in/mikkelnothlev",
       href: profile.linkedin,
-      printOnly: false,
+    },
+    {
+      text: "mkelvers.tech",
+      href: profile.website,
     },
   ] as const;
 </script>
@@ -39,7 +48,12 @@
 />
 
 {#snippet heading(label: string)}
-  <h2 class="text-xs font-semibold tracking-widest text-black/60 uppercase">
+  <h2
+    class="
+      mb-1.5 text-xs font-normal tracking-widest text-black/60 uppercase
+      print:mb-1
+    "
+  >
     {label}
   </h2>
 {/snippet}
@@ -48,61 +62,65 @@
   lang={data.lang}
   class="text-base leading-relaxed print:text-[13.5px] print:leading-snug"
 >
-  <header class="border-b border-black/20 pb-5 print:pb-3">
-    <div class="flex items-start justify-between gap-6">
-      <div>
-        <h1 class="text-4xl font-semibold tracking-tight print:text-3xl">
-          {profile.fullName}
-        </h1>
-        <p class="mt-1 text-black/60">
-          {t("cv.role")} · {t("home.location")}
-        </p>
-      </div>
+  <div class="mb-6 flex justify-end text-xs print:hidden">
+    <button
+      type="button"
+      onclick={() => window.print()}
+      class="
+        cursor-pointer rounded-full bg-black px-4 py-1.5 text-white
+        transition-colors duration-500 hover:bg-black/90
+      "
+    >
+      {t("cv.labels.save")}
+    </button>
+  </div>
 
-      <div class="flex shrink-0 items-center gap-2 text-xs print:hidden">
-        <button
-          type="button"
-          onclick={() => window.print()}
-          class="
-            cursor-pointer rounded-full bg-black px-4 py-1.5 text-white
-            transition-colors duration-500 hover:bg-black/90
-          "
-        >
-          {t("cv.labels.save")}
-        </button>
-      </div>
-    </div>
+  <header class="border-b border-black/20 pb-5 text-center print:pb-3">
+    <h1 class="text-4xl font-semibold tracking-tight print:text-3xl">
+      {profile.fullName}
+    </h1>
+    <p class="mt-1 text-black/60">{t("cv.role")}</p>
 
     <ul
       class="
-        mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm text-black/70
-        print:mt-2.5 print:text-[13px]
+        mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm
+        text-black/70 print:mt-2 print:text-[13px]
       "
     >
-      {#each contact as item (item.href)}
-        <li class={item.printOnly ? "hidden print:block" : undefined}>
-          <a href={item.href} class="hover:text-black">{item.text}</a>
+      {#each contact as item (item.text)}
+        <li
+          class="
+            {item.printOnly ? 'hidden print:block' : ''}
+            not-first:before:mr-4 not-first:before:text-black/30
+            not-first:before:content-['·']
+          "
+        >
+          {#if "href" in item}
+            <a href={item.href} class="hover:text-black">{item.text}</a>
+          {:else}
+            {item.text}
+          {/if}
         </li>
       {/each}
     </ul>
   </header>
 
-  <div class="mt-8 space-y-8 print:mt-5 print:space-y-4">
+  <div class="mt-6 space-y-6 print:mt-4 print:space-y-3.5">
     <section>
       {@render heading(t("cv.labels.profile"))}
-      <p class="mt-2 text-black/80 print:mt-1">{t("cv.profile")}</p>
+      <p class="text-black/80">{t("cv.profile")}</p>
     </section>
 
     <section>
       {@render heading(t("cv.labels.projects"))}
 
-      <div class="mt-3 space-y-6 print:mt-1.5 print:space-y-2.5">
+      <div class="space-y-5 print:space-y-2.5">
         {#each t("cv.projects") as project (project.name)}
           <div class="break-inside-avoid">
             <div
               class="flex flex-wrap items-baseline justify-between gap-x-4"
             >
-              <h3 class="font-semibold">{project.name}</h3>
+              <h3 class="font-medium">{project.name}</h3>
               <p class="text-sm text-black/60 print:text-xs">{project.meta}</p>
             </div>
 
@@ -123,15 +141,8 @@
 
     <section class="break-inside-avoid">
       {@render heading(t("cv.labels.education"))}
-      <div
-        class="
-          mt-2 flex flex-wrap items-baseline justify-between gap-x-4
-          print:mt-1.5
-        "
-      >
-        <p class="text-black/80">
-          <span class="font-semibold text-black">{t("cv.education.name")}</span>, {t("cv.education.school")}
-        </p>
+      <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+        <p>{t("cv.education.name")}, {t("cv.education.school")}</p>
         <p class="text-sm text-black/60 print:text-xs">
           {t("cv.education.period")}
         </p>
@@ -148,8 +159,8 @@
       {@render heading(t("cv.labels.skills"))}
       <dl
         class="
-          mt-2 grid grid-cols-[9rem_1fr] gap-y-1 print:mt-1
-          print:grid-cols-[8.5rem_1fr] print:gap-y-0
+          grid grid-cols-[9rem_1fr] gap-y-1 print:grid-cols-[8.5rem_1fr]
+          print:gap-y-0
         "
       >
         {#each skillGroups as group (group.key)}
@@ -161,9 +172,16 @@
 
     <section class="break-inside-avoid">
       {@render heading(t("cv.labels.languages"))}
-      <p class="mt-2 text-black/80 print:mt-1">
-        {t("cv.languages").join(", ")}
-      </p>
+      <p class="text-black/80">{t("cv.languages").join(", ")}</p>
+    </section>
+
+    <section class="break-inside-avoid">
+      {@render heading(t("cv.labels.links"))}
+      <ul class="flex flex-wrap gap-x-5 gap-y-1 text-black/80">
+        {#each links as link (link.href)}
+          <li><a href={link.href} class="hover:text-black">{link.text}</a></li>
+        {/each}
+      </ul>
     </section>
   </div>
 </article>

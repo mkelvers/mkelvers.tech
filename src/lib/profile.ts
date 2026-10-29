@@ -3,6 +3,7 @@ export const profile = {
   fullName: "Mikkel Nothlev Elvers",
   email: "mikkelelvers@outlook.com",
   phone: "+45 42 73 63 93",
+  website: "https://mkelvers.tech",
   github: "https://github.com/mkelvers",
   linkedin: "https://www.linkedin.com/in/mikkelnothlev/",
 } as const;
