@@ -163,7 +163,13 @@
     "education": {
       "name": "Web Developer",
       "school": "Roskilde Technical School",
-      "period": "August 2024 – October 2026"
+      "period": "August 2024 – October 2026",
+      "grade": "Graduated with the top grade, 12 on the Danish scale.",
+      "bullets": [
+        "Focus on modern front-end development with React, Next.js, Vite, TypeScript, JavaScript, HTML, CSS and Tailwind CSS.",
+        "Connected the front end to the back end through REST APIs, including setup and consumption.",
+        "Introduction to server-side development and CMSs, including WordPress and Strapi, plus basic PHP, MySQL and phpMyAdmin."
+      ]
     },
     "languages": [
       "Danish",

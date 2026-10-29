@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Icon from "#lib/components/Icon.svelte";
   import Seo from "#lib/components/Seo.svelte";
   import { t } from "#lib/i18n.ts";
   import { profile, skillGroups } from "#lib/profile.ts";
@@ -9,25 +8,21 @@
 
   const contact = [
     {
-      icon: "email",
       text: profile.email,
       href: `mailto:${profile.email}`,
       printOnly: false,
     },
     {
-      icon: "phone",
       text: profile.phone,
       href: `tel:${profile.phone.replaceAll(" ", "")}`,
       printOnly: true,
     },
     {
-      icon: "github",
       text: "github.com/mkelvers",
       href: profile.github,
       printOnly: false,
     },
     {
-      icon: "linkedin",
       text: "linkedin.com/in/mikkelnothlev",
       href: profile.linkedin,
       printOnly: false,
@@ -44,28 +39,22 @@
 />
 
 {#snippet heading(label: string)}
-  <h2
-    class="
-      flex items-center gap-3 text-xs font-semibold tracking-widest
-      text-leaf-text uppercase
-      after:h-px after:flex-1 after:bg-black/15
-    "
-  >
+  <h2 class="text-xs font-semibold tracking-widest text-black/60 uppercase">
     {label}
   </h2>
 {/snippet}
 
 <article
   lang={data.lang}
-  class="text-sm leading-relaxed print:text-xs print:leading-normal"
+  class="text-base leading-relaxed print:text-[13.5px] print:leading-snug"
 >
-  <header class="border-b-2 border-leaf pb-5 print:pb-3">
+  <header class="border-b border-black/20 pb-5 print:pb-3">
     <div class="flex items-start justify-between gap-6">
       <div>
         <h1 class="text-4xl font-semibold tracking-tight print:text-3xl">
           {profile.fullName}
         </h1>
-        <p class="mt-1.5 text-base font-medium text-leaf-text print:text-sm">
+        <p class="mt-1 text-black/60">
           {t("cv.role")} · {t("home.location")}
         </p>
       </div>
@@ -85,47 +74,42 @@
     </div>
 
     <ul
-      class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-black/70 print:mt-2.5"
+      class="
+        mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm text-black/70
+        print:mt-2.5 print:text-[13px]
+      "
     >
-      {#each contact as item (item.icon)}
+      {#each contact as item (item.href)}
         <li class={item.printOnly ? "hidden print:block" : undefined}>
-          <a
-            href={item.href}
-            class="inline-flex items-center gap-2 hover:text-black"
-          >
-            <Icon name={item.icon} class="size-4 text-leaf-text" />
-            {item.text}
-          </a>
+          <a href={item.href} class="hover:text-black">{item.text}</a>
         </li>
       {/each}
     </ul>
   </header>
 
-  <div class="mt-8 space-y-8 print:mt-5 print:space-y-5">
+  <div class="mt-8 space-y-8 print:mt-5 print:space-y-4">
     <section>
       {@render heading(t("cv.labels.profile"))}
-      <p class="mt-3 text-black/80 print:mt-1.5">{t("cv.profile")}</p>
+      <p class="mt-2 text-black/80 print:mt-1">{t("cv.profile")}</p>
     </section>
 
     <section>
       {@render heading(t("cv.labels.projects"))}
 
-      <div class="mt-4 space-y-6 print:mt-2.5 print:space-y-3.5">
+      <div class="mt-3 space-y-6 print:mt-1.5 print:space-y-2.5">
         {#each t("cv.projects") as project (project.name)}
           <div class="break-inside-avoid">
             <div
               class="flex flex-wrap items-baseline justify-between gap-x-4"
             >
-              <h3 class="text-base font-semibold print:text-sm">
-                {project.name}
-              </h3>
-              <p class="text-xs text-black/60">{project.meta}</p>
+              <h3 class="font-semibold">{project.name}</h3>
+              <p class="text-sm text-black/60 print:text-xs">{project.meta}</p>
             </div>
 
             <ul
               class="
-                mt-1.5 list-disc space-y-1 pl-5 text-black/80
-                marker:text-leaf print:mt-0.5 print:space-y-0
+                mt-1 list-disc space-y-1 pl-5 text-black/80
+                print:space-y-0
               "
             >
               {#each project.bullets as bullet (bullet)}
@@ -141,23 +125,31 @@
       {@render heading(t("cv.labels.education"))}
       <div
         class="
-          mt-3 flex flex-wrap items-baseline justify-between gap-x-4
+          mt-2 flex flex-wrap items-baseline justify-between gap-x-4
           print:mt-1.5
         "
       >
         <p class="text-black/80">
           <span class="font-semibold text-black">{t("cv.education.name")}</span>, {t("cv.education.school")}
         </p>
-        <p class="text-xs text-black/60">{t("cv.education.period")}</p>
+        <p class="text-sm text-black/60 print:text-xs">
+          {t("cv.education.period")}
+        </p>
       </div>
+      <p class="mt-1 text-black/80 print:mt-0.5">{t("cv.education.grade")}</p>
+      <ul class="mt-1 list-disc space-y-1 pl-5 text-black/80 print:space-y-0">
+        {#each t("cv.education.bullets") as bullet (bullet)}
+          <li>{bullet}</li>
+        {/each}
+      </ul>
     </section>
 
     <section class="break-inside-avoid">
       {@render heading(t("cv.labels.skills"))}
       <dl
         class="
-          mt-3 grid grid-cols-[8.5rem_1fr] gap-y-1.5 print:mt-1.5
-          print:grid-cols-[8rem_1fr] print:gap-y-0.5
+          mt-2 grid grid-cols-[9rem_1fr] gap-y-1 print:mt-1
+          print:grid-cols-[8.5rem_1fr] print:gap-y-0
         "
       >
         {#each skillGroups as group (group.key)}
@@ -169,7 +161,7 @@
 
     <section class="break-inside-avoid">
       {@render heading(t("cv.labels.languages"))}
-      <p class="mt-3 text-black/80 print:mt-1.5">
+      <p class="mt-2 text-black/80 print:mt-1">
         {t("cv.languages").join(", ")}
       </p>
     </section>

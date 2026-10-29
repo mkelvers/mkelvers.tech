@@ -163,7 +163,13 @@
     "education": {
       "name": "Webudvikler",
       "school": "Roskilde Tekniske Skole",
-      "period": "August 2024 – Oktober 2026"
+      "period": "August 2024 – Oktober 2026",
+      "grade": "Afsluttede uddannelsen med 12.",
+      "bullets": [
+        "Fokus på moderne frontend-udvikling med React, Next.js, Vite, TypeScript, JavaScript, HTML, CSS og Tailwind CSS.",
+        "Arbejdet med at forbinde frontend til backend via REST-API'er, inkl. opsætning og brug af API'er.",
+        "Introduktion til server-side-udvikling og CMS, bl.a. WordPress og Strapi, samt grundlæggende PHP, MySQL og phpMyAdmin."
+      ]
     },
     "languages": [
       "Dansk",

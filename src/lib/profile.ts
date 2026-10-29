@@ -37,7 +37,17 @@ export const stack = [
 export const skillGroups = [
   {
     key: "frontend",
-    items: ["TypeScript", "React", "Next.js", "SvelteKit", "Tailwind CSS", "Vite"],
+    items: [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "SvelteKit",
+      "HTML",
+      "CSS",
+      "Tailwind CSS",
+      "Vite",
+    ],
   },
   {
     key: "backend",
