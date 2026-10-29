@@ -111,9 +111,9 @@
       "profile": "Profil",
       "projects": "Projekterfaring",
       "education": "Uddannelse",
-      "skills": "Kompetencer",
+      "skills": "Færdigheder",
       "languages": "Sprog",
-      "links": "Links",
+      "additional": "Yderligere oplysninger",
       "save": "Gem som PDF"
     },
     "skillGroups": {

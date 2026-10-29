@@ -75,7 +75,7 @@
       src="#lib/assets/illustrations/hero.png?w=1122;720&quality=95"
       alt=""
       sizes="50vw"
-      loading="lazy"
+      loading="eager"
       class="size-full object-cover"
     />
   </div>

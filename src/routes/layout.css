@@ -3,6 +3,8 @@
 
 @theme {
   --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-cv: "Times New Roman", Times, serif;
+  --font-cv-display: Georgia, "Times New Roman", serif;
   --color-leaf: #66902b;  --color-black: light-dark(#000, #ededed);
   --color-white: light-dark(#fff, #070707);
 }
@@ -36,7 +38,7 @@ html[data-theme="dark"] {
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
     .hero {
-      filter: invert(1) hue-rotate(180deg);
+      filter: invert(1) hue-rotate(180deg) brightness(0.62) saturate(0.6);
       mix-blend-mode: screen;
     }
 
@@ -52,7 +54,7 @@ html[data-theme="dark"] {
 
 html[data-theme="dark"] {
   .hero {
-    filter: invert(1) hue-rotate(180deg);
+    filter: invert(1) hue-rotate(180deg) brightness(0.62) saturate(0.6);
     mix-blend-mode: screen;
   }
 
