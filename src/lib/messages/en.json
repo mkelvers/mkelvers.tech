@@ -15,14 +15,14 @@
   },
   "home": {
     "title": "{{name}} · Portfolio",
-    "description": "{{name}} is a junior front-end and full-stack developer based in the {{location}}. Builds whole products, from the database to the interface.",
+    "description": "{{name}} is a junior front-end and full-stack developer based in {{location}}. Builds whole products, from the database to the interface.",
     "jobTitle": "Junior front-end and full-stack developer",
     "headline1": "I'm {{name}}, a junior front‑end",
     "headline2": "and full-stack developer.",
     "introBefore": "I build whole products, from the database to the interface. My latest is",
     "introAfter": ", a self-hosted app with its own typed API, job scheduler and SDK.",
-    "looking": "Looking for a full-time role in web development, in front-end or full-stack, including AI-driven workflows. Based in the {{location}}.",
-    "location": "Holbæk area, Denmark",
+    "looking": "Looking for a full-time role in web development, in front-end or full-stack, including AI-driven workflows. Based in {{location}}.",
+    "location": "Holbæk, Denmark",
     "technologies": "Technologies",
     "viewProjects": "View projects",
     "contact": "Contact and links",
@@ -105,7 +105,7 @@
   },
   "cv": {
     "title": "CV",
-    "description": "CV for Mikkel Nothlev Elvers, a junior web developer based in the {{location}}, who builds whole products, from the database to the interface.",
+    "description": "CV for Mikkel Nothlev Elvers, a junior web developer based in {{location}}, who builds whole products, from the database to the interface.",
     "role": "Web developer",
     "labels": {
       "profile": "Profile",
@@ -168,7 +168,7 @@
       "bullets": [
         "Focus on modern front-end development with React, Next.js, Vite, TypeScript, JavaScript, HTML, CSS and Tailwind CSS.",
         "Connected the front end to the back end through REST APIs, including setup and consumption.",
-        "Introduction to server-side development and CMSs, including WordPress and Strapi, plus basic PHP, MySQL and phpMyAdmin."
+        "Introduction to server-side development and CMSs, including WordPress and Strapi, plus basic PHP and MySQL."
       ]
     },
     "languages": [

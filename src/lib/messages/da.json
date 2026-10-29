@@ -22,7 +22,7 @@
     "introBefore": "Jeg bygger hele produkter, fra databasen til brugerfladen. Mit seneste er",
     "introAfter": ", en selvhostet app med sit eget typede API, sin egen jobscheduler og SDK.",
     "looking": "Jeg søger en fuldtidsstilling inden for webudvikling, som frontend- eller full-stack-udvikler, også med AI-drevne arbejdsgange. Bor i {{location}}.",
-    "location": "Holbæk-området, Danmark",
+    "location": "Holbæk, Danmark",
     "technologies": "Teknologier",
     "viewProjects": "Se projekter",
     "contact": "Kontakt og links",
@@ -168,7 +168,7 @@
       "bullets": [
         "Fokus på moderne frontend-udvikling med React, Next.js, Vite, TypeScript, JavaScript, HTML, CSS og Tailwind CSS.",
         "Arbejdet med at forbinde frontend til backend via REST-API'er, inkl. opsætning og brug af API'er.",
-        "Introduktion til server-side-udvikling og CMS, bl.a. WordPress og Strapi, samt grundlæggende PHP, MySQL og phpMyAdmin."
+        "Introduktion til server-side-udvikling og CMS, bl.a. WordPress og Strapi, samt grundlæggende PHP og MySQL."
       ]
     },
     "languages": [
