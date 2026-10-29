@@ -109,12 +109,17 @@
     "role": "Web developer",
     "labels": {
       "profile": "Profile",
-      "projects": "Projects",
+      "projects": "Project experience",
       "education": "Education",
       "skills": "Skills",
       "languages": "Languages",
       "contact": "Contact",
       "save": "Save as PDF"
+    },
+    "skillGroups": {
+      "frontend": "Front end",
+      "backend": "Back end and data",
+      "tools": "Tools"
     },
     "profile": "Junior web developer who builds whole products, from the database to the interface. I work in TypeScript across React, Next.js and SvelteKit on the front end, and Express, Hono and PostgreSQL on the back end. I care about readable code, clear abstractions and understanding the technology behind what I ship.",
     "projects": [

@@ -109,12 +109,17 @@
     "role": "Webudvikler",
     "labels": {
       "profile": "Profil",
-      "projects": "Projekter",
+      "projects": "Projekterfaring",
       "education": "Uddannelse",
       "skills": "Kompetencer",
       "languages": "Sprog",
       "contact": "Kontakt",
       "save": "Gem som PDF"
+    },
+    "skillGroups": {
+      "frontend": "Frontend",
+      "backend": "Backend og data",
+      "tools": "Værktøjer"
     },
     "profile": "Junior webudvikler, der bygger hele produkter, fra databasen til brugerfladen. Jeg arbejder i TypeScript med React, Next.js og SvelteKit på frontend og Express, Hono og PostgreSQL på backend. Jeg prioriterer læsbar kode, tydelige abstraktioner og at forstå teknologien bag det, jeg leverer.",
     "projects": [

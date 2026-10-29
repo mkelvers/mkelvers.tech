@@ -2,6 +2,7 @@ export const profile = {
   name: "Mikkel Elvers",
   fullName: "Mikkel Nothlev Elvers",
   email: "mikkelelvers@outlook.com",
+  phone: "+45 42 73 63 93",
   github: "https://github.com/mkelvers",
   linkedin: "https://www.linkedin.com/in/mikkelnothlev/",
 } as const;
@@ -33,13 +34,17 @@ export const stack = [
   },
 ] as const;
 
-export const skills = [
-  "TypeScript",
-  "React",
-  "Next.js",
-  "SvelteKit",
-  "Tailwind CSS",
-  "PostgreSQL",
-  "Docker",
-  "Git",
+export const skillGroups = [
+  {
+    key: "frontend",
+    items: ["TypeScript", "React", "Next.js", "SvelteKit", "Tailwind CSS", "Vite"],
+  },
+  {
+    key: "backend",
+    items: ["Express", "Hono", "Bun", "REST APIs", "PostgreSQL", "SQLite", "Zod"],
+  },
+  {
+    key: "tools",
+    items: ["Docker", "Git", "Testing"],
+  },
 ] as const;

@@ -4,6 +4,7 @@
 @theme {
   --font-sans: "Inter Variable", system-ui, sans-serif;
   --color-leaf: #66902b;
+  --color-leaf-text: color-mix(in oklab, var(--color-leaf) 72%, var(--color-black));
   --color-black: light-dark(#000, #ededed);
   --color-white: light-dark(#fff, #070707);
 }
@@ -74,6 +75,13 @@ html[data-theme="dark"] {
 @page {
   size: A4;
   margin: 0;
+}
+
+@media print {
+  html,
+  html[data-theme] {
+    color-scheme: light;
+  }
 }
 
 .progress {
