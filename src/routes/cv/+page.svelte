@@ -149,7 +149,7 @@
 {#snippet printHeading(label: string)}
   <h2
     class="
-      mt-3.5 mb-1.5 border-b border-[#111827] pb-0.5 font-cv-display
+      mt-[18px] mb-2 border-b border-[#111827] pb-0.5 font-cv-display
       text-[15px] font-bold uppercase
     "
   >
@@ -168,7 +168,7 @@
 <article
   lang={data.lang}
   class="
-    hidden font-cv text-[13px] leading-[1.3] text-[#111827] print:block
+    hidden font-cv text-[12.5px] leading-[1.45] text-[#111827] print:block
   "
 >
   <header class="text-center">
@@ -218,7 +218,7 @@
 
   <section>
     {@render printHeading(t("cv.labels.projects"))}
-    <div class="space-y-1.5">
+    <div class="space-y-2">
       {#each t("cv.projects") as project (project.name)}
         <div class="break-inside-avoid">
           <p class="font-bold uppercase">{project.name}</p>

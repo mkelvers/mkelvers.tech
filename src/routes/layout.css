@@ -3,7 +3,7 @@
 
 @theme {
   --font-sans: "Inter Variable", system-ui, sans-serif;
-  --font-cv: "Times New Roman", Times, serif;
+  --font-cv: Georgia, "Times New Roman", serif;
   --font-cv-display: Georgia, "Times New Roman", serif;
   --color-leaf: #66902b;  --color-black: light-dark(#000, #ededed);
   --color-white: light-dark(#fff, #070707);
