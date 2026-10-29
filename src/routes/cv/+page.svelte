@@ -175,10 +175,10 @@
     <h1 class="font-cv-display text-2xl font-bold">{profile.fullName}</h1>
     <p class="text-[#4b5563] italic">{t("cv.role")}</p>
     <p class="mt-1.5 text-[#374151]">{t("home.location")}</p>
+    <p class="text-[#374151]">{profile.email} | {profile.phone}</p>
     <p class="text-[#374151]">
-      {profile.email} | {profile.phone} |
-      <a href={profile.github}>GitHub</a> |
-      <a href={profile.linkedin}>LinkedIn</a>
+      <a href={links[1].href}>{links[1].text}</a> |
+      <a href={links[2].href}>{links[2].text}</a>
     </p>
   </header>
 
