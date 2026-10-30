@@ -3,8 +3,9 @@
 
 @theme {
   --font-sans: "Inter Variable", system-ui, sans-serif;
-  --color-leaf: #66902b;
-  --color-black: light-dark(#000, #ededed);
+  --font-cv: Georgia, "Times New Roman", serif;
+  --font-cv-display: Georgia, "Times New Roman", serif;
+  --color-leaf: #66902b;  --color-black: light-dark(#000, #ededed);
   --color-white: light-dark(#fff, #070707);
 }
 
@@ -37,7 +38,7 @@ html[data-theme="dark"] {
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
     .hero {
-      filter: invert(1) hue-rotate(180deg);
+      filter: invert(1) hue-rotate(180deg) brightness(0.62) saturate(0.6);
       mix-blend-mode: screen;
     }
 
@@ -53,7 +54,7 @@ html[data-theme="dark"] {
 
 html[data-theme="dark"] {
   .hero {
-    filter: invert(1) hue-rotate(180deg);
+    filter: invert(1) hue-rotate(180deg) brightness(0.62) saturate(0.6);
     mix-blend-mode: screen;
   }
 
@@ -74,6 +75,13 @@ html[data-theme="dark"] {
 @page {
   size: A4;
   margin: 0;
+}
+
+@media print {
+  html,
+  html[data-theme] {
+    color-scheme: light;
+  }
 }
 
 .progress {

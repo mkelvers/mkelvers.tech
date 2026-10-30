@@ -75,7 +75,7 @@
       src="#lib/assets/illustrations/hero.png?w=1122;720&quality=95"
       alt=""
       sizes="50vw"
-      loading="lazy"
+      loading="eager"
       class="size-full object-cover"
     />
   </div>
@@ -83,7 +83,7 @@
   <div
     class="
       relative flex min-h-screen flex-col px-6 py-12 lg:w-1/2 lg:px-10
-      print:min-h-0 print:w-full print:px-10 print:pt-8 print:pb-0
+      print:min-h-0 print:w-full print:px-[52px] print:pt-[42px] print:pb-0
     "
   >
     <form

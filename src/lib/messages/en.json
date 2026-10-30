@@ -15,14 +15,14 @@
   },
   "home": {
     "title": "{{name}} · Portfolio",
-    "description": "{{name}} is a junior front-end and full-stack developer based in the {{location}}. Builds whole products, from the database to the interface.",
+    "description": "{{name}} is a junior front-end and full-stack developer based in {{location}}. Builds whole products, from the database to the interface.",
     "jobTitle": "Junior front-end and full-stack developer",
     "headline1": "I'm {{name}}, a junior front‑end",
     "headline2": "and full-stack developer.",
     "introBefore": "I build whole products, from the database to the interface. My latest is",
     "introAfter": ", a self-hosted app with its own typed API, job scheduler and SDK.",
-    "looking": "Looking for a full-time role in web development, in front-end or full-stack, including AI-driven workflows. Based in the {{location}}.",
-    "location": "Holbæk area, Denmark",
+    "looking": "Looking for a full-time role in web development, in front-end or full-stack, including AI-driven workflows. Based in {{location}}.",
+    "location": "Holbæk, Denmark",
     "technologies": "Technologies",
     "viewProjects": "View projects",
     "contact": "Contact and links",
@@ -105,16 +105,21 @@
   },
   "cv": {
     "title": "CV",
-    "description": "CV for Mikkel Nothlev Elvers, a junior web developer based in the {{location}}, who builds whole products, from the database to the interface.",
+    "description": "CV for Mikkel Nothlev Elvers, a junior web developer based in {{location}}, who builds whole products, from the database to the interface.",
     "role": "Web developer",
     "labels": {
       "profile": "Profile",
-      "projects": "Projects",
+      "projects": "Project experience",
       "education": "Education",
       "skills": "Skills",
       "languages": "Languages",
-      "contact": "Contact",
+      "additional": "Additional information",
       "save": "Save as PDF"
+    },
+    "skillGroups": {
+      "frontend": "Front end",
+      "backend": "Back end and data",
+      "tools": "Tools"
     },
     "profile": "Junior web developer who builds whole products, from the database to the interface. I work in TypeScript across React, Next.js and SvelteKit on the front end, and Express, Hono and PostgreSQL on the back end. I care about readable code, clear abstractions and understanding the technology behind what I ship.",
     "projects": [
@@ -122,34 +127,34 @@
         "name": "Sora",
         "meta": "TypeScript · Hono · SvelteKit · PostgreSQL · Docker",
         "bullets": [
-          "Designed and built a self-hosted anime library as a versioned HTTP API with a typed SDK, a SvelteKit web client and a PostgreSQL-backed job scheduler.",
-          "Wrote an authenticated stream proxy using encrypted, expiring, account-bound tokens, with segment read-ahead and subtitle retiming between encodes.",
-          "Deployed the web app, API and scheduler as separate containers, with over 400 tests and a type-checked client."
+          "Built a self-hosted anime library on my own: a versioned HTTP API, a typed SDK, a SvelteKit web app and a job scheduler that keeps a catalogue of 12,000+ series up to date.",
+          "Built a stream proxy that only accepts encrypted, expiring tokens tied to one account, and fetches video segments ahead of time for smooth playback.",
+          "Wrote an algorithm that re-times subtitles for a different video version. Runs in production in three Docker containers, with over 400 automated tests."
         ]
       },
       {
         "name": "HiFi Horizon",
         "meta": "React · TypeScript · Express · PostgreSQL",
         "bullets": [
-          "Full-stack webshop for browsing and comparing hi-fi products before adding them to a cart and checking out.",
-          "Implemented search, filtering, comparison, user profiles, order history and authentication.",
-          "Built the Express API connecting the React front end to PostgreSQL data for users, products and orders."
+          "Built a full-stack webshop where users browse, compare and buy hi-fi products.",
+          "Added search, filtering, product comparison, cart and checkout, login, user profiles and order history.",
+          "Built the Express API that connects the React front end to the PostgreSQL database for users, products and orders."
         ]
       },
       {
         "name": "Newsify",
         "meta": "React · TypeScript · React Query · Sass",
         "bullets": [
-          "Mobile news reader on The New York Times' Top Stories and Most Popular APIs, grouped by category.",
-          "Implemented search with Fuse.js, data fetching with React Query and a swipe-based archive.",
-          "Persisted theme, selected categories and archive state between sessions."
+          "Built a mobile news reader on The New York Times' Top Stories and Most Popular APIs, with articles grouped by category.",
+          "Added search with Fuse.js, data fetching with React Query and a swipe-based archive.",
+          "Saved the theme, chosen categories and archive between sessions."
         ]
       },
       {
         "name": "Escape Room",
         "meta": "React · Vite · Bun · SQLite",
         "bullets": [
-          "Team project built to a school brief: a browser game in which a \"compromised\" bank website must be fixed within five minutes by solving 10 short CSS puzzles, each revealing part of a lock code.",
+          "Team project for a school brief: a browser game where players fix a \"compromised\" bank website in five minutes by solving 10 short CSS puzzles, each revealing part of a lock code.",
           "Front end in React with Vite, GSAP animation, background music and a countdown timer.",
           "Leaderboard server on Bun and Express with SQLite, with Zod-validated names, a banned-word filter and rate limiting."
         ]
@@ -158,7 +163,13 @@
     "education": {
       "name": "Web Developer",
       "school": "Roskilde Technical School",
-      "period": "August 2024 – October 2026"
+      "period": "August 2024 – October 2026",
+      "grade": "Graduated with the top grade, 12 on the Danish scale.",
+      "bullets": [
+        "Focus on modern front-end development with React, Next.js, Vite, TypeScript, JavaScript, HTML, CSS and Tailwind CSS.",
+        "Connected the front end to the back end through REST APIs, including setup and consumption.",
+        "Introduction to server-side development and CMSs, including WordPress and Strapi, plus basic PHP and MySQL."
+      ]
     },
     "languages": [
       "Danish",

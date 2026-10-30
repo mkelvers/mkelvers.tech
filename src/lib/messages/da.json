@@ -22,7 +22,7 @@
     "introBefore": "Jeg bygger hele produkter, fra databasen til brugerfladen. Mit seneste er",
     "introAfter": ", en selvhostet app med sit eget typede API, sin egen jobscheduler og SDK.",
     "looking": "Jeg søger en fuldtidsstilling inden for webudvikling, som frontend- eller full-stack-udvikler, også med AI-drevne arbejdsgange. Bor i {{location}}.",
-    "location": "Holbæk-området, Danmark",
+    "location": "Holbæk, Danmark",
     "technologies": "Teknologier",
     "viewProjects": "Se projekter",
     "contact": "Kontakt og links",
@@ -109,12 +109,17 @@
     "role": "Webudvikler",
     "labels": {
       "profile": "Profil",
-      "projects": "Projekter",
+      "projects": "Projekterfaring",
       "education": "Uddannelse",
-      "skills": "Kompetencer",
+      "skills": "Færdigheder",
       "languages": "Sprog",
-      "contact": "Kontakt",
+      "additional": "Yderligere oplysninger",
       "save": "Gem som PDF"
+    },
+    "skillGroups": {
+      "frontend": "Frontend",
+      "backend": "Backend og data",
+      "tools": "Værktøjer"
     },
     "profile": "Junior webudvikler, der bygger hele produkter, fra databasen til brugerfladen. Jeg arbejder i TypeScript med React, Next.js og SvelteKit på frontend og Express, Hono og PostgreSQL på backend. Jeg prioriterer læsbar kode, tydelige abstraktioner og at forstå teknologien bag det, jeg leverer.",
     "projects": [
@@ -122,43 +127,49 @@
         "name": "Sora",
         "meta": "TypeScript · Hono · SvelteKit · PostgreSQL · Docker",
         "bullets": [
-          "Designede og byggede et selvhostet anime-bibliotek som et versioneret HTTP-API med en typet SDK, en SvelteKit-webklient og en PostgreSQL-baseret jobscheduler.",
-          "Skrev en autentificeret streamproxy med krypterede, tidsbegrænsede og kontobundne tokens samt forhåndshentning af segmenter og tidsjustering af undertekster mellem encodes.",
-          "Satte webapp, API og scheduler i drift som separate containere, med over 400 tests og en typetjekket klient."
+          "Byggede alene et selvhostet anime-bibliotek: et versioneret HTTP API, en typet SDK, en SvelteKit-webapp og en job scheduler, der holder et katalog med over 12.000 serier opdateret.",
+          "Byggede en stream proxy, der kun accepterer krypterede tokens med udløbstid, bundet til én konto, og som henter videosegmenter på forhånd, så afspilningen kører flydende.",
+          "Skrev en algoritme, der synkroniserer undertekster til en anden version af en video. Kører i produktion i tre Docker-containere med over 400 automatiske tests."
         ]
       },
       {
         "name": "HiFi Horizon",
         "meta": "React · TypeScript · Express · PostgreSQL",
         "bullets": [
-          "Full-stack webshop, hvor brugere kan finde, sammenligne og købe hi-fi-produkter.",
-          "Implementerede søgning, filtrering, produktsammenligning, kurv, checkout, brugerprofiler og ordrehistorik.",
-          "Byggede et Express-API, der forbinder React-frontend til PostgreSQL-data for brugere, produkter og ordrer."
+          "Byggede en full-stack webshop, hvor brugere kan finde, sammenligne og købe hi-fi-produkter.",
+          "Lavede søgning, filtrering, produktsammenligning, kurv og checkout, login, brugerprofiler og ordrehistorik.",
+          "Byggede et Express API, der forbinder React-frontenden med PostgreSQL-databasen med brugere, produkter og ordrer."
         ]
       },
       {
         "name": "Newsify",
         "meta": "React · TypeScript · React Query · Sass",
         "bullets": [
-          "Mobil nyhedsapp, der henter artikler fra The New York Times' Top Stories- og Most Popular-API'er og grupperer dem efter kategori.",
-          "Implementerede søgning med Fuse.js, datahentning med React Query og et swipe-baseret arkiv.",
-          "Gemte tema, valgte kategorier og arkivstatus, så appens indstillinger bevares mellem sessioner."
+          "Byggede en mobil nyhedsapp på The New York Times' Top Stories og Most Popular API'er, med artikler grupperet efter kategori.",
+          "Lavede søgning med Fuse.js, datahentning med React Query og et arkiv styret med swipe.",
+          "Gemmer tema, valgte kategorier og arkiv mellem sessioner."
         ]
       },
       {
         "name": "Escape Room",
         "meta": "React · Vite · Bun · SQLite",
         "bullets": [
-          "Teamprojekt efter skolens opgavebeskrivelse: et browserspil, hvor en kompromitteret bankhjemmeside skal rettes på fem minutter ved at løse 10 korte CSS-opgaver, som hver afslører en del af en kode.",
+          "Teamprojekt efter en skoleopgave: et browserspil, hvor man skal rette en \"kompromitteret\" bankhjemmeside på fem minutter ved at løse 10 korte CSS-opgaver, som hver afslører en del af en kode.",
           "Frontend i React med Vite, GSAP-animation, baggrundsmusik og en nedtællingstimer.",
-          "Leaderboard-server på Bun og Express med SQLite, med Zod-validerede navne, filter for upassende ord og rate limiting."
+          "Leaderboard-server med Bun, Express og SQLite, med Zod-validering af navne, filter mod upassende ord og rate limiting."
         ]
       }
     ],
     "education": {
       "name": "Webudvikler",
       "school": "Roskilde Tekniske Skole",
-      "period": "August 2024 – Oktober 2026"
+      "period": "August 2024 – Oktober 2026",
+      "grade": "Afsluttede uddannelsen med 12.",
+      "bullets": [
+        "Fokus på moderne frontend-udvikling med React, Next.js, Vite, TypeScript, JavaScript, HTML, CSS og Tailwind CSS.",
+        "Arbejdet med at forbinde frontend til backend via REST-API'er, inkl. opsætning og brug af API'er.",
+        "Introduktion til server-side-udvikling og CMS, bl.a. WordPress og Strapi, samt grundlæggende PHP og MySQL."
+      ]
     },
     "languages": [
       "Dansk",
