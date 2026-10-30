@@ -127,34 +127,34 @@
         "name": "Sora",
         "meta": "TypeScript · Hono · SvelteKit · PostgreSQL · Docker",
         "bullets": [
-          "Designed and built a self-hosted anime library as a versioned HTTP API with a typed SDK, a SvelteKit web client and a PostgreSQL-backed job scheduler.",
-          "Wrote an authenticated stream proxy using encrypted, expiring, account-bound tokens, with segment read-ahead and subtitle retiming between encodes.",
-          "Deployed the web app, API and scheduler as separate containers, with over 400 tests and a type-checked client."
+          "Built a self-hosted anime library on my own: a versioned HTTP API, a typed SDK, a SvelteKit web app and a job scheduler that keeps a catalogue of 12,000+ series up to date.",
+          "Built a stream proxy that only accepts encrypted, expiring tokens tied to one account, and fetches video segments ahead of time for smooth playback.",
+          "Wrote an algorithm that re-times subtitles for a different video version. Runs in production in three Docker containers, with over 400 automated tests."
         ]
       },
       {
         "name": "HiFi Horizon",
         "meta": "React · TypeScript · Express · PostgreSQL",
         "bullets": [
-          "Full-stack webshop for browsing and comparing hi-fi products before adding them to a cart and checking out.",
-          "Implemented search, filtering, comparison, user profiles, order history and authentication.",
-          "Built the Express API connecting the React front end to PostgreSQL data for users, products and orders."
+          "Built a full-stack webshop where users browse, compare and buy hi-fi products.",
+          "Added search, filtering, product comparison, cart and checkout, login, user profiles and order history.",
+          "Built the Express API that connects the React front end to the PostgreSQL database for users, products and orders."
         ]
       },
       {
         "name": "Newsify",
         "meta": "React · TypeScript · React Query · Sass",
         "bullets": [
-          "Mobile news reader on The New York Times' Top Stories and Most Popular APIs, grouped by category.",
-          "Implemented search with Fuse.js, data fetching with React Query and a swipe-based archive.",
-          "Persisted theme, selected categories and archive state between sessions."
+          "Built a mobile news reader on The New York Times' Top Stories and Most Popular APIs, with articles grouped by category.",
+          "Added search with Fuse.js, data fetching with React Query and a swipe-based archive.",
+          "Saved the theme, chosen categories and archive between sessions."
         ]
       },
       {
         "name": "Escape Room",
         "meta": "React · Vite · Bun · SQLite",
         "bullets": [
-          "Team project built to a school brief: a browser game in which a \"compromised\" bank website must be fixed within five minutes by solving 10 short CSS puzzles, each revealing part of a lock code.",
+          "Team project for a school brief: a browser game where players fix a \"compromised\" bank website in five minutes by solving 10 short CSS puzzles, each revealing part of a lock code.",
           "Front end in React with Vite, GSAP animation, background music and a countdown timer.",
           "Leaderboard server on Bun and Express with SQLite, with Zod-validated names, a banned-word filter and rate limiting."
         ]
