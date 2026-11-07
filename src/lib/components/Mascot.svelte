@@ -1,6 +1,7 @@
 <script lang="ts">
   import { frameSrc, preloadFrames, type Frame } from "#lib/mascot/frames.ts";
   import { wait } from "#lib/mascot/motion.ts";
+  import { copy } from "#lib/copy.ts";
   import { Swarm } from "#lib/mascot/swarm.ts";
 
   // First click lets the slimes out, second click sends them away.
@@ -60,7 +61,7 @@
   bind:this={button}
   type="button"
   onclick={toggle}
-  aria-label="Rimuru"
+  aria-label={copy.home.mascot}
   aria-pressed={swarm !== undefined}
   class="size-12 cursor-pointer"
 >

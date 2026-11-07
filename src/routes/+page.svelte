@@ -3,7 +3,7 @@
   import Mascot from "#lib/components/Mascot.svelte";
   import Rich from "#lib/components/Rich.svelte";
   import Seo from "#lib/components/Seo.svelte";
-  import { t } from "#lib/i18n.ts";
+  import { copy, fill } from "#lib/copy.ts";
   import { profile, stack } from "#lib/profile.ts";
 
   let { data }: PageProps = $props();
@@ -11,9 +11,9 @@
 
 <Seo
   title={profile.username}
-  description={t("home.description", {
+  description={fill(copy.home.description, {
     name: profile.name,
-    location: t("home.location"),
+    location: copy.home.location,
   })}
   type="profile"
 />
@@ -24,13 +24,15 @@
     "@type": "Person",
     name: profile.fullName,
     alternateName: profile.name,
-    jobTitle: t("home.jobTitle"),
-    description: t("home.description", {
+    jobTitle: copy.home.jobTitle,
+    description: fill(copy.home.description, {
       name: profile.name,
-      location: t("home.location"),
+      location: copy.home.location,
     }),
     address: { "@type": "PostalAddress", addressCountry: "DK" },
     knowsAbout: stack.map((item) => item.label),
+    url: "https://mkelvers.tech",
+    image: "https://mkelvers.tech/og.png",
     sameAs: [profile.github, profile.linkedin],
   }).replaceAll("<", "\\u003c")}</script>`}
 </svelte:head>
@@ -39,29 +41,29 @@
   <Mascot />
 
   <h1 class="-mt-2 mb-1 text-xl font-medium tracking-tight text-black">
-    {t("home.headline", {
+    {fill(copy.home.headline, {
       name: profile.firstName,
     })}
   </h1>
 
-  <p>{t("home.intro", { location: t("home.location") })}</p>
+  <p>{fill(copy.home.intro, { location: copy.home.location })}</p>
 
   <p>
     <Rich
-      text={t("home.work")}
+      text={copy.home.work}
       links={{ sora: "https://github.com/mkelvers/sora", projects: profile.github, cv: "/cv" }}
     />
   </p>
 
   {#if data.nowWatching.length > 0}
-    <p>{t("home.nowWatching", {
-      titles: new Intl.ListFormat(data.lang, { style: "long", type: "conjunction" }).format(data.nowWatching),
+    <p>{fill(copy.home.nowWatching, {
+      titles: new Intl.ListFormat("en", { style: "long", type: "conjunction" }).format(data.nowWatching),
     })}</p>
   {/if}
 
   <p>
     <Rich
-      text={t("home.contact")}
+      text={copy.home.contact}
       links={{
         email: `mailto:${profile.email}`,
         linkedin: profile.linkedin,

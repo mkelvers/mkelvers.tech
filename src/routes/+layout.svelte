@@ -3,10 +3,10 @@
   import { onNavigate } from "$app/navigation";
   import { navigating, page } from "$app/state";
   import Icon from "#lib/components/Icon.svelte";
-  import { t } from "#lib/i18n.ts";
+  import { copy } from "#lib/copy.ts";
   import type { LayoutProps } from "./$types";
 
-  let { children, data }: LayoutProps = $props();
+  let { children }: LayoutProps = $props();
 
   const isHome = $derived(page.url.pathname === "/");
 
@@ -41,13 +41,13 @@
     focus:text-white print:hidden
   "
 >
-  {t("layout.skip")}
+  {copy.layout.skip}
 </a>
 
 {#if navigating.to}
   <div
     role="progressbar"
-    aria-label={t("layout.loading")}
+    aria-label={copy.layout.loading}
     class="
       progress fixed inset-x-0 top-0 z-50 h-0.5 origin-left bg-black
       print:hidden motion-reduce:animate-none
@@ -56,13 +56,12 @@
 {/if}
 
 <div
-  lang={data.lang}
   class="
     relative min-h-screen text-black antialiased print:min-h-0
   "
 >
   {#if !isHome}
-    {@const label = t("layout.backToHome")}
+    {@const label = copy.layout.backToHome}
     <a
       href="/"
       aria-label={label}

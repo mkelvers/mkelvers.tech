@@ -17,7 +17,6 @@
 		"@sveltejs/kit": "^3.0.0",
 		"@sveltejs/vite-plugin-svelte": "^7.2.0",
 		"@tailwindcss/vite": "^4.3.0",
-		"@types/accept-language-parser": "^1.5.8",
 		"svelte": "^5.57.1",
 		"svelte-check": "^4.6.0",
 		"tailwindcss": "^4.3.0",
@@ -30,8 +29,6 @@
 		"#lib/*": "./src/lib/*"
 	},
 	"dependencies": {
-		"@fontsource/open-runde": "^5.3.0",
-		"accept-language-parser": "^1.5.0",
-		"i18next": "^26.4.2"
+		"@fontsource/open-runde": "^5.3.0"
 	}
 }

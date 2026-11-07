@@ -3,14 +3,12 @@
   // labels on the left, short paragraphs on the right. The print article is the
   // classic one-page document that "Save as PDF" produces.
   import type { Snippet } from "svelte";
-  import { t, type Lang } from "#lib/i18n.ts";
+  import { copy } from "#lib/copy.ts";
   import { profile, skillGroups } from "#lib/profile.ts";
-
-  let { lang }: { lang: Lang } = $props();
 
   const links = $derived([
     {
-      label: t("cv.labels.email"),
+      label: copy.cv.labels.email,
       text: profile.email,
       href: `mailto:${profile.email}`,
     },
@@ -50,11 +48,11 @@
   </section>
 {/snippet}
 
-<article {lang} class="leading-relaxed text-black/70 print:hidden">
+<article class="leading-relaxed text-black/70 print:hidden">
   <header>
     <h1 class="text-xl font-medium tracking-tight text-black">{profile.fullName}</h1>
-    <p class="mt-1 text-black/60">{t("cv.role")} · {t("home.location")}</p>
-    <p class="mt-5">{t("cv.profile")}</p>
+    <p class="mt-1 text-black/60">{copy.cv.role} · {copy.home.location}</p>
+    <p class="mt-5">{copy.cv.profile}</p>
 
     <ul class="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-sm">
       {#each links as item (item.href)}
@@ -62,7 +60,7 @@
       {/each}
       <li>
         <button type="button" onclick={() => window.print()} class="cursor-pointer {link}">
-          {t("cv.labels.save")}
+          {copy.cv.labels.save}
         </button>
       </li>
     </ul>
@@ -71,7 +69,7 @@
   <div class="mt-16 space-y-14">
     {#snippet projects()}
       <div class="space-y-8">
-        {#each t("cv.projects") as project (project.name)}
+        {#each copy.cv.projects as project (project.name)}
           <div>
             <h3 class="font-medium text-black">{project.name}</h3>
             <p class="text-sm text-black/60">{project.meta}</p>
@@ -80,36 +78,36 @@
         {/each}
       </div>
     {/snippet}
-    {@render row(t("cv.labels.projects"), projects)}
+    {@render row(copy.cv.labels.projects, projects)}
 
     {#snippet education()}
       <h3 class="font-medium text-black">
-        {t("cv.education.name")}, {t("cv.education.school")}
+        {copy.cv.education.name}, {copy.cv.education.school}
       </h3>
-      <p class="text-sm text-black/60">{t("cv.education.period")}</p>
+      <p class="text-sm text-black/60">{copy.cv.education.period}</p>
       <p class="mt-2">
-        {t("cv.education.grade")}
-        {asParagraph(t("cv.education.bullets"))}
+        {copy.cv.education.grade}
+        {asParagraph(copy.cv.education.bullets)}
       </p>
     {/snippet}
-    {@render row(t("cv.labels.education"), education)}
+    {@render row(copy.cv.labels.education, education)}
 
     {#snippet skills()}
       <dl class="space-y-3">
         {#each skillGroups as group (group.key)}
           <div>
-            <dt class="text-black">{t(`cv.skillGroups.${group.key}`)}</dt>
+            <dt class="text-black">{copy.cv.skillGroups[group.key]}</dt>
             <dd>{group.items.join(", ")}</dd>
           </div>
         {/each}
       </dl>
     {/snippet}
-    {@render row(t("cv.labels.skills"), skills)}
+    {@render row(copy.cv.labels.skills, skills)}
 
     {#snippet languages()}
-      <p>{t("cv.languages").join(", ")}</p>
+      <p>{copy.cv.languages.join(", ")}</p>
     {/snippet}
-    {@render row(t("cv.labels.languages"), languages)}
+    {@render row(copy.cv.labels.languages, languages)}
   </div>
 </article>
 
@@ -133,15 +131,14 @@
 {/snippet}
 
 <article
-  lang={lang}
   class="
     hidden font-cv text-[12.5px] leading-[1.45] text-[#111827] print:block
   "
 >
   <header class="text-center">
     <h1 class="font-cv-display text-2xl font-bold">{profile.fullName}</h1>
-    <p class="text-[#4b5563] italic">{t("cv.role")}</p>
-    <p class="mt-1.5 text-[#374151]">{t("home.location")}</p>
+    <p class="text-[#4b5563] italic">{copy.cv.role}</p>
+    <p class="mt-1.5 text-[#374151]">{copy.home.location}</p>
     <p class="text-[#374151]">{profile.email} | {profile.phone}</p>
     <p class="text-[#374151]">
       <a href={links[1].href}>{links[1].text}</a> |
@@ -150,43 +147,43 @@
   </header>
 
   <section>
-    {@render printHeading(t("cv.labels.profile"))}
-    <p>{t("cv.profile")}</p>
+    {@render printHeading(copy.cv.labels.profile)}
+    <p>{copy.cv.profile}</p>
   </section>
 
   <section>
-    {@render printHeading(t("cv.labels.education"))}
-    <p class="font-bold uppercase">{t("cv.education.school")}</p>
+    {@render printHeading(copy.cv.labels.education)}
+    <p class="font-bold uppercase">{copy.cv.education.school}</p>
     <div class="flex justify-between italic">
-      <p>{t("cv.education.name")}</p>
-      <p>{t("cv.education.period")}</p>
+      <p>{copy.cv.education.name}</p>
+      <p>{copy.cv.education.period}</p>
     </div>
-    <p>{t("cv.education.grade")}</p>
-    {@render printBullets(t("cv.education.bullets"))}
+    <p>{copy.cv.education.grade}</p>
+    {@render printBullets(copy.cv.education.bullets)}
   </section>
 
   <section>
-    {@render printHeading(t("cv.labels.skills"))}
+    {@render printHeading(copy.cv.labels.skills)}
     {#each skillGroups as group (group.key)}
       <p>
-        <span class="font-bold">{t(`cv.skillGroups.${group.key}`)}:</span>
+        <span class="font-bold">{copy.cv.skillGroups[group.key]}:</span>
         {group.items.join(", ")}
       </p>
     {/each}
   </section>
 
   <section>
-    {@render printHeading(t("cv.labels.additional"))}
+    {@render printHeading(copy.cv.labels.additional)}
     <p>
-      <span class="font-bold">{t("cv.labels.languages")}:</span>
-      {t("cv.languages").join(", ")}
+      <span class="font-bold">{copy.cv.labels.languages}:</span>
+      {copy.cv.languages.join(", ")}
     </p>
   </section>
 
   <section>
-    {@render printHeading(t("cv.labels.projects"))}
+    {@render printHeading(copy.cv.labels.projects)}
     <div class="space-y-2">
-      {#each t("cv.projects") as project (project.name)}
+      {#each copy.cv.projects as project (project.name)}
         <div class="break-inside-avoid">
           <p class="font-bold uppercase">{project.name}</p>
           <p>{project.meta}</p>

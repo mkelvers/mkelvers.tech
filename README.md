@@ -1,6 +1,6 @@
 # mkelvers.tech
 
-Personal portfolio for Mikkel Elvers. SvelteKit, Svelte 5, Tailwind CSS 4, i18next (English and Danish) and a self-hosted Open Runde. No analytics, no cookies beyond an optional `?lang=` override, and no third-party requests.
+Personal portfolio for Mikkel Elvers. SvelteKit, Svelte 5, Tailwind CSS 4 and a self-hosted Open Runde. No analytics, no cookies, and no third-party requests.
 
 ## Develop
 

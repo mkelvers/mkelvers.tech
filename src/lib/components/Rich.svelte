@@ -1,6 +1,6 @@
 <script lang="ts">
-  // Renders a translated string where `<key>label</key>` becomes a link to links[key].
-  // Keeps link placement inside the sentence, so each language can order it naturally.
+  // Renders a copy string where `<key>label</key>` becomes a link to links[key].
+  // Keeps links inside the sentence instead of splitting the copy around them.
   let { text, links }: { text: string; links: Record<string, string> } = $props();
 
   const parts = $derived(
