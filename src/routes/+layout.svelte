@@ -81,7 +81,7 @@
       print:min-h-0 print:w-full print:px-[52px] print:pt-[42px] print:pb-0
     "
   >
-    <div class="mx-auto flex w-full max-w-xl flex-1 flex-col print:max-w-none">
+    <div class="mx-auto flex w-full max-w-2xl flex-1 flex-col print:max-w-none">
       <main
         id="main"
         tabindex="-1"

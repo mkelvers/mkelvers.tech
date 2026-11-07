@@ -34,7 +34,7 @@
   }).replaceAll("<", "\\u003c")}</script>`}
 </svelte:head>
 
-<div data-mascot-avoid class="my-auto flex flex-col gap-4 leading-relaxed text-black/70">
+<div data-mascot-avoid class="mx-auto w-full max-w-xl my-auto flex flex-col gap-4 leading-relaxed text-black/70">
   <Mascot />
 
   <h1 class="-mt-2 mb-1 text-xl font-medium tracking-tight text-black">

@@ -27,6 +27,11 @@ html {
   animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* Let the browser balance paragraph endings so no lone word wraps onto the last line. */
+p {
+  text-wrap: pretty;
+}
+
 :focus-visible {
   outline: 2px solid var(--color-black);
   outline-offset: 2px;

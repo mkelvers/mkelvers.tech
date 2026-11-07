@@ -6,8 +6,8 @@
   },
   "home": {
     "title": "{{name}} · Portfolio",
-    "description": "{{name}} is a junior front-end and full-stack developer based in {{location}}. Builds whole products, from the database to the interface.",
-    "jobTitle": "Junior front-end and full-stack developer",
+    "description": "{{name}} is a junior frontend and full-stack developer based in {{location}}. Builds whole products, from the database to the interface.",
+    "jobTitle": "Junior frontend and full-stack developer",
     "headline": "Hey, I'm {{name}}",
     "intro": "I'm a web developer from {{location}}, looking for my first job.",
     "work": "Lately I've been working on <sora>Sora</sora>, an anime streaming service I use almost every day. My other <projects>projects are on GitHub</projects>, and you can read my <cv>CV</cv> here.",
@@ -89,14 +89,15 @@
       "skills": "Skills",
       "languages": "Languages",
       "additional": "Additional information",
-      "save": "Save as PDF"
+      "save": "Save as PDF",
+      "email": "Email"
     },
     "skillGroups": {
-      "frontend": "Front end",
-      "backend": "Back end and data",
+      "frontend": "Frontend",
+      "backend": "Backend",
       "tools": "Tools"
     },
-    "profile": "Junior web developer who builds whole products, from the database to the interface. I work in TypeScript across React, Next.js and SvelteKit on the front end, and Express, Hono and PostgreSQL on the back end. I care about readable code, clear abstractions and understanding the technology behind what I ship.",
+    "profile": "Junior web developer who builds whole products, from the database to the interface. I work in TypeScript across React, Next.js and SvelteKit on the frontend, and Express, Hono and PostgreSQL on the backend. I care about readable code, clear abstractions and understanding the technology behind what I ship.",
     "projects": [
       {
         "name": "Sora",
@@ -113,7 +114,7 @@
         "bullets": [
           "Built a full-stack webshop where users browse, compare and buy hi-fi products.",
           "Added search, filtering, product comparison, cart and checkout, login, user profiles and order history.",
-          "Built the Express API that connects the React front end to the PostgreSQL database for users, products and orders."
+          "Built the Express API that connects the React frontend to the PostgreSQL database for users, products and orders."
         ]
       },
       {
@@ -130,7 +131,7 @@
         "meta": "React · Vite · Bun · SQLite",
         "bullets": [
           "Team project for a school brief: a browser game where players fix a \"compromised\" bank website in five minutes by solving 10 short CSS puzzles, each revealing part of a lock code.",
-          "Front end in React with Vite, GSAP animation, background music and a countdown timer.",
+          "Frontend in React with Vite, GSAP animation, background music and a countdown timer.",
           "Leaderboard server on Bun and Express with SQLite, with Zod-validated names, a banned-word filter and rate limiting."
         ]
       }
@@ -141,8 +142,8 @@
       "period": "August 2024 – October 2026",
       "grade": "Graduated with the top grade, 12 on the Danish scale.",
       "bullets": [
-        "Focus on modern front-end development with React, Next.js, Vite, TypeScript, JavaScript, HTML, CSS and Tailwind CSS.",
-        "Connected the front end to the back end through REST APIs, including setup and consumption.",
+        "Focus on modern frontend development with React, Next.js, Vite, TypeScript, JavaScript, HTML, CSS and Tailwind CSS.",
+        "Connected the frontend to the backend through REST APIs, including setup and consumption.",
         "Introduction to server-side development and CMSs, including WordPress and Strapi, plus basic PHP and MySQL."
       ]
     },

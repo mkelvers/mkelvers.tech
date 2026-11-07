@@ -89,11 +89,12 @@
       "skills": "Færdigheder",
       "languages": "Sprog",
       "additional": "Yderligere oplysninger",
-      "save": "Gem som PDF"
+      "save": "Gem som PDF",
+      "email": "E-mail"
     },
     "skillGroups": {
       "frontend": "Frontend",
-      "backend": "Backend og data",
+      "backend": "Backend",
       "tools": "Værktøjer"
     },
     "profile": "Junior webudvikler, der bygger hele produkter, fra databasen til brugerfladen. Jeg arbejder i TypeScript med React, Next.js og SvelteKit på frontend og Express, Hono og PostgreSQL på backend. Jeg prioriterer læsbar kode, tydelige abstraktioner og at forstå teknologien bag det, jeg leverer.",
