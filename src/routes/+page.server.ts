@@ -1,8 +1,13 @@
+import { dev } from "$app/env";
 import { SORA_API_URL, SORA_PORTFOLIO_TOKEN } from "$app/env/private";
 import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
 const ResponseSchema = z.object({ titles: z.array(z.string()).max(3) });
+// `bun dev` without Sora configured shows these, so the bubble can be tried locally.
+// Production never uses them: without Sora it shows nothing.
+const devSample = ["Frieren: Beyond Journey's End", "Dandadan", "Kaiju No. 8"];
+
 let cached: { titles: string[]; expiresAt: number } | undefined;
 let pending: Promise<string[]> | undefined;
 
@@ -25,7 +30,7 @@ async function fetchTitles(apiUrl: string, token: string): Promise<string[]> {
 }
 
 export const load: PageServerLoad = async () => {
-  if (!SORA_API_URL || !SORA_PORTFOLIO_TOKEN) return { nowWatching: [] };
+  if (!SORA_API_URL || !SORA_PORTFOLIO_TOKEN) return { nowWatching: dev ? devSample : [] };
   if (cached && cached.expiresAt > Date.now()) return { nowWatching: cached.titles };
   pending ??= fetchTitles(SORA_API_URL, SORA_PORTFOLIO_TOKEN);
   try {

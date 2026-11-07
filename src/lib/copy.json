@@ -9,11 +9,12 @@
     "jobTitle": "Junior frontend and full-stack developer",
     "headline": "Hey, I'm {{name}}",
     "intro": "I'm a web developer from {{location}}, looking for my first job.",
-    "work": "Lately I've been working on <sora>Sora</sora>, an anime streaming service I use almost every day. My other <projects>projects are on GitHub</projects>, and you can read my <cv>CV</cv> here.",
-    "nowWatching": "Right now I'm watching {{titles}} on it.",
+    "work": "Lately I've been working on <sora>Sora</sora><watching/>, an anime streaming service I use almost every day. My other <projects>projects are on GitHub</projects>, and you can read my <cv>CV</cv> here.",
     "contact": "The best way to reach me is <email>email</email> or <linkedin>LinkedIn</linkedin>.",
     "location": "Holbæk, Denmark",
-    "mascot": "Let the slimes out"
+    "mascot": "Let the slimes out",
+    "watching": "I'm currently watching",
+    "watchingToggle": "What I'm watching right now"
   },
   "seo": {
     "imageAlt": "Rimuru, a small blue slime, next to the name mkelvers"

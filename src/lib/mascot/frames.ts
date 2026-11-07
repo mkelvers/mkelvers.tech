@@ -11,6 +11,8 @@ export const frames = [
   "look-up-open",
   "sleep",
   "happy",
+  "talk",
+  "talk-blink",
 ] as const;
 
 export type Frame = (typeof frames)[number];
