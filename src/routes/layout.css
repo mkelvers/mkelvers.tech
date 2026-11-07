@@ -21,39 +21,6 @@ html {
   background-color: light-dark(#dadada, #222222);
 }
 
-/* Home page: each section is a full screen and scrolling settles on one at a time. */
-html:has([data-snap-page]) {
-  scroll-snap-type: y mandatory;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  .chevron {
-    animation: chevron 2.4s ease-in-out infinite;
-  }
-}
-
-@keyframes chevron {
-  0%,
-  60%,
-  100% {
-    translate: 0 0;
-  }
-
-  30% {
-    translate: 0 4px;
-  }
-}
-
-@media print {
-  html:has([data-snap-page]) {
-    scroll-snap-type: none;
-  }
-}
-
 :focus-visible {
   outline: 2px solid var(--color-black);
   outline-offset: 2px;

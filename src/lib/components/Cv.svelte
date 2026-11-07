@@ -1,7 +1,8 @@
 <script lang="ts">
   // The CV in two layouts over the same content: the screen version follows the
   // site, the print article becomes the PDF. Rendered on /cv and inside the home page.
-  import { t, type Lang } from "#lib/i18n.ts";
+  import type { Lang } from "#lib/i18n.ts";
+  import { t } from "#lib/i18n.ts";
   import { profile, skillGroups } from "#lib/profile.ts";
 
   let {
