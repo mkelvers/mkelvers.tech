@@ -1,23 +1,36 @@
 <script lang="ts">
   import "./layout.css";
+  import { onNavigate } from "$app/navigation";
   import { navigating, page } from "$app/state";
-  import favicon from "#lib/assets/favicon.svg";
   import Icon from "#lib/components/Icon.svelte";
-  import { languages, t } from "#lib/i18n.ts";
-  import { setLang } from "#lib/lang.remote.ts";
-  import { profile } from "#lib/profile.ts";
-  import { setTheme } from "#lib/theme.remote.ts";
+  import { copy } from "#lib/copy.ts";
   import type { LayoutProps } from "./$types";
 
-  let { children, data }: LayoutProps = $props();
+  let { children }: LayoutProps = $props();
 
-  $effect(() => {
-    document.documentElement.dataset.theme = data.theme ?? "";
+  const isHome = $derived(page.url.pathname === "/");
+
+  // Blend pages into each other instead of swapping them, so moving between
+  // home and the CV feels like one surface. Skipped when the browser lacks
+  // view transitions or the visitor prefers reduced motion.
+  onNavigate((navigation) => {
+    if (!document.startViewTransition) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    return new Promise((resolve) => {
+      document.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
+    });
   });
 </script>
 
 <svelte:head>
-  <link rel="icon" href={favicon} />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/mascot/idle.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </svelte:head>
 
 <a
@@ -28,13 +41,13 @@
     focus:text-white print:hidden
   "
 >
-  {t("layout.skip")}
+  {copy.layout.skip}
 </a>
 
 {#if navigating.to}
   <div
     role="progressbar"
-    aria-label={t("layout.loading")}
+    aria-label={copy.layout.loading}
     class="
       progress fixed inset-x-0 top-0 z-50 h-0.5 origin-left bg-black
       print:hidden motion-reduce:animate-none
@@ -43,17 +56,14 @@
 {/if}
 
 <div
-  lang={data.lang}
   class="
-    relative min-h-screen text-black antialiased selection:bg-leaf
-    selection:text-white print:min-h-0
+    relative min-h-screen text-black antialiased print:min-h-0
   "
 >
-  {#if page.url.pathname !== "/"}
-    {@const toList = page.route.id === "/projects/[slug]"}
-    {@const label = t(toList ? "layout.backToProjects" : "layout.backToHome")}
+  {#if !isHome}
+    {@const label = copy.layout.backToHome}
     <a
-      href={toList ? "/projects" : "/"}
+      href="/"
       aria-label={label}
       title={label}
       class="
@@ -68,102 +78,18 @@
 
   <div
     class="
-      hero fixed inset-y-0 right-0 hidden w-1/2 lg:block print:hidden
-    "
-  >
-    <enhanced:img
-      src="#lib/assets/illustrations/hero.png?w=1122;720&quality=95"
-      alt=""
-      sizes="50vw"
-      loading="eager"
-      class="size-full object-cover"
-    />
-  </div>
-
-  <div
-    class="
-      relative flex min-h-screen flex-col px-6 py-12 lg:w-1/2 lg:px-10
+      relative flex min-h-screen flex-col px-6 py-12
       print:min-h-0 print:w-full print:px-[52px] print:pt-[42px] print:pb-0
     "
   >
-    <form
-      {...setLang}
-      aria-label={t("layout.language")}
-      class="absolute top-6 right-6 z-20 flex gap-1 text-xs print:hidden lg:right-10"
-    >
-      {#each languages as code (code)}
-        <button
-          {...setLang.fields.lang.as("submit", code)}
-          lang={code}
-          aria-pressed={code === data.lang}
-          class="
-            cursor-pointer rounded-full px-2.5 py-1 uppercase
-            transition-colors duration-300
-            {code === data.lang
-            ? 'bg-black/10 text-black'
-            : 'text-black/60 hover:text-black'}
-          "
-        >
-          {code}
-        </button>
-      {/each}
-    </form>
-
     <div class="mx-auto flex w-full max-w-2xl flex-1 flex-col print:max-w-none">
       <main
         id="main"
         tabindex="-1"
-        class="mt-24 flex flex-1 flex-col outline-none print:mt-0"
+        class="flex flex-1 flex-col outline-none {isHome ? '' : 'mt-16'} print:mt-0"
       >
         {@render children()}
       </main>
-
-      <footer
-        class="mt-auto flex items-center justify-between pt-16 text-xs text-black/60 print:hidden"
-      >
-        <span>© 2026 {profile.name}</span>
-
-        <div class="flex items-center gap-4">
-          <nav class="flex gap-4" aria-label={t("layout.footer")}>
-            <a
-              href="/projects"
-              aria-current={page.url.pathname.startsWith("/projects")
-                ? "page"
-                : undefined}
-              class="transition-colors duration-300 hover:text-black"
-            >
-              {t("layout.projects")}
-            </a>
-            <a
-              href="/cv"
-              aria-current={page.url.pathname.startsWith("/cv")
-                ? "page"
-                : undefined}
-              class="transition-colors duration-300 hover:text-black"
-            >
-              {t("layout.cv")}
-            </a>
-          </nav>
-
-          <form {...setTheme} class="-my-2 -mr-1.5 grid">
-            {#each [["light", "sun"], ["dark", "moon"]] as const as [code, icon] (code)}
-              {@const label = t(`layout.theme.${code}`)}
-              <button
-                {...setTheme.fields.theme.as("submit", code)}
-                aria-label={label}
-                title={label}
-                class="
-                  theme-{code} size-8 cursor-pointer place-items-center
-                  rounded-full transition-colors duration-300
-                  hover:bg-black/10 hover:text-black
-                "
-              >
-                <Icon name={icon} class="size-5" />
-              </button>
-            {/each}
-          </form>
-        </div>
-      </footer>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from "$app/state";
   import { refreshAll } from "$app/navigation";
-  import { t } from "#lib/i18n.ts";
+  import { copy } from "#lib/copy.ts";
 
   const codes = [
     400, 401, 403, 404, 405, 408, 429, 500, 502, 503, 504,
@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-  <title>{t(`error.${code}.title`)} · Mikkel Elvers</title>
+  <title>{copy.error[code].title} · mkelvers</title>
   <meta name="robots" content="noindex" />
 </svelte:head>
 
@@ -22,14 +22,14 @@
   <p class="text-sm font-medium tracking-tight text-black/60">{page.status}</p>
 
   <h1 class="mt-2 text-3xl font-semibold tracking-tight">
-    {t(`error.${code}.title`)}
+    {copy.error[code].title}
   </h1>
 
   <p class="mt-4 text-xl leading-snug tracking-tight text-black/60">
-    {t(`error.${code}.message`)}
+    {copy.error[code].message}
   </p>
 
-  {#if page.error?.message && page.error.message !== t(`error.${code}.title`) && page.status !== 404}
+  {#if page.error?.message && page.error.message !== copy.error[code].title && page.status !== 404}
     <p class="mt-2 text-sm text-black/60">{page.error.message}</p>
   {/if}
 
@@ -44,7 +44,7 @@
           motion-reduce:transition-none
         "
       >
-        {t("error.retry")}
+        {copy.error.retry}
       </button>
       <a
         href="/"
@@ -54,7 +54,7 @@
           motion-reduce:transition-none
         "
       >
-        {t("error.home")}
+        {copy.error.home}
       </a>
     {:else}
       <a
@@ -65,21 +65,9 @@
           motion-reduce:transition-none
         "
       >
-        {t("error.home")}
+        {copy.error.home}
       </a>
     {/if}
 
-    {#if page.status === 404}
-      <a
-        href="/projects"
-        class="
-          inline-block rounded-full px-6 py-2.5 text-sm font-medium text-black
-          transition-colors duration-500 hover:bg-black/10
-          motion-reduce:transition-none
-        "
-      >
-        {t("error.projects")}
-      </a>
-    {/if}
   </div>
 </div>

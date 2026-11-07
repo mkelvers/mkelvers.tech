@@ -14,13 +14,9 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-node": "^6.0.0",
-		"@sveltejs/enhanced-img": "^1.0.0",
 		"@sveltejs/kit": "^3.0.0",
 		"@sveltejs/vite-plugin-svelte": "^7.2.0",
 		"@tailwindcss/vite": "^4.3.0",
-		"@types/accept-language-parser": "^1.5.8",
-		"beautiful-mermaid": "^1.1.3",
-		"mdsvex": "^0.12.8",
 		"svelte": "^5.57.1",
 		"svelte-check": "^4.6.0",
 		"tailwindcss": "^4.3.0",
@@ -33,8 +29,6 @@
 		"#lib/*": "./src/lib/*"
 	},
 	"dependencies": {
-		"@fontsource-variable/inter": "^5.3.0",
-		"accept-language-parser": "^1.5.0",
-		"i18next": "^26.4.2"
+		"@fontsource/open-runde": "^5.3.0"
 	}
 }
