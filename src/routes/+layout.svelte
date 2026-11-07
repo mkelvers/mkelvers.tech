@@ -47,7 +47,7 @@
     {@const toList = page.route.id === "/projects/[slug]"}
     {@const label = t(toList ? "layout.backToProjects" : "layout.backToHome")}
     <a
-      href={toList ? "/projects" : "/"}
+      href={toList ? "/#projects" : "/"}
       aria-label={label}
       title={label}
       class="
@@ -60,20 +60,23 @@
     </a>
   {/if}
 
-  <div
-    class="
-      relative flex min-h-screen flex-col px-6 py-12
-      print:min-h-0 print:w-full print:px-[52px] print:pt-[42px] print:pb-0
-    "
-  >
-    <div class="mx-auto flex w-full max-w-xl flex-1 flex-col print:max-w-none">
-      <main
-        id="main"
-        tabindex="-1"
-        class="flex flex-1 flex-col outline-none {isHome ? '' : 'mt-16'} print:mt-0"
-      >
-        {@render children()}
-      </main>
+  {#if isHome}
+    <!-- The home page lays out its own full-width sections. -->
+    <main id="main" tabindex="-1" class="outline-none">
+      {@render children()}
+    </main>
+  {:else}
+    <div
+      class="
+        relative flex min-h-screen flex-col px-6 py-12
+        print:min-h-0 print:w-full print:px-[52px] print:pt-[42px] print:pb-0
+      "
+    >
+      <div class="mx-auto flex w-full max-w-xl flex-1 flex-col print:max-w-none">
+        <main id="main" tabindex="-1" class="mt-16 flex flex-1 flex-col outline-none print:mt-0">
+          {@render children()}
+        </main>
+      </div>
     </div>
-  </div>
+  {/if}
 </div>

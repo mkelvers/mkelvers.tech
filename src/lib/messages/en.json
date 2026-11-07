@@ -13,7 +13,8 @@
     "intro": "I'm a web developer from {{location}}, looking for my first job.",
     "work": "Lately I've been working on <sora>Sora</sora>, an anime streaming service I use almost every day. You can also see my other <projects>projects</projects> or read my <cv>CV</cv>.",
     "contact": "The best way to reach me is <email>email</email> or <linkedin>LinkedIn</linkedin>. My code is on <github>GitHub</github>.",
-    "location": "Holbæk, Denmark"
+    "location": "Holbæk, Denmark",
+    "scrollHint": "Scroll to projects"
   },
   "projects": {
     "title": "Projects",
