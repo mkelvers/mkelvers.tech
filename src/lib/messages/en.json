@@ -18,7 +18,6 @@
   },
   "projects": {
     "title": "Projects",
-    "description": "Web projects by {{name}}: Sora, a self-hosted anime library with its own typed API, plus HiFi Horizon, Newsify, Escape Room and Vinyl Shop.",
     "readMore": "Read more",
     "source": "Source"
   },

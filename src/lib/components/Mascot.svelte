@@ -7,11 +7,26 @@
   let swarm = $state<Swarm>();
   let frame = $state<Frame>("idle");
   let lift = $state(0);
+  let button: HTMLButtonElement;
 
   $effect(() => {
     preloadFrames();
     return () => swarm?.stop({ instant: true });
   });
+
+  // The slimes belong to the intro screen; send them away once it scrolls out of view.
+  $effect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) dismiss();
+    });
+    observer.observe(button);
+    return () => observer.disconnect();
+  });
+
+  function dismiss() {
+    swarm?.stop();
+    swarm = undefined;
+  }
 
   async function hop() {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -33,8 +48,7 @@
     void hop();
 
     if (swarm) {
-      swarm.stop();
-      swarm = undefined;
+      dismiss();
     } else {
       swarm = new Swarm();
       swarm.start();
@@ -43,6 +57,7 @@
 </script>
 
 <button
+  bind:this={button}
   type="button"
   onclick={toggle}
   aria-label="Rimuru"

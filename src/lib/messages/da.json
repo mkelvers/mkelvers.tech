@@ -18,7 +18,6 @@
   },
   "projects": {
     "title": "Projekter",
-    "description": "Webprojekter af {{name}}: Sora, et selvhostet anime-bibliotek med sit eget typede API, plus HiFi Horizon, Newsify, Escape Room og Vinyl Shop.",
     "readMore": "Læs mere",
     "source": "Kildekode"
   },
