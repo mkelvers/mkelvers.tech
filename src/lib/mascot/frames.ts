@@ -1,4 +1,4 @@
-/** Every pose the mascot has. Each one is a 256×256 transparent PNG in `static/mascot/`. */
+/** Every pose the mascot has. Each one is a 256×256 transparent WebP in `static/mascot/`. */
 export const frames = [
   "idle",
   "squash",
@@ -16,7 +16,7 @@ export const frames = [
 export type Frame = (typeof frames)[number];
 
 export function frameSrc(frame: Frame): string {
-  return `/mascot/${frame}.png`;
+  return `/mascot/${frame}.webp`;
 }
 
 /** Fetches every frame up front so the first swap to a pose never flashes empty. */
