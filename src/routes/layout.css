@@ -43,22 +43,29 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* The watching tooltip grows out of its tail, which points at the chevron below it. */
-.watching-tip {
-  translate: -50% 0;
-  transform-origin: var(--tail) 100%;
+/* "Now watching" (src/lib/components/watching/): Rimuru's speech bubble. It uses the page's
+   own grey, one step darker, so it reads as part of the page in light and dark mode,
+   and grows out of its tail. */
+.watching-say {
+  --watching-fill: color-mix(in oklab, var(--color-black) 7%, var(--color-white));
+  background: var(--watching-fill);
+  transform-origin: 0% calc(100% - 20px);
   transition:
-    opacity 180ms cubic-bezier(0.23, 1, 0.32, 1),
-    scale 180ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    scale 160ms cubic-bezier(0.23, 1, 0.32, 1);
 
   @starting-style {
     opacity: 0;
-    scale: 0.94;
+    scale: 0.96;
   }
 }
 
+.watching-tail {
+  background: var(--watching-fill);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .watching-tip {
+  .watching-say {
     transition: opacity 150ms ease;
 
     @starting-style {

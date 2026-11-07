@@ -13,7 +13,7 @@
     "contact": "The best way to reach me is <email>email</email> or <linkedin>LinkedIn</linkedin>.",
     "location": "Holbæk, Denmark",
     "mascot": "Let the slimes out",
-    "watching": "I'm currently watching",
+    "watching": "Right now {{name}} is watching {{titles}}.",
     "watchingToggle": "What I'm watching right now"
   },
   "seo": {

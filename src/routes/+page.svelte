@@ -2,7 +2,7 @@
   import type { PageProps } from "./$types";
   import Mascot from "#lib/components/Mascot.svelte";
   import Rich from "#lib/components/Rich.svelte";
-  import WatchingTip from "#lib/components/WatchingTip.svelte";
+  import Watching from "#lib/components/watching/Watching.svelte";
   import Seo from "#lib/components/Seo.svelte";
   import { copy, fill } from "#lib/copy.ts";
   import { profile, stack } from "#lib/profile.ts";
@@ -39,7 +39,7 @@
 </svelte:head>
 
 <!-- Kept tight: whitespace here would show up as a gap before the comma. -->
-{#snippet watching()}<WatchingTip titles={data.nowWatching} />{/snippet}
+{#snippet watching()}<Watching titles={data.nowWatching} />{/snippet}
 
 <div data-mascot-avoid class="mx-auto w-full max-w-xl my-auto flex flex-col gap-4 leading-relaxed text-black/70">
   <Mascot />
