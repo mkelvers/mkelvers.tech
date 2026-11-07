@@ -77,19 +77,19 @@ export class Slime {
 
   // Long, random pauses keep the page calm; the swarm caps how many act at once.
   private async live(): Promise<void> {
-    await wait(between(1500, 4000));
+    await wait(between(800, 2500));
 
     while (!this.disposed) {
       await this.swarm.whenTurnFree(() => this.act());
-      await wait(between(6000, 14000));
+      await wait(between(2500, 6000));
     }
   }
 
   private act(): Promise<void> {
     const roll = Math.random();
 
-    if (roll < 0.3) return this.hop();
-    if (roll < 0.5) return this.hopAway();
+    if (roll < 0.2) return this.hop();
+    if (roll < 0.55) return this.travel();
     if (roll < 0.75) return this.lookAround();
     if (roll < 0.9) return this.happy();
     return this.doze();
@@ -143,10 +143,11 @@ export class Slime {
 
     const dx = target.x - this.x;
     const dy = target.y - this.y;
+    const distance = Math.hypot(dx, dy);
 
     await this.play([
-      [dx < 0 ? "lean-left" : "lean-right", 180],
-      ["squash", 100],
+      [dx < 0 ? "lean-left" : "lean-right", 140],
+      ["squash", 80],
     ]);
     if (this.disposed) return;
 
@@ -157,10 +158,10 @@ export class Slime {
     await this.move(
       [
         { translate: "0 0" },
-        { translate: `${dx / 2}px ${dy / 2 - 30}px` },
+        { translate: `${dx / 2}px ${dy / 2 - Math.min(70, 20 + distance * 0.2)}px` },
         { translate: `${dx}px ${dy}px` },
       ],
-      520,
+      280 + distance * 0.8,
     );
 
     this.img.style.left = `${this.x}px`;
@@ -169,6 +170,16 @@ export class Slime {
       ["land", 130],
       ["idle", 0],
     ]);
+  }
+
+  // One to three hops in a row, so a slime actually crosses the page.
+  private async travel(): Promise<void> {
+    const hops = Math.floor(between(1, 4));
+
+    for (let i = 0; i < hops && !this.disposed; i++) {
+      await this.hopAway();
+      await wait(between(60, 160));
+    }
   }
 
   private async lookAround(): Promise<void> {

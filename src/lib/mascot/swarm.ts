@@ -2,7 +2,7 @@ import { between } from "./motion.ts";
 import { Slime } from "./slime.ts";
 
 const maxSlimes = 8;
-const maxActing = 2;
+const maxActing = 3;
 const spawnEveryMs = 600;
 const fadeStaggerMs = 500;
 
@@ -59,7 +59,7 @@ export class Swarm {
   nearbySpot(slime: Slime): Spot | null {
     for (let attempt = 0; attempt < 12; attempt++) {
       const angle = Math.random() * Math.PI * 2;
-      const distance = between(60, 140);
+      const distance = between(100, 260);
       const spot = {
         x: slime.x + Math.cos(angle) * distance,
         y: slime.y + Math.sin(angle) * distance * 0.6,
