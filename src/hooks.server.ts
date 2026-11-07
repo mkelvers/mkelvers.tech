@@ -36,6 +36,11 @@ export const handle: Handle = ({ event, resolve }) => {
 
   return resolve(event, {
     transformPageChunk: ({ html }) => html.replace("%lang%", lang),
+    // Fetch the two weights the first screen uses early, so text never flashes in a fallback font.
+    preload: (file) =>
+      file.type === "font"
+        ? /open-runde-latin-(400|500)-normal\.woff2$/.test(file.filename)
+        : file.type === "js" || file.type === "css",
   });
 };
 
