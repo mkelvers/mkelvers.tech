@@ -1,5 +1,6 @@
 <script lang="ts">
   import "./layout.css";
+  import { onNavigate } from "$app/navigation";
   import { navigating, page } from "$app/state";
   import favicon from "#lib/assets/favicon.svg";
   import Icon from "#lib/components/Icon.svelte";
@@ -9,6 +10,21 @@
   let { children, data }: LayoutProps = $props();
 
   const isHome = $derived(page.url.pathname === "/");
+
+  // Blend pages into each other instead of swapping them, so moving between
+  // home and the CV feels like one surface. Skipped when the browser lacks
+  // view transitions or the visitor prefers reduced motion.
+  onNavigate((navigation) => {
+    if (!document.startViewTransition) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    return new Promise((resolve) => {
+      document.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
+    });
+  });
 </script>
 
 <svelte:head>
@@ -44,10 +60,9 @@
   "
 >
   {#if !isHome}
-    {@const toList = page.route.id === "/projects/[slug]"}
-    {@const label = t(toList ? "layout.backToProjects" : "layout.backToHome")}
+    {@const label = t("layout.backToHome")}
     <a
-      href={toList ? "/projects" : "/"}
+      href="/"
       aria-label={label}
       title={label}
       class="

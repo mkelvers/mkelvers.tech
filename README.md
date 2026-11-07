@@ -1,6 +1,6 @@
 # mkelvers.tech
 
-Personal portfolio for Mikkel Elvers. SvelteKit, Svelte 5, Tailwind CSS 4, mdsvex, i18next (English and Danish) and a self-hosted Inter. No analytics, no cookies beyond the language choice, and no third-party requests.
+Personal portfolio for Mikkel Elvers. SvelteKit, Svelte 5, Tailwind CSS 4, i18next (English and Danish) and a self-hosted Open Runde. No analytics, no cookies beyond an optional `?lang=` override, and no third-party requests.
 
 ## Develop
 
@@ -10,9 +10,9 @@ bun run dev
 bun run check
 ```
 
-## Add a project
+## Projects
 
-Add a Markdown file to `src/content/projects/`. Frontmatter holds `name`, `description`, `tags`, `order`, `page`, `source` and `facts`. With `page: true` it gets its own page at `/projects/<slug>`; otherwise the card links to `source`.
+Projects live on GitHub, not on this site. The home page links to the GitHub profile, and old `/projects/...` links redirect there.
 
 ## Deploy
 

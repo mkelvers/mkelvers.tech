@@ -1,11 +1,8 @@
-import { projects } from "#lib/projects.ts";
 import type { RequestHandler } from "./$types";
 
 export const GET: RequestHandler = ({ url }) => {
   const paths = [
     "/",
-    "/projects",
-    ...projects.map((project) => `/projects/${project.slug}`),
     "/cv",
   ];
 

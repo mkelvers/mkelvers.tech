@@ -2,7 +2,6 @@
   "layout": {
     "skip": "Gå til indhold",
     "loading": "Indlæser siden",
-    "backToProjects": "Tilbage til projekter",
     "backToHome": "Tilbage til forsiden"
   },
   "home": {
@@ -11,14 +10,9 @@
     "jobTitle": "Junior frontend- og full-stack-udvikler",
     "headline": "Hej, jeg hedder {{name}}",
     "intro": "Jeg er webudvikler fra {{location}} og søger mit første job.",
-    "work": "For tiden arbejder jeg på <sora>Sora</sora>, en anime-streamingtjeneste, som jeg bruger næsten hver dag. Du kan også se mine andre <projects>projekter</projects> eller læse mit <cv>CV</cv>.",
-    "contact": "Du fanger mig bedst på <email>e-mail</email> eller <linkedin>LinkedIn</linkedin>. Min kode ligger på <github>GitHub</github>.",
+    "work": "For tiden arbejder jeg på <sora>Sora</sora>, en anime-streamingtjeneste, som jeg bruger næsten hver dag. Mine andre <projects>projekter ligger på GitHub</projects>, og du kan læse mit <cv>CV</cv> her.",
+    "contact": "Du fanger mig bedst på <email>e-mail</email> eller <linkedin>LinkedIn</linkedin>.",
     "location": "Holbæk"
-  },
-  "projects": {
-    "title": "Projekter",
-    "readMore": "Læs mere",
-    "source": "Kildekode"
   },
   "seo": {
     "imageAlt": "Akvarel af isometriske bjælker med en gren"
@@ -28,7 +22,6 @@
     "offline": "Du ser ud til at være offline. Tjek din forbindelse.",
     "retry": "Prøv igen",
     "home": "Tilbage til forsiden",
-    "projects": "Se projekter",
     "generic": {
       "title": "Noget gik galt",
       "message": "Siden kunne ikke vises."

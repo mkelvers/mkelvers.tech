@@ -48,7 +48,7 @@
   <p>
     <Rich
       text={t("home.work")}
-      links={{ sora: "/projects/sora", projects: "/projects", cv: "/cv" }}
+      links={{ sora: "https://github.com/mkelvers/sora", projects: profile.github, cv: "/cv" }}
     />
   </p>
 

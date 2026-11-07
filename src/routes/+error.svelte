@@ -69,17 +69,5 @@
       </a>
     {/if}
 
-    {#if page.status === 404}
-      <a
-        href="/projects"
-        class="
-          inline-block rounded-full px-6 py-2.5 text-sm font-medium text-black
-          transition-colors duration-500 hover:bg-black/10
-          motion-reduce:transition-none
-        "
-      >
-        {t("error.projects")}
-      </a>
-    {/if}
   </div>
 </div>

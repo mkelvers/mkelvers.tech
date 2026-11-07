@@ -2,7 +2,6 @@
   "layout": {
     "skip": "Skip to content",
     "loading": "Loading page",
-    "backToProjects": "Back to projects",
     "backToHome": "Back to home"
   },
   "home": {
@@ -11,14 +10,9 @@
     "jobTitle": "Junior front-end and full-stack developer",
     "headline": "Hey, I'm {{name}}",
     "intro": "I'm a web developer from {{location}}, looking for my first job.",
-    "work": "Lately I've been working on <sora>Sora</sora>, an anime streaming service I use almost every day. You can also see my other <projects>projects</projects> or read my <cv>CV</cv>.",
-    "contact": "The best way to reach me is <email>email</email> or <linkedin>LinkedIn</linkedin>. My code is on <github>GitHub</github>.",
+    "work": "Lately I've been working on <sora>Sora</sora>, an anime streaming service I use almost every day. My other <projects>projects are on GitHub</projects>, and you can read my <cv>CV</cv> here.",
+    "contact": "The best way to reach me is <email>email</email> or <linkedin>LinkedIn</linkedin>.",
     "location": "Holbæk, Denmark"
-  },
-  "projects": {
-    "title": "Projects",
-    "readMore": "Read more",
-    "source": "Source"
   },
   "seo": {
     "imageAlt": "Watercolour illustration of isometric beams with a branch"
@@ -28,7 +22,6 @@
     "offline": "You appear to be offline. Check your connection.",
     "retry": "Try again",
     "home": "Back to home",
-    "projects": "See projects",
     "generic": {
       "title": "Something went wrong",
       "message": "This page couldn't be shown."
