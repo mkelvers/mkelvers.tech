@@ -30,7 +30,7 @@ export const load: PageServerLoad = ({ locals }) => {
           muted: "light-dark(#737373, #a3a3a3)",
           surface: "light-dark(#fafafa, #171717)",
           border: "light-dark(#d4d4d4, #404040)",
-          font: "Inter Variable",
+          font: "Open Runde",
           transparent: true,
         },
       ).replace(/@import url\([^)]*\);/g, ""),

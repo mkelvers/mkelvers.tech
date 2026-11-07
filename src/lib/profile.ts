@@ -1,5 +1,6 @@
 export const profile = {
   name: "Mikkel Elvers",
+  firstName: "Mikkel",
   fullName: "Mikkel Nothlev Elvers",
   email: "mikkelelvers@outlook.com",
   phone: "+45 42 73 63 93",

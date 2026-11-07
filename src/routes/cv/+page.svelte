@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Icon from "#lib/components/Icon.svelte";
   import Seo from "#lib/components/Seo.svelte";
   import { t } from "#lib/i18n.ts";
   import { profile, skillGroups } from "#lib/profile.ts";
@@ -24,6 +23,11 @@
       href: profile.linkedin,
     },
   ] as const;
+
+  const link = `
+    text-black underline decoration-black/30 underline-offset-4
+    transition-colors duration-300 hover:decoration-black
+  `;
 </script>
 
 <Seo
@@ -40,70 +44,52 @@
 -->
 
 {#snippet heading(label: string)}
-  <h2 class="text-xs font-normal tracking-widest text-black/60 uppercase">
+  <h2 class="font-medium text-black">
     {label}
   </h2>
 {/snippet}
 
-<article lang={data.lang} class="text-sm leading-relaxed print:hidden">
+<article lang={data.lang} class="leading-relaxed text-black/70 print:hidden">
   <header>
-    <div class="flex items-start justify-between gap-6">
-      <div>
-        <h1 class="text-3xl font-semibold tracking-tight">
-          {profile.fullName}
-        </h1>
-        <p class="mt-1 text-black/60">
-          {t("cv.role")} · {t("home.location")}
-        </p>
-      </div>
+    <h1 class="text-xl font-medium tracking-tight text-black">
+      {profile.fullName}
+    </h1>
+    <p class="mt-1">{t("cv.role")} · {t("home.location")}</p>
 
-      <button
-        type="button"
-        onclick={() => window.print()}
-        class="
-          shrink-0 cursor-pointer rounded-full bg-black px-4 py-1.5 text-xs
-          text-white transition-colors duration-500 hover:bg-black/90
-        "
-      >
-        {t("cv.labels.save")}
-      </button>
-    </div>
-
-    <ul class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-black/70">
+    <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
       {#each links as item (item.icon)}
         <li>
-          <a
-            href={item.href}
-            class="inline-flex items-center gap-2 hover:text-black"
-          >
-            <Icon name={item.icon} class="size-4" />
-            {item.text}
-          </a>
+          <a href={item.href} class={link}>{item.text}</a>
         </li>
       {/each}
+      <li>
+        <button type="button" onclick={() => window.print()} class="cursor-pointer {link}">
+          {t("cv.labels.save")}
+        </button>
+      </li>
     </ul>
   </header>
 
   <div class="mt-10 space-y-10">
     <section>
       {@render heading(t("cv.labels.profile"))}
-      <p class="mt-3 text-black/80">{t("cv.profile")}</p>
+      <p class="mt-2">{t("cv.profile")}</p>
     </section>
 
     <section>
       {@render heading(t("cv.labels.projects"))}
 
-      <div class="mt-3 space-y-6">
+      <div class="mt-2 space-y-5">
         {#each t("cv.projects") as project (project.name)}
           <div>
             <div
               class="flex flex-wrap items-baseline justify-between gap-x-4"
             >
-              <h3 class="font-medium">{project.name}</h3>
-              <p class="text-xs text-black/60">{project.meta}</p>
+              <h3 class="text-black">{project.name}</h3>
+              <p class="text-sm text-black/50">{project.meta}</p>
             </div>
 
-            <ul class="mt-1.5 list-disc space-y-1 pl-5 text-black/80">
+            <ul class="mt-1.5 list-disc space-y-1 pl-5">
               {#each project.bullets as bullet (bullet)}
                 <li>{bullet}</li>
               {/each}
@@ -116,13 +102,13 @@
     <section>
       {@render heading(t("cv.labels.education"))}
       <div
-        class="mt-3 flex flex-wrap items-baseline justify-between gap-x-4"
+        class="mt-2 flex flex-wrap items-baseline justify-between gap-x-4"
       >
-        <p>{t("cv.education.name")}, {t("cv.education.school")}</p>
-        <p class="text-xs text-black/60">{t("cv.education.period")}</p>
+        <p class="text-black">{t("cv.education.name")}, {t("cv.education.school")}</p>
+        <p class="text-sm text-black/50">{t("cv.education.period")}</p>
       </div>
-      <p class="mt-1 text-black/80">{t("cv.education.grade")}</p>
-      <ul class="mt-1 list-disc space-y-1 pl-5 text-black/80">
+      <p class="mt-1">{t("cv.education.grade")}</p>
+      <ul class="mt-1 list-disc space-y-1 pl-5">
         {#each t("cv.education.bullets") as bullet (bullet)}
           <li>{bullet}</li>
         {/each}
@@ -131,17 +117,17 @@
 
     <section>
       {@render heading(t("cv.labels.skills"))}
-      <dl class="mt-3 grid grid-cols-[9rem_1fr] gap-y-1">
+      <dl class="mt-2 grid grid-cols-[9rem_1fr] gap-y-1">
         {#each skillGroups as group (group.key)}
-          <dt class="text-black/60">{t(`cv.skillGroups.${group.key}`)}</dt>
-          <dd class="text-black/80">{group.items.join(", ")}</dd>
+          <dt class="text-black/50">{t(`cv.skillGroups.${group.key}`)}</dt>
+          <dd>{group.items.join(", ")}</dd>
         {/each}
       </dl>
     </section>
 
     <section>
       {@render heading(t("cv.labels.languages"))}
-      <p class="mt-3 text-black/80">{t("cv.languages").join(", ")}</p>
+      <p class="mt-2">{t("cv.languages").join(", ")}</p>
     </section>
   </div>
 </article>

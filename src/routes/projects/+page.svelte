@@ -15,36 +15,24 @@
   })}
 />
 
-<h1 class="text-3xl font-semibold tracking-tight">{t("projects.title")}</h1>
+<div class="flex flex-col gap-4 leading-relaxed text-black/70">
+  <h1 class="mb-1 text-xl font-medium tracking-tight text-black">
+    {t("projects.title")}
+  </h1>
 
-<ul class="mt-10 -mx-4">
-  {#each projects as project (project.slug)}
-    <li
-      class="
-        relative rounded-2xl px-4 py-4 transition-colors duration-300
-        hover:bg-black/5 has-focus-visible:bg-black/5
-      "
-    >
-      <div class="flex items-baseline justify-between gap-4">
-        <h2 class="font-semibold">
-          <a
-            href="/projects/{project.slug}"
-            class="outline-none after:absolute after:inset-0"
-          >
-            {project.name}
-          </a>
-        </h2>
-
-        <span class="text-xs text-black/60" aria-hidden="true">
-          {t("projects.readMore")}
-        </span>
-      </div>
-
-      <p class="mt-1 text-sm text-black/60">
-        {project.description[data.lang]}
-      </p>
-
-      <p class="mt-2 text-xs text-black/60">{project.tags.join(" · ")}</p>
-    </li>
-  {/each}
-</ul>
+  <ul class="flex flex-col gap-4">
+    {#each projects as project (project.slug)}
+      <li>
+        <a
+          href="/projects/{project.slug}"
+          class="
+            text-black underline decoration-black/30 underline-offset-4
+            transition-colors duration-300 hover:decoration-black
+          "
+        >
+          {project.name}</a
+        >. {project.description[data.lang]}
+      </li>
+    {/each}
+  </ul>
+</div>

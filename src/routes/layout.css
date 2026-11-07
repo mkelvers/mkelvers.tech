@@ -1,12 +1,14 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter/wght.css";
+@import "@fontsource/open-runde/latin-400.css";
+@import "@fontsource/open-runde/latin-500.css";
+@import "@fontsource/open-runde/latin-600.css";
 
 @theme {
-  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-sans: "Open Runde", system-ui, sans-serif;
   --font-cv: Georgia, "Times New Roman", serif;
   --font-cv-display: Georgia, "Times New Roman", serif;
-  --color-leaf: #66902b;  --color-black: light-dark(#000, #ededed);
-  --color-white: light-dark(#fff, #070707);
+  --color-black: light-dark(#000, #ededed);
+  --color-white: light-dark(#f6f6f6, #070707);
 }
 
 html {
@@ -15,56 +17,8 @@ html {
   background: var(--color-white);
 }
 
-html[data-theme="light"] {
-  color-scheme: light;
-}
-
-html[data-theme="dark"] {
-  color-scheme: dark;
-}
-
-.hero img {
-  mask-image: linear-gradient(to right, transparent, #000 10rem);
-}
-
-.theme-light {
-  display: none;
-}
-
-.theme-dark {
-  display: grid;
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) {
-    .hero {
-      filter: invert(1) hue-rotate(180deg) brightness(0.62) saturate(0.6);
-      mix-blend-mode: screen;
-    }
-
-    .theme-light {
-      display: grid;
-    }
-
-    .theme-dark {
-      display: none;
-    }
-  }
-}
-
-html[data-theme="dark"] {
-  .hero {
-    filter: invert(1) hue-rotate(180deg) brightness(0.62) saturate(0.6);
-    mix-blend-mode: screen;
-  }
-
-  .theme-light {
-    display: grid;
-  }
-
-  .theme-dark {
-    display: none;
-  }
+::selection {
+  background-color: light-dark(#dadada, #222222);
 }
 
 :focus-visible {
@@ -78,9 +32,12 @@ html[data-theme="dark"] {
 }
 
 @media print {
-  html,
-  html[data-theme] {
+  html {
     color-scheme: light;
+  }
+
+  :root {
+    --color-white: #fff;
   }
 }
 
