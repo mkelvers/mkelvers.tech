@@ -28,7 +28,7 @@
 
 <svelte:head>
   <link rel="icon" type="image/png" href="/mascot/idle.png" />
-  <link rel="apple-touch-icon" href="/mascot/idle.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </svelte:head>
 
 <a

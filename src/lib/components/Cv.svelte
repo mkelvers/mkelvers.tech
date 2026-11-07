@@ -40,7 +40,7 @@
   <section class="relative">
     <h2
       class="
-        mb-3 text-sm leading-relaxed text-black/50
+        mb-3 text-sm leading-relaxed text-black/60
         lg:absolute lg:top-px lg:right-full lg:mr-10 lg:mb-0 lg:w-36 lg:text-right
       "
     >
@@ -53,7 +53,7 @@
 <article {lang} class="leading-relaxed text-black/70 print:hidden">
   <header>
     <h1 class="text-xl font-medium tracking-tight text-black">{profile.fullName}</h1>
-    <p class="mt-1 text-black/50">{t("cv.role")} · {t("home.location")}</p>
+    <p class="mt-1 text-black/60">{t("cv.role")} · {t("home.location")}</p>
     <p class="mt-5">{t("cv.profile")}</p>
 
     <ul class="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-sm">
@@ -74,7 +74,7 @@
         {#each t("cv.projects") as project (project.name)}
           <div>
             <h3 class="font-medium text-black">{project.name}</h3>
-            <p class="text-sm text-black/50">{project.meta}</p>
+            <p class="text-sm text-black/60">{project.meta}</p>
             <p class="mt-2">{asParagraph(project.bullets)}</p>
           </div>
         {/each}
@@ -86,7 +86,7 @@
       <h3 class="font-medium text-black">
         {t("cv.education.name")}, {t("cv.education.school")}
       </h3>
-      <p class="text-sm text-black/50">{t("cv.education.period")}</p>
+      <p class="text-sm text-black/60">{t("cv.education.period")}</p>
       <p class="mt-2">
         {t("cv.education.grade")}
         {asParagraph(t("cv.education.bullets"))}

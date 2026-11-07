@@ -1,9 +1,12 @@
 <script lang="ts">
+  import type { PageProps } from "./$types";
   import Mascot from "#lib/components/Mascot.svelte";
   import Rich from "#lib/components/Rich.svelte";
   import Seo from "#lib/components/Seo.svelte";
   import { t } from "#lib/i18n.ts";
   import { profile, stack } from "#lib/profile.ts";
+
+  let { data }: PageProps = $props();
 </script>
 
 <Seo
@@ -49,6 +52,12 @@
       links={{ sora: "https://github.com/mkelvers/sora", projects: profile.github, cv: "/cv" }}
     />
   </p>
+
+  {#if data.nowWatching.length > 0}
+    <p>{t("home.nowWatching", {
+      titles: new Intl.ListFormat(data.lang, { style: "long", type: "conjunction" }).format(data.nowWatching),
+    })}</p>
+  {/if}
 
   <p>
     <Rich

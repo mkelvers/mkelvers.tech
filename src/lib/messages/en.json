@@ -10,6 +10,7 @@
     "headline": "Hey, I'm {{name}}",
     "intro": "I'm a web developer from {{location}}, looking for my first job.",
     "work": "Lately I've been working on <sora>Sora</sora>, an anime streaming service I use almost every day. My other <projects>projects are on GitHub</projects>, and you can read my <cv>CV</cv> here.",
+    "nowWatching": "Right now I'm watching {{titles}} on it.",
     "contact": "The best way to reach me is <email>email</email> or <linkedin>LinkedIn</linkedin>.",
     "location": "Holbæk, Denmark"
   },
