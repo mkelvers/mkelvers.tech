@@ -43,27 +43,25 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* The watching bubble rises out of the sentence above it. */
-.bubble-in {
-  transform-origin: left top;
+/* The watching tooltip grows out of its tail, which points at the chevron below it. */
+.watching-tip {
+  translate: -50% 0;
+  transform-origin: var(--tail) 100%;
   transition:
-    opacity 220ms cubic-bezier(0.23, 1, 0.32, 1),
-    translate 220ms cubic-bezier(0.23, 1, 0.32, 1),
-    scale 220ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity 180ms cubic-bezier(0.23, 1, 0.32, 1),
+    scale 180ms cubic-bezier(0.23, 1, 0.32, 1);
 
   @starting-style {
     opacity: 0;
-    translate: 0 -4px;
-    scale: 0.97;
+    scale: 0.94;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bubble-in {
+  .watching-tip {
     transition: opacity 150ms ease;
 
     @starting-style {
-      translate: 0 0;
       scale: 1;
     }
   }
