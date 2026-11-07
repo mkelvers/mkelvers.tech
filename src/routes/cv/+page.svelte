@@ -9,7 +9,7 @@
 </script>
 
 <Seo
-  title={`${profile.fullName} – ${t("cv.title")}`}
+  title={`${t("cv.title")} · ${profile.username}`}
   description={t("cv.description", {
     location: t("home.location"),
   })}

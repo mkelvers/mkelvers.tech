@@ -18,7 +18,7 @@
   <meta name="description" content={description} />
   <link rel="canonical" href={page.url.origin + page.url.pathname} />
 
-  <meta property="og:site_name" content={profile.name} />
+  <meta property="og:site_name" content={profile.username} />
   <meta property="og:type" content={type} />
   <meta
     property="og:locale"

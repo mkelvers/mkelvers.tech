@@ -5,7 +5,6 @@
     "backToHome": "Back to home"
   },
   "home": {
-    "title": "{{name}} · Portfolio",
     "description": "{{name}} is a junior frontend and full-stack developer based in {{location}}. Builds whole products, from the database to the interface.",
     "jobTitle": "Junior frontend and full-stack developer",
     "headline": "Hey, I'm {{name}}",

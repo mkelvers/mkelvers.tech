@@ -5,7 +5,6 @@
     "backToHome": "Tilbage til forsiden"
   },
   "home": {
-    "title": "{{name}} · Portfolio",
     "description": "{{name}} er junior frontend- og full-stack-udvikler med base i {{location}}. Bygger hele produkter, fra databasen til brugerfladen.",
     "jobTitle": "Junior frontend- og full-stack-udvikler",
     "headline": "Hej, jeg hedder {{name}}",

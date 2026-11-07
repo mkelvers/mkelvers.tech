@@ -2,7 +2,6 @@
   import "./layout.css";
   import { onNavigate } from "$app/navigation";
   import { navigating, page } from "$app/state";
-  import favicon from "#lib/assets/favicon.svg";
   import Icon from "#lib/components/Icon.svelte";
   import { t } from "#lib/i18n.ts";
   import type { LayoutProps } from "./$types";
@@ -28,7 +27,8 @@
 </script>
 
 <svelte:head>
-  <link rel="icon" href={favicon} />
+  <link rel="icon" type="image/png" href="/mascot/idle.png" />
+  <link rel="apple-touch-icon" href="/mascot/idle.png" />
 </svelte:head>
 
 <a

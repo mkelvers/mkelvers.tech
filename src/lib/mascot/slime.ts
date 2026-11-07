@@ -1,6 +1,6 @@
 import { frameSrc, type Frame } from "./frames.ts";
 import { between, easeOut, wait } from "./motion.ts";
-import type { Swarm } from "./swarm.ts";
+import type { Cell, Swarm } from "./swarm.ts";
 
 type Step = [frame: Frame, holdMs: number];
 
@@ -14,6 +14,8 @@ export class Slime {
 
   constructor(
     private readonly swarm: Swarm,
+    /** The grid cell this slime lives in; its hops never leave it. */
+    readonly cell: Cell,
     public x: number,
     public y: number,
     public readonly size: number,

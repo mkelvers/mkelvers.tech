@@ -7,9 +7,7 @@
 </script>
 
 <Seo
-  title={t("home.title", {
-    name: profile.name,
-  })}
+  title={profile.username}
   description={t("home.description", {
     name: profile.name,
     location: t("home.location"),
