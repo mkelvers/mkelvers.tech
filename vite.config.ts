@@ -21,7 +21,8 @@ export default defineConfig({
         mode: "auto",
         directives: {
           "default-src": ["self"],
-          "script-src": ["self"],
+          // Cloudflare Web Analytics beacon, injected at the edge. It reports to /cdn-cgi/rum on this origin.
+          "script-src": ["self", "https://static.cloudflareinsights.com"],
           "style-src": ["self", "unsafe-inline"],
           "img-src": ["self", "data:"],
           "font-src": ["self"],
