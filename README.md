@@ -1,6 +1,6 @@
 # mkelvers.tech
 
-Personal portfolio for Mikkel Elvers. SvelteKit, Svelte 5, Tailwind CSS 4 and a self-hosted Open Runde. No analytics, no cookies, and no third-party requests.
+Personal portfolio for Mikkel Elvers. SvelteKit, Svelte 5, Tailwind CSS 4 and a self-hosted Open Runde. No cookies. The only third-party request is the Cloudflare Web Analytics beacon, which Cloudflare injects at the edge.
 
 ## Develop
 
@@ -13,6 +13,10 @@ bun run check
 ## Projects
 
 Projects live on GitHub, not on this site. The home page links to the GitHub profile, and old `/projects/...` links redirect there.
+
+## Analytics
+
+The site is proxied through Cloudflare. Visitor counts come from Cloudflare Web Analytics with automatic setup: Cloudflare adds `beacon.min.js` from `static.cloudflareinsights.com` to each HTML response, and the beacon reports to `/cdn-cgi/rum` on this domain. The CSP in `vite.config.ts` allows that one script host. To turn analytics off, disable the site in the Cloudflare dashboard and remove the host from `script-src`.
 
 ## Deploy
 
