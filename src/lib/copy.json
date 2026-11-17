@@ -9,7 +9,7 @@
     "jobTitle": "Junior frontend and full-stack developer",
     "headline": "Hey, I'm {{name}}",
     "intro": "I'm a web developer from {{location}}, looking for my first job.",
-    "work": "Lately I've been working on <sora>Sora</sora><watching/>, an anime streaming service I use almost every day. My other <projects>projects are on GitHub</projects>, and you can read my <cv>CV</cv> here.",
+    "work": "Lately I've been working on <sora>Sora</sora><watching/>, a self-hosted anime app I built for myself and use almost every day. My other <projects>projects are on GitHub</projects>, and you can read my <cv>CV</cv> here.",
     "contact": "The best way to reach me is <email>email</email> or <linkedin>LinkedIn</linkedin>.",
     "location": "Holbæk, Denmark",
     "mascot": "Let the slimes out",
@@ -98,7 +98,7 @@
         "name": "Sora",
         "meta": "TypeScript · Hono · SvelteKit · PostgreSQL · Docker",
         "bullets": [
-          "Built a self-hosted anime library on my own: a versioned HTTP API, a typed SDK, a SvelteKit web app and a job scheduler that keeps a catalogue of 12,000+ series up to date.",
+          "Built a self-hosted anime app on my own, for my own use and closed to sign-ups: a versioned HTTP API, a typed SDK, a SvelteKit web app and a job scheduler that keeps a catalogue of 12,000+ series up to date.",
           "Built a stream proxy that only accepts encrypted, expiring tokens tied to one account, and fetches video segments ahead of time for smooth playback.",
           "Wrote an algorithm that re-times subtitles for a different video version. Runs in production in three Docker containers, with over 400 automated tests."
         ]
