@@ -92,15 +92,15 @@
       "backend": "Backend",
       "tools": "Tools"
     },
-    "profile": "Junior web developer who builds whole products, from the database to the interface. I work in TypeScript across React, Next.js and SvelteKit on the frontend, and Express, Hono and PostgreSQL on the backend. I care about readable code, clear abstractions and understanding the technology behind what I ship.",
+    "profile": "Junior web developer focused on frontend development with TypeScript, React and SvelteKit. I have built and run my own projects, from the database to the interface, and I am most interested in the architecture and the decisions behind it. I use AI daily and test that what I build works. I am looking for a team with experienced developers where I can learn and take on more responsibility.",
     "projects": [
       {
         "name": "Sora",
         "meta": "TypeScript · Hono · SvelteKit · PostgreSQL · Docker",
         "bullets": [
-          "Built a self-hosted anime app on my own, for my own use and closed to sign-ups: a versioned HTTP API, a typed SDK, a SvelteKit web app and a job scheduler that keeps a catalogue of 12,000+ series up to date.",
-          "Built a stream proxy that only accepts encrypted, expiring tokens tied to one account, and fetches video segments ahead of time for smooth playback.",
-          "Wrote an algorithm that re-times subtitles for a different video version. Runs in production in three Docker containers, with over 400 automated tests."
+          "Built a self-hosted anime app on my own, for my own use and closed to sign-ups. Split it into a versioned HTTP API, a SvelteKit web app and a scheduler, so the web app is just one of several clients.",
+          "Designed the stream proxy to only accept encrypted, expiring tokens tied to one account, so it could be exposed securely.",
+          "Fixed my own design mistakes along the way, including a job that got stuck after a crash and a fallback that hid a slow service. Runs in production on my own server."
         ]
       },
       {
