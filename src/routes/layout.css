@@ -43,16 +43,12 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* "Now watching" (src/lib/components/watching/): Rimuru's speech bubble. It uses the page's
-   own grey, one step darker, so it reads as part of the page in light and dark mode,
-   and grows out of its tail. */
 .watching-say {
-  --watching-fill: color-mix(in oklab, var(--color-black) 7%, var(--color-white));
-  background: var(--watching-fill);
+  background: color-mix(in oklab, var(--color-black) 7%, var(--color-white));
   transform-origin: 0% calc(100% - 20px);
   transition:
-    opacity 160ms cubic-bezier(0.23, 1, 0.32, 1),
-    scale 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity 150ms var(--ease-out),
+    scale 150ms var(--ease-out);
 
   @starting-style {
     opacity: 0;
@@ -60,8 +56,17 @@ button {
   }
 }
 
-.watching-tail {
-  background: var(--watching-fill);
+.watching-say::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  bottom: 0.875rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in oklab, var(--color-black) 7%, var(--color-white));
+  translate: 66.6667% 0;
+  rotate: 45deg;
 }
 
 @media (prefers-reduced-motion: reduce) {

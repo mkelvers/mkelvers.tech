@@ -1,77 +1,113 @@
 <script lang="ts">
-  // The big mascot above the heading does the talking. The chevron
-  // still opens it, but the bubble appears beside Rimuru, tail at his face, and grows
-  // upward into the empty space above the column so it never covers the heading.
-  // It stays a child of this <span> so screen readers meet it right after the chevron.
-  import { copy } from "#lib/copy.ts";
-  import { profile } from "#lib/profile.ts";
-  import Chevron from "./Chevron.svelte";
-  import { Disclosure, watchingId, watchingParts } from "./disclosure.svelte.ts";
+  import type { Attachment } from "svelte/attachments";
+  import { profile } from "#lib/utils.ts";
+  import { Disclosure } from "./disclosure.svelte.ts";
 
-  let { titles }: { titles: string[] } = $props();
+  let {
+    titles,
+  }: {
+    titles: string[];
+  } = $props();
 
+  const id = $props.id();
   const disclosure = new Disclosure();
   const parts = $derived(
-    watchingParts(copy.home.watching, titles, { name: profile.firstName }),
-  );
-  const edge = 16;
-
-  // Where the slime sits inside its 48px frame: its right side and its face.
-  const slimeRight = 42;
-  const slimeFace = 25;
-
-  let root = $state<HTMLSpanElement>();
-  let trigger = $state<HTMLButtonElement>();
-  let left = $state(0);
-  let top = $state(0);
-  let maxWidth = $state(288);
-
-  disclosure.attach(
-    () => root,
-    () => trigger,
+    new Intl.ListFormat("en-GB", {
+      type: "conjunction",
+    }).formatToParts(titles),
   );
 
-  // The mascot is the first child of the home column (src/routes/+page.svelte).
-  function place() {
-    const mascot = root?.closest("[data-mascot-avoid]")?.firstElementChild;
-    if (!root || !mascot) return;
-    const box = mascot.getBoundingClientRect();
-    const origin = root.getBoundingClientRect();
-    const x = box.left + slimeRight + 10;
+  const besideMascot: Attachment<HTMLElement> = (bubble) => {
+    const place = () => {
+      const root = bubble.parentElement;
+      const mascot = root?.closest("[data-mascot-avoid]")?.firstElementChild;
+      if (!root || !mascot) {
+        return;
+      }
 
-    left = x - origin.left;
-    top = box.top + slimeFace - origin.top;
-    maxWidth = Math.min(288, document.documentElement.clientWidth - x - edge);
-  }
+      const slime = mascot.getBoundingClientRect();
+      const origin = root.getBoundingClientRect();
+      const x = slime.left + 52;
 
-  $effect(() => {
-    if (!disclosure.open) return;
+      bubble.style.left = `${x - origin.left}px`;
+      bubble.style.bottom = `${origin.bottom - slime.top - 45}px`;
+      bubble.style.maxWidth = `${Math.min(288, document.documentElement.clientWidth - x - 16)}px`;
+    };
+
     place();
     window.addEventListener("resize", place);
     return () => window.removeEventListener("resize", place);
-  });
+  };
 </script>
 
-<span
-  bind:this={root}
-  role="presentation"
-  class="relative"
-  onpointerenter={disclosure.enter}
-  onpointerleave={disclosure.leave}
-  ><Chevron {disclosure} bind:button={trigger} />{#if disclosure.open}<span
-      id={watchingId}
-      class="
-        watching-say absolute z-30 block w-max -translate-y-[calc(100%-1.25rem)] rounded-2xl
-        px-3.5 py-2 text-left text-black/70
-      "
-      style:left="{left}px"
-      style:top="{top}px"
-      style:max-width="{maxWidth}px"
-      >{#each parts as part, index (index)}{#if part.title}<span class="text-black"
-            >{part.text}</span
-          >{:else}{part.text}{/if}{/each}<span
-        aria-hidden="true"
-        class="watching-tail absolute right-full bottom-3.5 size-3 translate-x-2/3 rotate-45 rounded-[3px]"
-      ></span></span
-    >{/if}</span
->
+<span class="inline-flex">
+  <a
+    href="https://github.com/mkelvers/sora"
+    class="
+      text-black underline decoration-black/30 underline-offset-4
+      transition-colors duration-300 hover:decoration-black
+    "
+  >
+    Sora
+  </a>
+
+  {#if titles.length > 0}
+    <span
+      {@attach disclosure.dismissible}
+      role="presentation"
+      class="relative mt-1 inline-flex self-center"
+      onpointerenter={disclosure.enter}
+      onpointerleave={disclosure.leave}
+    >
+      <button
+        type="button"
+        onclick={disclosure.toggle}
+        onblur={disclosure.blur}
+        aria-expanded={disclosure.open}
+        aria-controls={id}
+        aria-label="What I'm watching right now"
+        class="
+          -my-1 -mr-1 inline-grid size-6 cursor-pointer place-items-center rounded-full align-middle
+          transition duration-150 ease-out active:scale-95
+          {disclosure.open ? 'text-black' : 'text-black/45 hover:text-black'}
+        "
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          class="
+            size-4 transition-transform duration-200 ease-out
+            motion-reduce:transition-none {disclosure.open ? 'rotate-180' : ''}
+          "
+        >
+          <path d="M6 9l6 6l6 -6" />
+        </svg>
+      </button>
+
+      {#if disclosure.open}
+        <span
+          {id}
+          class="
+            watching-say absolute z-30 block w-max rounded-2xl
+            px-3.5 py-2 text-left text-black/70
+          "
+          {@attach besideMascot}
+        >
+          Right now {profile.firstName} is watching
+          {#each parts as part, index (index)}
+            {#if part.type === "element"}
+              <span class="text-black">{part.value}</span>
+            {:else}
+              {part.value}
+            {/if}
+          {/each}.
+        </span>
+      {/if}
+    </span>
+  {/if}
+</span>
