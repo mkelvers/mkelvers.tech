@@ -1,41 +1,56 @@
-import { dev } from "$app/env";
 import { SORA_API_URL, SORA_PORTFOLIO_TOKEN } from "$app/env/private";
 import { z } from "zod";
 import type { PageServerLoad } from "./$types";
 
-const ResponseSchema = z.object({ titles: z.array(z.string()).max(3) });
-// `bun dev` without Sora configured shows these, so the bubble can be tried locally.
-// Production never uses them: without Sora it shows nothing.
-const devSample = ["Frieren: Beyond Journey's End", "Dandadan", "Kaiju No. 8"];
+let cache = {
+  titles: [] as string[],
+  expiresAt: 0,
+};
 
-let cached: { titles: string[]; expiresAt: number } | undefined;
-let pending: Promise<string[]> | undefined;
+export const load: PageServerLoad = async () => {
+  if (!SORA_API_URL || !SORA_PORTFOLIO_TOKEN) {
+    return {
+      nowWatching: [],
+    };
+  }
 
-async function fetchTitles(apiUrl: string, token: string): Promise<string[]> {
+  if (cache.expiresAt > Date.now()) {
+    return {
+      nowWatching: cache.titles,
+    };
+  }
+
   try {
-    const response = await fetch(new URL("/v1/public/now-watching", apiUrl), {
-      headers: { Authorization: `Bearer ${token}` },
+    const response = await fetch(new URL("/v1/public/now-watching", SORA_API_URL), {
+      headers: {
+        Authorization: `Bearer ${SORA_PORTFOLIO_TOKEN}`,
+      },
       signal: AbortSignal.timeout(1500),
       redirect: "error",
     });
-    if (!response.ok) throw new Error("Sora returned a non-success status");
-    const { titles } = ResponseSchema.parse(await response.json());
-    cached = { titles, expiresAt: Date.now() + 5 * 60_000 };
-    return titles;
-  } catch {
-    console.warn("Sora now-watching unavailable; retrying after 60 seconds");
-    cached = { titles: [], expiresAt: Date.now() + 60_000 };
-    return [];
-  }
-}
 
-export const load: PageServerLoad = async () => {
-  if (!SORA_API_URL || !SORA_PORTFOLIO_TOKEN) return { nowWatching: dev ? devSample : [] };
-  if (cached && cached.expiresAt > Date.now()) return { nowWatching: cached.titles };
-  pending ??= fetchTitles(SORA_API_URL, SORA_PORTFOLIO_TOKEN);
-  try {
-    return { nowWatching: await pending };
-  } finally {
-    pending = undefined;
+    if (!response.ok) {
+      throw new Error(`Sora responded with ${response.status}`);
+    }
+
+    const { titles } = z
+      .object({
+        titles: z.array(z.string()).max(3),
+      })
+      .parse(await response.json());
+    cache = {
+      titles,
+      expiresAt: Date.now() + 5 * 60_000,
+    };
+  } catch (error) {
+    console.warn("Sora now-watching unavailable, retrying in a minute", error);
+    cache = {
+      titles: [],
+      expiresAt: Date.now() + 60_000,
+    };
   }
+
+  return {
+    nowWatching: cache.titles,
+  };
 };
