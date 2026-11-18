@@ -1,27 +1,21 @@
-import { frameSrc, type Frame } from "./frames.ts";
-import { between, easeOut, wait } from "./motion.ts";
+import type { Frame } from "#lib/utils.ts";
 import type { Cell, Swarm } from "./swarm.ts";
 
 type Step = [frame: Frame, holdMs: number];
 
-/**
- * One mascot copy on the page. Owns its `<img>`, its position and its idle loop.
- * Calling `dispose` stops the loop and fades the element out; the instance is dead after that.
- */
 export class Slime {
   private readonly img: HTMLImageElement;
   private disposed = false;
 
   constructor(
     private readonly swarm: Swarm,
-    /** The grid cell this slime lives in; its hops never leave it. */
     readonly cell: Cell,
     public x: number,
     public y: number,
     public readonly size: number,
   ) {
     this.img = document.createElement("img");
-    this.img.src = frameSrc("idle");
+    this.img.src = "/mascot/idle.webp";
     this.img.alt = "";
     this.img.setAttribute("aria-hidden", "true");
     Object.assign(this.img.style, {
@@ -36,14 +30,27 @@ export class Slime {
 
     this.img.animate(
       this.swarm.reducedMotion
-        ? [{ opacity: 0 }, { opacity: 1 }]
+        ? [
+            {
+              opacity: 0,
+            },
+            {
+              opacity: 1,
+            },
+          ]
         : [
-            { opacity: 0, scale: "0.9" },
-            { opacity: 1, scale: "1" },
+            {
+              opacity: 0,
+              scale: "0.9",
+            },
+            {
+              opacity: 1,
+              scale: "1",
+            },
           ],
       {
         duration: 300,
-        easing: easeOut,
+        easing: "cubic-bezier(0.23, 1, 0.32, 1)",
         fill: "both",
       },
     );
@@ -58,7 +65,6 @@ export class Slime {
     };
   }
 
-  /** Stops the idle loop. Fades out after `delayMs`, or removes the element at once when `instant`. */
   dispose({ instant = false, delayMs = 0 } = {}): void {
     this.disposed = true;
 
@@ -68,50 +74,65 @@ export class Slime {
     }
 
     this.img
-      .animate([{ opacity: 1 }, { opacity: 0 }], {
-        duration: 450,
-        delay: delayMs,
-        easing: easeOut,
-        fill: "both",
-      })
+      .animate(
+        [
+          {
+            opacity: 1,
+          },
+          {
+            opacity: 0,
+          },
+        ],
+        {
+          duration: 450,
+          delay: delayMs,
+          easing: "cubic-bezier(0.23, 1, 0.32, 1)",
+          fill: "both",
+        },
+      )
       .finished.finally(() => this.img.remove());
   }
 
-  // Long, random pauses keep the page calm; the swarm caps how many act at once.
   private async live(): Promise<void> {
-    await wait(between(800, 2500));
+    await new Promise((resolve) => setTimeout(resolve, 800 + Math.random() * 1700));
 
     while (!this.disposed) {
       await this.swarm.whenTurnFree(() => this.act());
-      await wait(between(2500, 6000));
+      await new Promise((resolve) => setTimeout(resolve, 2500 + Math.random() * 3500));
     }
   }
 
   private act(): Promise<void> {
     const roll = Math.random();
 
-    if (roll < 0.2) return this.hop();
-    if (roll < 0.55) return this.travel();
-    if (roll < 0.75) return this.lookAround();
-    if (roll < 0.9) return this.happy();
+    if (roll < 0.2) {
+      return this.hop();
+    }
+    if (roll < 0.55) {
+      return this.travel();
+    }
+    if (roll < 0.75) {
+      return this.lookAround();
+    }
+    if (roll < 0.9) {
+      return this.happy();
+    }
     return this.doze();
-  }
-
-  private show(frame: Frame): void {
-    this.img.src = frameSrc(frame);
   }
 
   private async play(steps: Step[]): Promise<void> {
     for (const [frame, holdMs] of steps) {
-      if (this.disposed) return;
-      this.show(frame);
-      await wait(holdMs);
+      if (this.disposed) {
+        return;
+      }
+      this.img.src = `/mascot/${frame}.webp`;
+      await new Promise((resolve) => setTimeout(resolve, holdMs));
     }
   }
 
   private async move(keyframes: Keyframe[], duration: number): Promise<void> {
     if (this.swarm.reducedMotion) {
-      await wait(duration);
+      await new Promise((resolve) => setTimeout(resolve, duration));
       return;
     }
 
@@ -123,12 +144,19 @@ export class Slime {
 
   private async hop(): Promise<void> {
     await this.play([["squash", 100]]);
-    this.show("jump");
+    this.img.src = "/mascot/jump.webp";
     await this.move(
       [
-        { translate: "0 0" },
-        { translate: `0 -${this.size * 0.2}px`, offset: 0.45 },
-        { translate: "0 0" },
+        {
+          translate: "0 0",
+        },
+        {
+          translate: `0 -${this.size * 0.2}px`,
+          offset: 0.45,
+        },
+        {
+          translate: "0 0",
+        },
       ],
       340,
     );
@@ -138,10 +166,11 @@ export class Slime {
     ]);
   }
 
-  // A single short hop to a free spot nearby. Falls back to hopping in place.
   private async hopAway(): Promise<void> {
     const target = this.swarm.reducedMotion ? null : this.swarm.nearbySpot(this);
-    if (!target) return this.hop();
+    if (!target) {
+      return this.hop();
+    }
 
     const dx = target.x - this.x;
     const dy = target.y - this.y;
@@ -151,17 +180,24 @@ export class Slime {
       [dx < 0 ? "lean-left" : "lean-right", 140],
       ["squash", 80],
     ]);
-    if (this.disposed) return;
+    if (this.disposed) {
+      return;
+    }
 
-    // Claim the spot before the jump so no other slime picks it mid-air.
     this.x = target.x;
     this.y = target.y;
-    this.show("jump");
+    this.img.src = "/mascot/jump.webp";
     await this.move(
       [
-        { translate: "0 0" },
-        { translate: `${dx / 2}px ${dy / 2 - Math.min(70, 20 + distance * 0.2)}px` },
-        { translate: `${dx}px ${dy}px` },
+        {
+          translate: "0 0",
+        },
+        {
+          translate: `${dx / 2}px ${dy / 2 - Math.min(70, 20 + distance * 0.2)}px`,
+        },
+        {
+          translate: `${dx}px ${dy}px`,
+        },
       ],
       280 + distance * 0.8,
     );
@@ -174,13 +210,12 @@ export class Slime {
     ]);
   }
 
-  // One to three hops in a row, so a slime actually crosses the page.
   private async travel(): Promise<void> {
-    const hops = Math.floor(between(1, 4));
+    const hops = Math.floor(1 + Math.random() * 3);
 
     for (let i = 0; i < hops && !this.disposed; i++) {
       await this.hopAway();
-      await wait(between(60, 160));
+      await new Promise((resolve) => setTimeout(resolve, 60 + Math.random() * 100));
     }
   }
 
@@ -189,22 +224,32 @@ export class Slime {
       Math.random() < 0.5 ? ["look-left", "look-right"] : ["look-right", "look-left"];
 
     await this.play([
-      [first, between(700, 1100)],
+      [first, 700 + Math.random() * 400],
       ["look-up-open", 400],
-      [second, between(700, 1100)],
+      [second, 700 + Math.random() * 400],
       ["idle", 0],
     ]);
   }
 
   private async happy(): Promise<void> {
-    this.show("happy");
+    this.img.src = "/mascot/happy.webp";
     await this.move(
       [
-        { rotate: "0deg" },
-        { rotate: "-8deg" },
-        { rotate: "7deg" },
-        { rotate: "-4deg" },
-        { rotate: "0deg" },
+        {
+          rotate: "0deg",
+        },
+        {
+          rotate: "-8deg",
+        },
+        {
+          rotate: "7deg",
+        },
+        {
+          rotate: "-4deg",
+        },
+        {
+          rotate: "0deg",
+        },
       ],
       700,
     );
@@ -216,7 +261,7 @@ export class Slime {
 
   private async doze(): Promise<void> {
     await this.play([
-      ["sleep", between(3000, 6000)],
+      ["sleep", 3000 + Math.random() * 3000],
       ["look-up-open", 500],
       ["idle", 0],
     ]);

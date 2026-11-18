@@ -1,17 +1,10 @@
-import { between } from "./motion.ts";
 import { Slime } from "./slime.ts";
-
-const gridSize = 3;
-const maxActing = 3;
-const spawnEveryMs = 600;
-const fadeStaggerMs = 500;
 
 type Spot = {
   x: number;
   y: number;
 };
 
-/** One cell of the screen grid. Each slime lives in its own cell, which keeps them spread out. */
 export type Cell = {
   left: number;
   top: number;
@@ -19,13 +12,6 @@ export type Cell = {
   bottom: number;
 };
 
-/**
- * The slimes scattered over the page. Owns spawning, spacing, and how many may move at once.
- *
- * The screen is split into a 3×3 grid and each cell holds at most one slime, so they spread
- * in every direction instead of clumping. Slimes also keep a minimum distance from each
- * other and stay off the element marked `data-mascot-avoid`, so the text stays readable.
- */
 export class Swarm {
   readonly reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -35,26 +21,26 @@ export class Swarm {
 
   start(): void {
     this.spawn();
-    this.spawner = setInterval(() => this.spawn(), spawnEveryMs);
+    this.spawner = setInterval(() => this.spawn(), 600);
   }
 
-  /** Fades every slime out over about a second. With `instant`, removes them on the spot (used on unmount). */
   stop({ instant = false } = {}): void {
     clearInterval(this.spawner);
 
     for (const slime of this.slimes) {
       slime.dispose({
         instant,
-        delayMs: Math.random() * fadeStaggerMs,
+        delayMs: Math.random() * 500,
       });
     }
 
     this.slimes = [];
   }
 
-  /** Runs `action` only while fewer than `maxActing` slimes are moving; otherwise skips this turn. */
   async whenTurnFree(action: () => Promise<void>): Promise<void> {
-    if (this.acting >= maxActing) return;
+    if (this.acting >= 3) {
+      return;
+    }
 
     this.acting++;
     try {
@@ -64,17 +50,23 @@ export class Swarm {
     }
   }
 
-  /** A free spot within a hop of `slime` and inside its own cell, or null when it is boxed in. */
   nearbySpot(slime: Slime): Spot | null {
     for (let attempt = 0; attempt < 16; attempt++) {
       const angle = Math.random() * Math.PI * 2;
-      const distance = between(100, 260);
+      const distance = 100 + Math.random() * 160;
       const spot = {
         x: slime.x + Math.cos(angle) * distance,
         y: slime.y + Math.sin(angle) * distance * 0.6,
       };
 
-      if (inside(slime.cell, spot, slime.size) && this.isFree(spot, slime.size, slime)) {
+      const cell = slime.cell;
+      const insideCell =
+        spot.x >= cell.left &&
+        spot.y >= cell.top &&
+        spot.x + slime.size <= cell.right &&
+        spot.y + slime.size <= cell.bottom;
+
+      if (insideCell && this.isFree(spot, slime.size, slime)) {
         return spot;
       }
     }
@@ -82,18 +74,17 @@ export class Swarm {
     return null;
   }
 
-  // Fills an empty cell at random each tick; stops once no empty cell can take a slime.
   private spawn(): void {
-    const empty = shuffle(
-      grid().filter((cell) => !this.slimes.some((slime) => sameCell(slime.cell, cell))),
+    const empty = grid().filter((cell) =>
+      this.slimes.every((slime) => slime.cell.left !== cell.left || slime.cell.top !== cell.top),
     );
-    const size = between(36, 56);
+    const size = 36 + Math.random() * 20;
 
-    for (const cell of empty) {
+    for (const cell of shuffle(empty)) {
       for (let attempt = 0; attempt < 20; attempt++) {
         const spot = {
-          x: between(cell.left, cell.right - size),
-          y: between(cell.top, cell.bottom - size),
+          x: cell.left + Math.random() * (cell.right - size - cell.left),
+          y: cell.top + Math.random() * (cell.bottom - size - cell.top),
         };
 
         if (this.isFree(spot, size)) {
@@ -103,7 +94,6 @@ export class Swarm {
       }
     }
 
-    // Every cell is filled or covered by text.
     clearInterval(this.spawner);
   }
 
@@ -118,25 +108,28 @@ export class Swarm {
       cx < text.right + 24 &&
       cy > text.top - 24 &&
       cy < text.bottom + 24;
-    if (onText) return false;
+    if (onText) {
+      return false;
+    }
 
     const minGap = Math.max(120, Math.min(innerWidth, innerHeight) / 5);
 
     return this.slimes.every((other) => {
-      if (other === self) return true;
+      if (other === self) {
+        return true;
+      }
       return Math.hypot(other.center.x - cx, other.center.y - cy) >= minGap;
     });
   }
 }
 
-// The screen split into equal cells, inset 8px from the edges.
 function grid(): Cell[] {
-  const width = (innerWidth - 16) / gridSize;
-  const height = (innerHeight - 16) / gridSize;
+  const width = (innerWidth - 16) / 3;
+  const height = (innerHeight - 16) / 3;
   const cells: Cell[] = [];
 
-  for (let row = 0; row < gridSize; row++) {
-    for (let col = 0; col < gridSize; col++) {
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 3; col++) {
       cells.push({
         left: 8 + col * width,
         top: 8 + row * height,
@@ -147,19 +140,6 @@ function grid(): Cell[] {
   }
 
   return cells;
-}
-
-function inside(cell: Cell, spot: Spot, size: number): boolean {
-  return (
-    spot.x >= cell.left &&
-    spot.y >= cell.top &&
-    spot.x + size <= cell.right &&
-    spot.y + size <= cell.bottom
-  );
-}
-
-function sameCell(a: Cell, b: Cell): boolean {
-  return a.left === b.left && a.top === b.top;
 }
 
 function shuffle<T>(items: T[]): T[] {
