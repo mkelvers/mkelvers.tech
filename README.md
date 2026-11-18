@@ -12,7 +12,7 @@ bun run check
 
 ## Projects
 
-Projects live on GitHub, not on this site. The home page links to the GitHub profile, and old `/projects/...` links redirect there.
+Projects live on GitHub, not on this site. The home page links to the GitHub profile.
 
 ## Analytics
 
