@@ -1,74 +1,76 @@
 <script lang="ts">
   import type { PageProps } from "./$types";
   import Mascot from "#lib/components/Mascot.svelte";
-  import Rich from "#lib/components/Rich.svelte";
-  import Watching from "#lib/components/watching/Watching.svelte";
   import Seo from "#lib/components/Seo.svelte";
-  import { copy, fill } from "#lib/copy.ts";
-  import { profile, stack } from "#lib/profile.ts";
+  import Watching from "#lib/components/watching/Watching.svelte";
+  import { profile } from "#lib/utils.ts";
 
   let { data }: PageProps = $props();
 </script>
 
 <Seo
   title={profile.username}
-  description={fill(copy.home.description, {
-    name: profile.name,
-    location: copy.home.location,
-  })}
+  description="Mikkel Elvers is a junior frontend and full-stack developer based in Holbæk, Denmark. Builds whole products, from the database to the interface."
   type="profile"
 />
 
-<svelte:head>
-  {@html `<script type="application/ld+json">${JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: profile.fullName,
-    alternateName: profile.name,
-    jobTitle: copy.home.jobTitle,
-    description: fill(copy.home.description, {
-      name: profile.name,
-      location: copy.home.location,
-    }),
-    address: { "@type": "PostalAddress", addressCountry: "DK" },
-    knowsAbout: stack.map((item) => item.label),
-    url: "https://mkelvers.tech",
-    image: "https://mkelvers.tech/og.png",
-    sameAs: [profile.github, profile.linkedin],
-  }).replaceAll("<", "\\u003c")}</script>`}
-</svelte:head>
-
-<!-- Kept tight: whitespace here would show up as a gap before the comma. -->
-{#snippet watching()}<Watching titles={data.nowWatching} />{/snippet}
-
-<div data-mascot-avoid class="mx-auto w-full max-w-xl my-auto flex flex-col gap-4 leading-relaxed text-black/70">
+<div
+  data-mascot-avoid
+  class="mx-auto my-auto flex w-full max-w-xl flex-col gap-4 leading-relaxed text-black/70"
+>
   <Mascot />
 
   <h1 class="-mt-2 mb-1 text-xl font-medium tracking-tight text-black">
-    {fill(copy.home.headline, {
-      name: profile.firstName,
-    })}
+    Hey, I'm {profile.firstName}
   </h1>
 
-  <p>{fill(copy.home.intro, { location: copy.home.location })}</p>
+  <p>I'm a web developer from Holbæk, Denmark, looking for my first job.</p>
 
   <p>
-    <Rich
-      text={copy.home.work}
-      links={{ sora: "https://github.com/mkelvers/sora", projects: profile.github, cv: "/cv" }}
-      slots={data.nowWatching.length > 0 ? { watching } : {}}
-    />
+    Lately I've been working on
+    <Watching titles={data.nowWatching} />, a self-hosted anime app I built for myself and use
+    almost every day. My other
+    <a
+      href={profile.github}
+      class="
+        text-black underline decoration-black/30 underline-offset-4
+        transition-colors duration-300 hover:decoration-black
+      "
+    >
+      projects are on GitHub
+    </a>, and you can read my
+    <a
+      href="/cv"
+      class="
+        text-black underline decoration-black/30 underline-offset-4
+        transition-colors duration-300 hover:decoration-black
+      "
+    >
+      CV
+    </a>
+    here.
   </p>
 
-
   <p>
-    <Rich
-      text={copy.home.contact}
-      links={{
-        email: `mailto:${profile.email}`,
-        linkedin: profile.linkedin,
-        github: profile.github,
-      }}
-    />
+    The best way to reach me is
+    <a
+      href={`mailto:${profile.email}`}
+      class="
+        text-black underline decoration-black/30 underline-offset-4
+        transition-colors duration-300 hover:decoration-black
+      "
+    >
+      email
+    </a>
+    or
+    <a
+      href={profile.linkedin}
+      class="
+        text-black underline decoration-black/30 underline-offset-4
+        transition-colors duration-300 hover:decoration-black
+      "
+    >
+      LinkedIn
+    </a>.
   </p>
 </div>
