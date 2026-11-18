@@ -1,0 +1,87 @@
+{
+  "role": "Web developer",
+  "location": "Holbæk, Denmark",
+  "labels": {
+    "profile": "Profile",
+    "projects": "Project experience",
+    "education": "Education",
+    "skills": "Skills",
+    "languages": "Languages",
+    "additional": "Additional information"
+  },
+  "profile": "Junior web developer focused on frontend development with TypeScript, React and Next.js. I have built and run my own projects, from the database to the interface, and I am most interested in the architecture and the decisions behind it. I use AI daily and test that what I build works. I am looking for a team with experienced developers where I can learn and take on more responsibility.",
+  "education": {
+    "name": "Web Developer",
+    "school": "Roskilde Technical School",
+    "period": "August 2024 – October 2026",
+    "grade": "Graduated with the top grade, 12 on the Danish scale.",
+    "bullets": [
+      "Focus on modern frontend development with React, Next.js, Vite, TypeScript, JavaScript, HTML, CSS and Tailwind CSS.",
+      "Connected the frontend to the backend through REST APIs, including setup and consumption.",
+      "Introduction to server-side development and CMSs, including WordPress and Strapi, plus basic PHP and MySQL."
+    ]
+  },
+  "skills": [
+    {
+      "label": "Frontend",
+      "items": [
+        "TypeScript",
+        "JavaScript",
+        "React",
+        "Next.js",
+        "SvelteKit",
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "Vite"
+      ]
+    },
+    {
+      "label": "Backend and data",
+      "items": ["Express", "Hono", "Bun", "REST APIs", "PostgreSQL", "SQLite", "Zod"]
+    },
+    {
+      "label": "Tools",
+      "items": ["Docker", "Git", "Testing"]
+    }
+  ],
+  "languages": ["Danish", "English"],
+  "projects": [
+    {
+      "name": "Sora",
+      "meta": "TypeScript · Hono · SvelteKit · PostgreSQL · Docker",
+      "bullets": [
+        "Built a self-hosted anime app on my own, for my own use and closed to sign-ups, with a player, watchlist and release calendar. Split it into a versioned HTTP API, a web app and a scheduler, so the web app is just one of several clients.",
+        "Built a typed SDK so other tools can use the same API as the web app.",
+        "Fixed my own design mistakes along the way, including a job that got stuck after a crash and a fallback that hid a slow service. Runs in production on my own server."
+      ]
+    },
+    {
+      "name": "HiFi Horizon",
+      "meta": "React · TypeScript · Express · PostgreSQL",
+      "bullets": [
+        "Built a full-stack webshop where users browse, compare and buy hi-fi products.",
+        "Added search, filtering, product comparison, cart and checkout, login, user profiles and order history.",
+        "Built the Express API that connects the React frontend to the PostgreSQL database for users, products and orders."
+      ]
+    },
+    {
+      "name": "Newsify",
+      "meta": "React · TypeScript · React Query · Sass",
+      "bullets": [
+        "Built a mobile news reader on The New York Times' Top Stories and Most Popular APIs, with articles grouped by category.",
+        "Added search with Fuse.js, data fetching with React Query and a swipe-based archive.",
+        "Saves the theme, chosen categories and archive between sessions."
+      ]
+    },
+    {
+      "name": "Escape Room",
+      "meta": "React · Vite · Bun · SQLite",
+      "bullets": [
+        "Team project in a group of four: a browser game where players fix a \"compromised\" bank website in five minutes by solving 10 short CSS puzzles, each revealing part of a lock code.",
+        "Frontend in React with Vite, GSAP animation, background music and a countdown timer.",
+        "Leaderboard server on Bun and Express with SQLite, with Zod-validated names, a banned-word filter and rate limiting."
+      ]
+    }
+  ]
+}
