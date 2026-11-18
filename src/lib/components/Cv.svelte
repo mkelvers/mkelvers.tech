@@ -38,8 +38,8 @@
 {#snippet printHeading(text: string)}
   <h2
     class="
-      mt-[18px] mb-2 border-b border-[#111827] pb-0.5 font-cv-display
-      text-[15px] font-bold uppercase
+      mt-4.5 mb-2 border-b border-gray-900 pb-0.5
+      text-base font-bold uppercase
     "
   >
     {text}
@@ -47,7 +47,7 @@
 {/snippet}
 
 {#snippet printBullets(items: readonly string[])}
-  <ul class="list-disc pl-4 marker:text-[10px]">
+  <ul class="list-disc pl-4 marker:text-xs">
     {#each items as item (item)}
       <li>{item}</li>
     {/each}
@@ -132,13 +132,13 @@
   </section>
 </article>
 
-<article class="hidden font-cv text-[12.5px] leading-[1.45] text-[#111827] print:block">
+<article class="hidden font-cv text-xs leading-normal text-gray-900 print:block">
   <header class="text-center">
-    <h1 class="font-cv-display text-2xl font-bold">{profile.fullName}</h1>
-    <p class="text-[#4b5563] italic">{cv.role}</p>
-    <p class="mt-1.5 text-[#374151]">{cv.location}</p>
-    <p class="text-[#374151]">{profile.email} | {profile.phone}</p>
-    <p class="text-[#374151]">
+    <h1 class="text-2xl font-bold">{profile.fullName}</h1>
+    <p class="text-gray-600 italic">{cv.role}</p>
+    <p class="mt-1.5 text-gray-700">{cv.location}</p>
+    <p class="text-gray-700">{profile.email} | {profile.phone}</p>
+    <p class="text-gray-700">
       <a href={github.href}>{github.text}</a> |
       <a href={linkedin.href}>{linkedin.text}</a>
     </p>
